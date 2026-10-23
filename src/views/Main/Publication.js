@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Trans } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+import { Trans, t } from '@lingui/macro';
 import makeStyles from '@mui/styles/makeStyles';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import LensIcon from '@mui/icons-material/Lens';
@@ -27,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
 	},
 	statRight: {
 		paddingLeft: '2em!important',
+	},
+	viewers: {
+		marginLeft: '1em',
+		textTransform: 'none',
+		fontWeight: 400,
+		opacity: 0.85,
+	},
+	viewersIcon: {
+		verticalAlign: 'text-bottom',
+		marginRight: 3,
 	},
 	channelLabel: {
 		marginTop: '.6em',
@@ -62,6 +72,7 @@ export default function Publication(props) {
 	const classes = useStyles();
 
 	const navigate = useNavigate();
+	const { i18n } = useLingui();
 	const services = Services.IDs();
 	const [$egresses, setEgresses] = React.useState([]);
 	const [$addMenu, setAddMenu] = React.useState(null);
@@ -224,45 +235,25 @@ export default function Publication(props) {
 	return (
 		<React.Fragment>
 			<Paper marginBottom="0">
-				<PaperHeader title={<Trans>Publications</Trans>} onAdd={handleServiceAdd} onHelp={handleHelp} />
+				<PaperHeader
+					title={
+						<span>
+							<Trans>Publications</Trans>
+							<span className={classes.viewers} title={i18n._(t`Viewers of all channels`)}>
+								<PersonIcon fontSize="small" className={classes.viewersIcon} />
+								<Number value={$session.viewer} />
+							</span>
+						</span>
+					}
+					onAdd={handleServiceAdd}
+					onHelp={handleHelp}
+				/>
 				<Grid container spacing={1}>
-					<Grid item xs={12}>
-						<Divider />
-					</Grid>
-					<Grid item xs={multiple ? 6 : 12} align={multiple ? 'right' : 'center'} className={multiple ? classes.statLeft : ''}>
-						<Typography component="div" className={classes.viewerCount}>
-							<Number value={$session.viewer} />
-						</Typography>
-						<Grid
-							container
-							direction="row"
-							justifyContent={multiple ? 'flex-end' : 'center'}
-							alignItems="center"
-							className={classes.vierwerDescription}
-						>
-							<PersonIcon fontSize="small" />
-							<Typography className={classes.vierwerTypo}>
-								<Trans>Viewer</Trans>
-							</Typography>
+					{multiple && (
+						<Grid item xs={12}>
+							<Divider />
 						</Grid>
-					</Grid>
-					<Grid item xs={multiple ? 6 : 12} align={multiple ? 'left' : 'center'} className={multiple ? classes.statRight : classes.bandwidth}>
-						<Typography component="div" className={multiple ? classes.viewerCount : classes.bandwidthCount}>
-							<Number value={$session.bandwidth} />
-						</Typography>
-						<Grid
-							container
-							direction="row"
-							justifyContent={multiple ? 'flex-start' : 'center'}
-							alignItems="center"
-							className={multiple ? classes.vierwerDescription : classes.bandwidthDescription}
-						>
-							<CloudUploadIcon className={classes.bandwidthIcon} />
-							<Typography>
-								<Trans>kbit/s</Trans>
-							</Typography>
-						</Grid>
-					</Grid>
+					)}
 					{egresses}
 				</Grid>
 			</Paper>

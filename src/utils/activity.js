@@ -141,6 +141,12 @@ const normalize = (message) => message.replace(/0x[0-9a-fA-F]+/g, '#').replace(/
 // The errors at the end of a run (within this many ms of its last line) explain why it stopped
 const FINAL_BURST = 3000;
 
+// After a restart, a process counts as recovered once it has been working this long
+const RECOVERED_AFTER = 15000;
+
+// The current run (the report itself) started this long ago and the process works now
+const isRecovered = (report, healthy, now) => healthy === true && report && report.created_at && now - report.created_at * 1000 >= RECOVERED_AFTER;
+
 // Build a list of events from a process report. The newest event comes first.
 // report: { created_at, log: [[ts, text]], history: [{ created_at, log }] }
 //
@@ -148,7 +154,8 @@ const FINAL_BURST = 3000;
 // error as the reason (it is restarted automatically), and identical events of all runs are
 // merged into one with a count, e.g. "Stopped: Connection refused ×12".
 // running: whether the process is still running, otherwise its last run has ended as well.
-const buildEvents = (report, source, kind = 'channel', running = true) => {
+// healthy: whether it works right now (connected). After a restart this adds a "Working again" event.
+const buildEvents = (report, source, kind = 'channel', running = true, healthy = false, now = Date.now()) => {
 	if (!report) {
 		return [];
 	}
@@ -225,6 +232,23 @@ const buildEvents = (report, source, kind = 'channel', running = true) => {
 		}
 	});
 
+	// the last run followed a failed one and has been working for a while
+	if (runs.length > 1 && running && isRecovered(report, healthy, now)) {
+		const time = report.created_at * 1000 + RECOVERED_AFTER;
+		merged.set('recovered', {
+			id: `${source}:recovered:${report.created_at}`,
+			source: source,
+			kind: kind,
+			time: time,
+			first: time,
+			level: 'success',
+			type: 'recovered',
+			message: 'Working again',
+			raw: '',
+			count: 1,
+		});
+	}
+
 	return Array.from(merged.values()).sort((a, b) => b.time - a.time);
 };
 
@@ -239,13 +263,15 @@ const mean = (values) => values.reduce((a, b) => a + b, 0) / values.length;
 
 // Rate how stable the input is, from progress samples of the last minutes and the restarts in the last hour.
 // samples: [{ time, bitrate, fps, speed, frames, drop }]
-const stability = (samples, report, now = Date.now()) => {
+// healthy: whether it works right now. Restarts only count until it has been working again for 15 seconds.
+const stability = (samples, report, now = Date.now(), healthy = false) => {
 	const result = {
 		rating: 'unknown',
 		bitrateVariation: 0,
 		speedIssues: 0,
 		dropRate: 0,
 		restarts: 0,
+		recovered: false,
 		reasons: [],
 	};
 
@@ -256,7 +282,9 @@ const stability = (samples, report, now = Date.now()) => {
 		result.restarts = starts.slice(1).filter((t) => t >= now - 3600 * 1000).length;
 	}
 
-	samples = (samples || []).filter((s) => s.time >= now - 5 * 60 * 1000 && s.fps > 0);
+	// FFmpeg catches up right after a (re)start (speed far above 1x); that is not a problem of the input
+	const started = report && report.created_at ? report.created_at * 1000 : 0;
+	samples = (samples || []).filter((s) => s.time >= now - 5 * 60 * 1000 && s.fps > 0 && (s.time < started || s.time >= started + RECOVERED_AFTER));
 
 	let score = 0;
 	const worse = (level, reason) => {
@@ -264,7 +292,9 @@ const stability = (samples, report, now = Date.now()) => {
 		result.reasons.push(reason);
 	};
 
-	if (result.restarts >= 3) {
+	if (result.restarts !== 0 && isRecovered(report, healthy, now)) {
+		result.recovered = true;
+	} else if (result.restarts >= 3) {
 		worse(2, 'restarts');
 	} else if (result.restarts >= 1) {
 		worse(1, 'restarts');

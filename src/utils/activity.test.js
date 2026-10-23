@@ -135,3 +135,45 @@ test('activity: stability rating', () => {
 
 	expect(stability([], null, now).rating).toBe('unknown');
 });
+
+test('activity: working again after a restart', () => {
+	const report = {
+		created_at: 1700000100,
+		log: [['1700000101', '[info] running']],
+		history: [{ created_at: 1700000000, log: [['1700000050', '[error] Connection refused']] }],
+	};
+
+	// working for 20 seconds
+	let events = buildEvents(report, 'x', 'channel', true, true, 1700000120000);
+	expect(events[0]).toMatchObject({ type: 'recovered', level: 'success', time: 1700000115000 });
+
+	// only 10 seconds, or not working
+	expect(buildEvents(report, 'x', 'channel', true, true, 1700000110000).some((e) => e.type === 'recovered')).toBe(false);
+	expect(buildEvents(report, 'x', 'channel', true, false, 1700000120000).some((e) => e.type === 'recovered')).toBe(false);
+	// no restart, nothing to recover from
+	expect(buildEvents({ created_at: 1700000100, log: [] }, 'x', 'channel', true, true, 1700000120000).some((e) => e.type === 'recovered')).toBe(false);
+
+	// the restart no longer lowers the rating once it works again
+	const before = stability([], report, 1700000110000, true);
+	expect(before.rating).toBe('fair');
+	const after = stability([], report, 1700000120000, true);
+	expect(after).toMatchObject({ restarts: 1, recovered: true });
+	expect(after.rating).toBe('unknown');
+});
+
+test('activity: the first seconds after a start do not count', () => {
+	const now = 1700001000000;
+	const report = { created_at: (now - 60000) / 1000 };
+	const samples = Array.from({ length: 30 }, (_, i) => ({
+		time: now - 60000 + i * 2000,
+		fps: 30,
+		frames: i * 60,
+		drop: 0,
+		bitrate: 6000,
+		// catching up during the first 10 seconds
+		speed: i < 5 ? 1.4 : 1,
+	}));
+
+	expect(stability(samples, report, now, true).rating).toBe('good');
+	expect(stability(samples, null, now, true).rating).toBe('fair');
+});

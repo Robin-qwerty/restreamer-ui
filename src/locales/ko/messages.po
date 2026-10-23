@@ -13,16 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/misc/ChannelList.js:212
-#: src/views/Main/ActivityLog.js:253
+#: src/misc/ChannelList.js:213
+#: src/views/Main/ActivityLog.js:334
 msgid "{0} failing"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:249
+#: src/views/Main/ActivityLog.js:330
 msgid "{0} live"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:372
+#: src/views/Main/ActivityLog.js:454
 msgid "{0} times, first at {1}"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr "6 (+ 키프레임 재생 보장)"
 msgid "7 (+ fragmented MP4 format)"
 msgstr "7 (+ 조각난 MP4 형식)"
 
-#: src/misc/ChannelList.js:418
+#: src/misc/ChannelList.js:419
 #: src/views/Edit/index.js:653
 #: src/views/Edit/index.js:672
 #: src/views/Edit/Profile.js:599
@@ -66,21 +66,21 @@ msgstr "7 (+ 조각난 MP4 형식)"
 msgid "Abort"
 msgstr "취소"
 
-#: src/Header.js:283
-#: src/Header.js:324
+#: src/Header.js:245
+#: src/Header.js:286
 msgid "About"
 msgstr "정보"
 
-#: src/views/Main/ActivityPanel.js:143
-#: src/views/Main/ActivityPanel.js:150
+#: src/views/Main/ActivityPanel.js:142
+#: src/views/Main/ActivityPanel.js:149
 msgid "Activity"
 msgstr ""
 
-#: src/misc/ChannelList.js:431
+#: src/misc/ChannelList.js:432
 msgid "Add"
 msgstr "추가"
 
-#: src/views/Main/Publication.js:235
+#: src/views/Main/Publication.js:262
 msgid "Add a publication to"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Add Audio"
 msgstr ""
 
-#: src/misc/ChannelList.js:380
+#: src/misc/ChannelList.js:381
 msgid "Add channel"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Add external widgets and styles to the publication site. You can find some examples on the help page."
 msgstr "송출 사이트에 외부 위젯과 스타일을 추가합니다. 도움말에서 예시를 찾을 수 있습니다."
 
-#: src/misc/ChannelList.js:415
+#: src/misc/ChannelList.js:416
 msgid "Add new channel"
 msgstr "새로운 채널 추가"
 
@@ -194,7 +194,7 @@ msgstr "AirPlay"
 msgid "Alerting by email"
 msgstr "이메일로 알림"
 
-#: src/views/Main/ActivityLog.js:530
+#: src/views/Main/ActivityLog.js:615
 #: src/views/Publication/Add.js:386
 msgid "All"
 msgstr "모두"
@@ -235,7 +235,7 @@ msgstr "API 엔드포인트를 찾을 수 없습니다. 설정이 저장되지 �
 msgid "App"
 msgstr "앱"
 
-#: src/Footer.js:218
+#: src/Footer.js:225
 #: src/views/Publication/Services/Red5.js:126
 #: src/views/Publication/Services/WOWZA.js:148
 msgid "Application"
@@ -358,8 +358,8 @@ msgstr "백업 스트림 키"
 msgid "Backup URL"
 msgstr "백업 URL"
 
-#: src/Footer.js:256
-#: src/Footer.js:269
+#: src/Footer.js:263
+#: src/Footer.js:276
 msgid "Bandwidth"
 msgstr "대역폭"
 
@@ -385,17 +385,21 @@ msgstr "비프 인수"
 msgid "Bitrate"
 msgstr "비트율"
 
-#: src/views/Main/ActivityLog.js:206
+#: src/views/Main/ActivityLog.js:364
+msgid "Bitrate (last 5 min)"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:288
 msgid "bitrate jumps"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:294
+#: src/views/Main/ActivityLog.js:373
 msgid "Bitrate variation"
 msgstr ""
 
 #: src/views/Main/ActivityLog.js:277
-msgid "Bitrate, last 5 min"
-msgstr ""
+#~ msgid "Bitrate, last 5 min"
+#~ msgstr ""
 
 #: src/views/Settings.js:1903
 msgid "Block cache types"
@@ -466,7 +470,7 @@ msgstr ""
 msgid "Channel \"{0}\" saved"
 msgstr "\"{0}\" 채널을 저장했습니다."
 
-#: src/misc/ChannelList.js:377
+#: src/misc/ChannelList.js:378
 #: src/views/Edit/Sources/ALSA.js:129
 msgid "Channels"
 msgstr "채널"
@@ -553,7 +557,7 @@ msgstr "코덱"
 msgid "Color"
 msgstr "색상"
 
-#: src/views/Main/ActivityPanel.js:159
+#: src/views/Main/ActivityPanel.js:158
 msgid "Combined"
 msgstr ""
 
@@ -581,7 +585,7 @@ msgstr "연결된 장치"
 msgid "Connected since <0/>"
 msgstr "<0/> 부터 연결됨"
 
-#: src/views/Main/ActivityLog.js:180
+#: src/views/Main/ActivityLog.js:261
 msgid "Connecting"
 msgstr ""
 
@@ -621,7 +625,7 @@ msgstr "내용 URL"
 msgid "copyts"
 msgstr "copyts"
 
-#: src/Footer.js:193
+#: src/Footer.js:200
 msgid "Cores"
 msgstr "코어"
 
@@ -855,7 +859,7 @@ msgstr "연결 해제"
 msgid "Disconnect & Continue"
 msgstr "연결 끊고 계속"
 
-#: src/views/Main/ActivityLog.js:176
+#: src/views/Main/ActivityLog.js:257
 msgid "Disconnected"
 msgstr ""
 
@@ -874,8 +878,8 @@ msgstr "디스크"
 msgid "Disk cache"
 msgstr "저장소 캐시"
 
-#: src/Footer.js:315
-#: src/Footer.js:328
+#: src/Footer.js:322
+#: src/Footer.js:335
 msgid "Disk storage"
 msgstr "저장소 사용량"
 
@@ -895,8 +899,8 @@ msgstr "{title}을(를) 삭제할까요?"
 msgid "Do you want to disconnect \"{0}\"?"
 msgstr "\"{0}\"의 연결을 끊겠습니까?"
 
-#: src/Header.js:289
-#: src/Header.js:330
+#: src/Header.js:251
+#: src/Header.js:292
 msgid "Docs"
 msgstr "문서"
 
@@ -920,11 +924,11 @@ msgstr ""
 msgid "Drag the edges to change width or height. The crop follows, so nothing is stretched."
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:208
+#: src/views/Main/ActivityLog.js:290
 msgid "dropped frames"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:291
+#: src/views/Main/ActivityLog.js:370
 msgid "Dropped frames"
 msgstr ""
 
@@ -1047,7 +1051,7 @@ msgstr "인코딩"
 msgid "Encryption"
 msgstr "암호화"
 
-#: src/misc/ChannelList.js:438
+#: src/misc/ChannelList.js:439
 msgid "Enter a name for the new channel."
 msgstr "새로운 채널의 이름을 입력하세요."
 
@@ -1071,7 +1075,7 @@ msgstr "엔트로피 부호화"
 #: src/views/Edit/Wizard/Error.js:16
 #: src/views/Incompatible.js:30
 #: src/views/Invalid.js:29
-#: src/views/Main/ActivityLog.js:172
+#: src/views/Main/ActivityLog.js:253
 #: src/views/Publication/Process.js:63
 #: src/views/Settings.js:1202
 msgid "Error"
@@ -1083,7 +1087,7 @@ msgstr "오류"
 msgid "Error while copying data to clipboard"
 msgstr "데이터를 클립보드로 복사하는 중 오류 발생"
 
-#: src/views/Main/ActivityLog.js:172
+#: src/views/Main/ActivityLog.js:253
 msgid "Error, retry in {0}s"
 msgstr ""
 
@@ -1092,7 +1096,7 @@ msgstr ""
 msgid "Error: {0}"
 msgstr "오류: {0}"
 
-#: src/views/Main/ActivityLog.js:527
+#: src/views/Main/ActivityLog.js:612
 msgid "Events"
 msgstr ""
 
@@ -1239,9 +1243,13 @@ msgstr "형식"
 msgid "FPS"
 msgstr "FPS"
 
-#: src/views/Main/ActivityLog.js:283
-msgid "FPS, last 5 min"
+#: src/views/Main/ActivityLog.js:365
+msgid "FPS (last 5 min)"
 msgstr ""
+
+#: src/views/Main/ActivityLog.js:283
+#~ msgid "FPS, last 5 min"
+#~ msgstr ""
 
 #: src/misc/Progress.js:144
 msgid "Frame drops"
@@ -1340,7 +1348,7 @@ msgstr "헤드라인"
 msgid "Height"
 msgstr "높이"
 
-#: src/views/Main/ActivityPanel.js:152
+#: src/views/Main/ActivityPanel.js:151
 msgid "Hide activity"
 msgstr ""
 
@@ -1427,13 +1435,13 @@ msgstr ""
 msgid "In-memory"
 msgstr "메모리"
 
-#: src/Footer.js:285
-#: src/Footer.js:298
+#: src/Footer.js:292
+#: src/Footer.js:305
 msgid "In-memory storage"
 msgstr "메모리 저장소"
 
-#: src/misc/ChannelList.js:206
-#: src/misc/ChannelList.js:354
+#: src/misc/ChannelList.js:207
+#: src/misc/ChannelList.js:355
 msgid "Inactive"
 msgstr ""
 
@@ -1466,11 +1474,11 @@ msgstr "삽입 3"
 msgid "Inject 4"
 msgstr "삽입 4"
 
-#: src/misc/ChannelList.js:222
+#: src/misc/ChannelList.js:223
 msgid "Input lost"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:264
+#: src/views/Main/ActivityLog.js:345
 msgid "Input stability"
 msgstr ""
 
@@ -1493,18 +1501,17 @@ msgstr "인스턴스 도메인"
 msgid "Interval (seconds)"
 msgstr "간격 (초)"
 
-#: src/Header.js:295
-#: src/Header.js:336
+#: src/Header.js:257
+#: src/Header.js:298
 msgid "Issue alert"
 msgstr "문제 알리기"
 
-#: src/views/Main/ActivityLog.js:367
+#: src/views/Main/ActivityLog.js:449
 msgid "It is restarted automatically."
 msgstr ""
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
-#: src/views/Main/Publication.js:226
 msgid "kbit/s"
 msgstr "kbit/s"
 
@@ -1590,11 +1597,11 @@ msgstr "CIDR로 표기된, 통계를 기록하지 않을 IP 범위입니다(예:
 msgid "List size (segments)"
 msgstr "목록 크기 (세그먼트)"
 
-#: src/misc/ChannelList.js:351
+#: src/misc/ChannelList.js:352
 msgid "Live"
 msgstr ""
 
-#: src/misc/ChannelList.js:210
+#: src/misc/ChannelList.js:211
 msgid "Live on {0} of {1} publications"
 msgstr ""
 
@@ -1675,7 +1682,7 @@ msgstr "로그인/JWT 인증"
 msgid "Logo"
 msgstr "로고"
 
-#: src/Header.js:307
+#: src/Header.js:269
 msgid "Logout"
 msgstr "로그아웃"
 
@@ -1687,6 +1694,10 @@ msgstr "Loop"
 #: src/misc/filters/audio/Loudnorm.js:66
 msgid "Loudness Normalization"
 msgstr "소리 크기 평균화"
+
+#: src/views/Main/ActivityLog.js:200
+msgid "low {0} · high {1}"
+msgstr ""
 
 #: src/misc/controls/Process.js:48
 msgid "Low latency (Buffer)"
@@ -1784,11 +1795,11 @@ msgstr "시청 기록이 없는 시간 (초)"
 msgid "Maximum viewers"
 msgstr "최대 시청자"
 
-#: src/Footer.js:208
+#: src/Footer.js:215
 msgid "MB"
 msgstr "MB"
 
-#: src/Footer.js:202
+#: src/Footer.js:209
 #: src/misc/Progress.js:79
 msgid "Memory"
 msgstr "메모리"
@@ -1860,7 +1871,7 @@ msgstr "왼쪽 음소거"
 msgid "Mute right"
 msgstr "오른쪽 음소거"
 
-#: src/misc/ChannelList.js:442
+#: src/misc/ChannelList.js:443
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
 #: src/views/Layout/index.js:498
@@ -1912,11 +1923,11 @@ msgstr "소리 없음"
 msgid "No audio stream available"
 msgstr "소리 스트림 없음"
 
-#: src/views/Main/ActivityLog.js:201
+#: src/views/Main/ActivityLog.js:283
 msgid "No data yet"
 msgstr ""
 
-#: src/misc/ChannelList.js:182
+#: src/misc/ChannelList.js:183
 msgid "No input"
 msgstr ""
 
@@ -1970,7 +1981,7 @@ msgstr "잡음"
 msgid "None"
 msgstr "없음"
 
-#: src/views/Main/ActivityLog.js:207
+#: src/views/Main/ActivityLog.js:289
 msgid "not real-time"
 msgstr ""
 
@@ -1979,8 +1990,12 @@ msgstr ""
 msgid "Notes"
 msgstr "비고"
 
-#: src/views/Main/ActivityLog.js:542
+#: src/views/Main/ActivityLog.js:627
 msgid "Nothing to show yet."
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:205
+msgid "now"
 msgstr ""
 
 #: src/views/Settings.js:2176
@@ -2123,7 +2138,7 @@ msgstr "플레이어 설정 저장됨"
 msgid "Player URL"
 msgstr "재생기 URL"
 
-#: src/Header.js:267
+#: src/Header.js:229
 #: src/views/Playersite.js:353
 msgid "Playersite"
 msgstr "재생사이트"
@@ -2249,8 +2264,8 @@ msgstr "프라이머리 스트림 키"
 msgid "Probe"
 msgstr "확인하기"
 
-#: src/misc/ChannelList.js:353
-#: src/views/Main/ActivityLog.js:531
+#: src/misc/ChannelList.js:354
+#: src/views/Main/ActivityLog.js:616
 msgid "Problems"
 msgstr ""
 
@@ -2265,7 +2280,7 @@ msgstr "프로세스"
 msgid "Process control"
 msgstr "프로세스 조절"
 
-#: src/views/Main/ActivityLog.js:552
+#: src/views/Main/ActivityLog.js:637
 #: src/views/Main/ChannelPanel.js:432
 #: src/views/Main/ChannelPanel.js:448
 #: src/views/Publication/Edit.js:494
@@ -2273,8 +2288,8 @@ msgstr "프로세스 조절"
 msgid "Process details"
 msgstr "프로세스 상세"
 
-#: src/views/Main/ActivityLog.js:303
-#: src/views/Main/ActivityLog.js:556
+#: src/views/Main/ActivityLog.js:382
+#: src/views/Main/ActivityLog.js:641
 #: src/views/Main/ChannelPanel.js:435
 #: src/views/Main/ChannelPanel.js:456
 #: src/views/Publication/Edit.js:497
@@ -2350,9 +2365,9 @@ msgstr "송출 서비스를 찾을 수 없음"
 msgid "Publication website settings saved"
 msgstr "송출 웹사이트 설정 저장"
 
-#: src/views/Main/ActivityLog.js:246
-#: src/views/Main/ActivityLog.js:534
-#: src/views/Main/Publication.js:205
+#: src/views/Main/ActivityLog.js:327
+#: src/views/Main/ActivityLog.js:619
+#: src/views/Main/Publication.js:241
 msgid "Publications"
 msgstr "공개"
 
@@ -2395,7 +2410,7 @@ msgstr "비율"
 msgid "rav1e Parameters"
 msgstr "rav1e 매개변수"
 
-#: src/views/Main/ActivityLog.js:300
+#: src/views/Main/ActivityLog.js:379
 msgid "Raw process log"
 msgstr ""
 
@@ -2415,19 +2430,19 @@ msgstr ""
 msgid "Receive Mode"
 msgstr "수신 모드"
 
-#: src/misc/ChannelList.js:352
+#: src/misc/ChannelList.js:353
 msgid "Receiving"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:164
+#: src/views/Main/ActivityLog.js:245
 msgid "Receiving input"
 msgstr ""
 
-#: src/misc/ChannelList.js:216
+#: src/misc/ChannelList.js:217
 msgid "Receiving input, not published"
 msgstr ""
 
-#: src/misc/ChannelList.js:219
+#: src/misc/ChannelList.js:220
 msgid "Receiving input, publication failing"
 msgstr ""
 
@@ -2441,7 +2456,7 @@ msgstr "재연결"
 msgid "Reconnect delay (seconds)"
 msgstr "재연결 지연시간 (초)"
 
-#: src/views/Main/ActivityLog.js:176
+#: src/views/Main/ActivityLog.js:257
 #: src/views/Main/ChannelPanel.js:355
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
@@ -2539,7 +2554,7 @@ msgstr "재시작"
 msgid "Restart required"
 msgstr "다시 시작 필요"
 
-#: src/views/Main/ActivityLog.js:338
+#: src/views/Main/ActivityLog.js:419
 msgid "Restarted"
 msgstr ""
 
@@ -2557,11 +2572,11 @@ msgstr "Restreamer Core를 다시 시작합니다 ..."
 msgid "Restarting the application failed."
 msgstr "애플리케이션을 다시 시작하는데 실패했습니다."
 
-#: src/views/Main/ActivityLog.js:205
+#: src/views/Main/ActivityLog.js:287
 msgid "restarts"
 msgstr ""
 
-#: src/views/Main/ActivityLog.js:288
+#: src/views/Main/ActivityLog.js:367
 msgid "Restarts (1h)"
 msgstr ""
 
@@ -2803,7 +2818,7 @@ msgstr "서버"
 msgid "Server URL"
 msgstr "서버 URL"
 
-#: src/Header.js:257
+#: src/Header.js:219
 #: src/views/Login.js:246
 #: src/views/Settings.js:1233
 #: src/views/Settings.js:1314
@@ -2819,7 +2834,7 @@ msgstr "서비스 이름"
 msgid "Service token for monitoring."
 msgstr "확인을 위한 서비스 토큰입니다."
 
-#: src/Footer.js:240
+#: src/Footer.js:247
 msgid "Sessions"
 msgstr "세션"
 
@@ -2863,11 +2878,11 @@ msgstr "설정을 저장했습니다. 변경 사항은 애플리케이션을 다
 msgid "Share button"
 msgstr "고유 버튼"
 
-#: src/views/Main/ActivityPanel.js:141
+#: src/views/Main/ActivityPanel.js:140
 msgid "Show activity"
 msgstr ""
 
-#: src/misc/ChannelList.js:383
+#: src/misc/ChannelList.js:384
 msgid "Show all channels"
 msgstr ""
 
@@ -2875,7 +2890,7 @@ msgstr ""
 msgid "Shows a reference to the project."
 msgstr "프로젝트에 대한 참조를 보여줍니다."
 
-#: src/views/Main/ActivityPanel.js:162
+#: src/views/Main/ActivityPanel.js:161
 msgid "Side by side"
 msgstr ""
 
@@ -2920,7 +2935,7 @@ msgstr "소켓 타임아웃 (마이크로초)"
 msgid "Software"
 msgstr "소프트웨어"
 
-#: src/views/Main/ActivityLog.js:199
+#: src/views/Main/ActivityLog.js:281
 msgid "Some issues"
 msgstr ""
 
@@ -2945,7 +2960,7 @@ msgid "Source channel"
 msgstr ""
 
 #: src/misc/Progress.js:131
-#: src/views/Main/ActivityLog.js:234
+#: src/views/Main/ActivityLog.js:315
 msgid "Speed"
 msgstr "속도"
 
@@ -2981,7 +2996,7 @@ msgstr "SRT 수신을 위한 서버 주소"
 msgid "SRT token for publishing and playing. The token is the value of the streamid parameter 'token.'"
 msgstr "SRT 송출과 재생을 위한 토큰입니다. streamid 파라메터의 'token' 값입니다."
 
-#: src/views/Main/ActivityLog.js:198
+#: src/views/Main/ActivityLog.js:280
 msgid "Stable"
 msgstr ""
 
@@ -2993,7 +3008,7 @@ msgstr "시간 경과 (초)"
 msgid "start_at_zero"
 msgstr "start_at_zero"
 
-#: src/views/Main/ActivityLog.js:337
+#: src/views/Main/ActivityLog.js:418
 msgid "Started"
 msgstr ""
 
@@ -3001,8 +3016,8 @@ msgstr ""
 msgid "Statistics"
 msgstr "통계"
 
-#: src/views/Main/ActivityLog.js:158
-#: src/views/Main/ActivityLog.js:339
+#: src/views/Main/ActivityLog.js:239
+#: src/views/Main/ActivityLog.js:420
 msgid "Stopped"
 msgstr ""
 
@@ -3089,8 +3104,8 @@ msgstr "datarhei Restreamer 지지"
 msgid "Supports HTTP (HLS, DASH), RTP, RTSP, RTMP, SRT and more."
 msgstr "HTTP(HPS, DASH), RTP, RTSP, RTMP, SRT 등을 지원합니다."
 
-#: src/Footer.js:184
-#: src/Header.js:275
+#: src/Footer.js:191
+#: src/Header.js:237
 #: src/views/Settings.js:2095
 msgid "System"
 msgstr "시스템"
@@ -3556,7 +3571,7 @@ msgstr ""
 msgid "Unselected"
 msgstr "미선택"
 
-#: src/views/Main/ActivityLog.js:200
+#: src/views/Main/ActivityLog.js:282
 msgid "Unstable"
 msgstr ""
 
@@ -3597,9 +3612,9 @@ msgstr "로고 업로드 실패"
 msgid "Uploading the poster failed"
 msgstr "포스터 업로드에 실패했습니다."
 
-#: src/Footer.js:165
+#: src/Footer.js:172
 #: src/misc/Progress.js:53
-#: src/views/Main/ActivityLog.js:231
+#: src/views/Main/ActivityLog.js:312
 #: src/views/Main/Progress.js:57
 msgid "Uptime"
 msgstr "가동시간"
@@ -3713,12 +3728,15 @@ msgstr "영상 구성"
 msgid "Video source"
 msgstr "영상 원본"
 
-#: src/Footer.js:227
-#: src/Footer.js:232
-#: src/Footer.js:245
-#: src/views/Main/Publication.js:215
+#: src/Footer.js:234
+#: src/Footer.js:239
+#: src/Footer.js:252
 msgid "Viewer"
 msgstr "뷰어"
+
+#: src/views/Main/Publication.js:242
+msgid "Viewers of all channels"
+msgstr ""
 
 #: src/views/Edit/Sources/VirtualAudio.js:115
 msgid "violet"
@@ -3737,8 +3755,8 @@ msgstr "소리 크기"
 msgid "VPU ID"
 msgstr "VPU ID"
 
-#: src/misc/ChannelList.js:225
-#: src/views/Main/ActivityLog.js:168
+#: src/misc/ChannelList.js:226
+#: src/views/Main/ActivityLog.js:249
 msgid "Waiting for input"
 msgstr ""
 
@@ -3768,6 +3786,14 @@ msgstr "폭"
 
 #: src/views/Layout/index.js:634
 msgid "Width and height are free, the picture is stretched to fit."
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:421
+msgid "Working again"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:361
+msgid "Working again after a restart"
 msgstr ""
 
 #: src/views/Settings.js:1701

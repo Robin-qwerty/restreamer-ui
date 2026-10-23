@@ -3,6 +3,7 @@ import React from 'react';
 import { useLingui } from '@lingui/react';
 import { Trans, t } from '@lingui/macro';
 import makeStyles from '@mui/styles/makeStyles';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Chip from '@mui/material/Chip';
 import Collapse from '@mui/material/Collapse';
 import Divider from '@mui/material/Divider';
@@ -57,7 +58,19 @@ const useStyles = makeStyles((theme) => ({
 	sparkline: {
 		display: 'block',
 		width: '100%',
-		height: 28,
+		height: 32,
+	},
+	chart: {
+		marginTop: '.5em',
+	},
+	chartArea: {
+		cursor: 'crosshair',
+		borderBottom: '1px solid rgba(255,255,255,.15)',
+	},
+	chartLegend: {
+		fontSize: '.65rem',
+		opacity: 0.6,
+		marginTop: 2,
 	},
 	events: {},
 	event: {
@@ -113,26 +126,94 @@ const formatTime = (time) => {
 	return d.toLocaleString();
 };
 
-function Sparkline(props) {
+// A small line chart of the last minutes with the current value, low/high and a readout on hover
+function Chart(props) {
 	const classes = useStyles();
-	const values = props.values;
+	const { i18n } = useLingui();
+	const [$hover, setHover] = React.useState(-1);
 
-	if (values.length < 2) {
-		return <svg className={classes.sparkline} />;
+	const samples = props.samples;
+	const values = samples.map((x) => x[props.field]);
+	const n = values.length;
+	const format = (v) => i18n.number(v, { maximumFractionDigits: props.digits });
+
+	const shown = $hover >= 0 && $hover < n ? $hover : -1;
+	const top = Math.max(...values, 1) * 1.1;
+	const x = (i) => (n > 1 ? (i / (n - 1)) * 100 : 0);
+	const y = (v) => 31 - (v / top) * 29;
+
+	const handleMove = (event) => {
+		if (n < 2) {
+			return;
+		}
+
+		const r = event.currentTarget.getBoundingClientRect();
+		setHover(Math.min(n - 1, Math.max(0, Math.round(((event.clientX - r.left) / r.width) * (n - 1)))));
+	};
+
+	let readout = '–';
+	if (shown !== -1) {
+		readout = `${format(values[shown])} ${props.unit} · ${new Date(samples[shown].time).toLocaleTimeString()}`;
+	} else if (n !== 0) {
+		readout = `${format(values[n - 1])} ${props.unit}`;
 	}
 
-	const max = Math.max(...values, 1);
-	const points = values.map((v, i) => `${(i / (values.length - 1)) * 100},${27 - (v / max) * 25}`).join(' ');
-
 	return (
-		<svg className={classes.sparkline} viewBox="0 0 100 28" preserveAspectRatio="none">
-			<polyline points={points} fill="none" stroke={props.color} strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-		</svg>
+		<div className={classes.chart}>
+			<Stack direction="row" justifyContent="space-between" alignItems="baseline" spacing={1}>
+				<Typography variant="body2" className={classes.statLabel}>
+					{props.label}
+				</Typography>
+				<Typography variant="body2" className={classes.statValue} style={{ color: props.color }}>
+					{readout}
+				</Typography>
+			</Stack>
+			<div onMouseMove={handleMove} onMouseLeave={() => setHover(-1)} className={classes.chartArea}>
+				<svg className={classes.sparkline} viewBox="0 0 100 32" preserveAspectRatio="none">
+					{n > 1 && (
+						<polyline
+							points={values.map((v, i) => `${x(i)},${y(v)}`).join(' ')}
+							fill="none"
+							stroke={props.color}
+							strokeWidth="1.5"
+							vectorEffect="non-scaling-stroke"
+						/>
+					)}
+					{shown !== -1 && (
+						<line
+							x1={x(shown)}
+							x2={x(shown)}
+							y1="0"
+							y2="32"
+							stroke="#ffffff"
+							strokeOpacity=".6"
+							strokeWidth="1"
+							vectorEffect="non-scaling-stroke"
+						/>
+					)}
+				</svg>
+			</div>
+			<Stack direction="row" justifyContent="space-between" className={classes.chartLegend}>
+				<span>{n > 1 ? new Date(samples[0].time).toLocaleTimeString() : ''}</span>
+				<span>
+					{n > 1 && (
+						<Trans>
+							low {format(Math.min(...values))} · high {format(Math.max(...values))}
+						</Trans>
+					)}
+				</span>
+				<span>{n > 1 ? <Trans>now</Trans> : ''}</span>
+			</Stack>
+		</div>
 	);
 }
 
-Sparkline.defaultProps = {
-	values: [],
+Chart.defaultProps = {
+	samples: [],
+	field: 'bitrate',
+	label: '',
+	unit: '',
+	digits: 0,
 	color: '#b39ddb',
 };
 
@@ -192,7 +273,8 @@ function ChannelSummary(props) {
 	const d = props.data;
 	const p = d.progress;
 	const samples = d.samples;
-	const s = A.stability(samples, d.report);
+	const connected = p && p.state === 'connected';
+	const s = A.stability(samples, d.report, Date.now(), connected);
 
 	const ratingLabels = {
 		good: i18n._(t`Stable`),
@@ -212,7 +294,6 @@ function ChannelSummary(props) {
 	const failing = d.egresses.filter(
 		(e) => e.progress.order === 'start' && (e.progress.state === 'error' || (e.progress.state === 'disconnected' && e.progress.reconnect >= 0)),
 	);
-	const connected = p && p.state === 'connected';
 
 	return (
 		<div className={classes.card} style={props.color ? { borderLeft: `3px solid ${props.color}` } : {}}>
@@ -270,20 +351,18 @@ function ChannelSummary(props) {
 					title={s.reasons.map((r) => reasonLabels[r]).join(', ')}
 				/>
 			</Stack>
-			<Stack direction="row" spacing={1} marginTop=".4em">
-				<div className={classes.stat}>
-					<Sparkline values={samples.map((x) => x.bitrate)} color="#b39ddb" />
-					<Typography variant="body2" className={classes.statLabel}>
-						<Trans>Bitrate, last 5 min</Trans>
-					</Typography>
-				</div>
-				<div className={classes.stat}>
-					<Sparkline values={samples.map((x) => x.fps)} color="#4fc3f7" />
-					<Typography variant="body2" className={classes.statLabel}>
-						<Trans>FPS, last 5 min</Trans>
-					</Typography>
-				</div>
-			</Stack>
+			{s.reasons.length !== 0 && (
+				<Typography variant="body2" className={classes.eventMeta} style={{ color: ratingColors[s.rating] }}>
+					{s.reasons.map((r) => reasonLabels[r]).join(', ')}
+				</Typography>
+			)}
+			{s.recovered && (
+				<Typography variant="body2" className={classes.eventMeta} style={{ color: '#4caf50' }}>
+					<Trans>Working again after a restart</Trans>
+				</Typography>
+			)}
+			<Chart samples={samples} field="bitrate" label={<Trans>Bitrate (last 5 min)</Trans>} unit="kbit/s" color="#b39ddb" />
+			<Chart samples={samples} field="fps" label={<Trans>FPS (last 5 min)</Trans>} unit="fps" digits={1} color="#4fc3f7" />
 			<Stack direction="row" spacing={1} marginTop=".4em">
 				<Stat label={<Trans>Restarts (1h)</Trans>} color={s.restarts ? levelColors.warning : null}>
 					{s.restarts}
@@ -312,7 +391,9 @@ function EventIcon(props) {
 	const e = props.event;
 	const style = { color: levelColors[e.level] || levelColors.info };
 
-	if (e.type === 'start') {
+	if (e.type === 'recovered') {
+		return <CheckCircleOutlineIcon className={classes.eventIcon} style={{ color: '#4caf50' }} />;
+	} else if (e.type === 'start') {
 		return <PlayArrowIcon className={classes.eventIcon} style={{ color: '#4caf50' }} />;
 	} else if (e.type === 'restart') {
 		return <ReplayIcon className={classes.eventIcon} style={{ color: levelColors.warning }} />;
@@ -337,6 +418,7 @@ function Event(props) {
 		start: i18n._(t`Started`),
 		restart: i18n._(t`Restarted`),
 		stop: i18n._(t`Stopped`),
+		recovered: i18n._(t`Working again`),
 	};
 
 	const text = e.type === 'log' ? e.message : e.reason || '';
@@ -485,10 +567,13 @@ export default function ActivityLog(props) {
 
 			const running = (p) => p !== null && (p.state === 'connected' || p.state === 'connecting');
 
-			const lists = [A.buildEvents(d.report, multiple ? c.label : '', 'channel', running(d.progress))];
+			const healthy = (p) => p !== null && p.state === 'connected';
+			const now = Date.now();
+
+			const lists = [A.buildEvents(d.report, multiple ? c.label : '', 'channel', running(d.progress), healthy(d.progress), now)];
 			for (let e of d.egresses) {
 				const label = multiple ? `${c.label} → ${e.label}` : e.label;
-				lists.push(A.buildEvents(d.egressReports[e.id], label, 'publication', running(e.progress)));
+				lists.push(A.buildEvents(d.egressReports[e.id], label, 'publication', running(e.progress), healthy(e.progress), now));
 			}
 
 			return A.mergeEvents(lists);
