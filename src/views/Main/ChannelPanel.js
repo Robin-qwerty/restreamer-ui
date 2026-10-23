@@ -41,10 +41,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	playerL2Vertical: {
 		position: 'relative',
-		width: '100%',
-		maxWidth: 420,
 		margin: '0 auto',
-		paddingTop: 'min(177.78%, 746.67px)',
+		aspectRatio: '9 / 16',
 	},
 	playerL3: {
 		position: 'absolute',
@@ -304,7 +302,12 @@ export default function ChannelPanel(props) {
 				<Grid container spacing={1} className={classes.gridContainerL2}>
 					<Grid item xs={12}>
 						<Grid container spacing={0} className={classes.playerL1}>
-							<Grid item xs={12} className={vertical ? classes.playerL2Vertical : classes.playerL2}>
+							<Grid
+								item
+								xs={12}
+								className={vertical ? classes.playerL2Vertical : classes.playerL2}
+								style={vertical ? { width: `min(100%, calc(${props.verticalPlayerHeight} * 9 / 16))`, flexBasis: 'auto' } : {}}
+							>
 								{($state.state === 'disconnected' || $state.state === 'disconnecting') && (
 									<Grid container direction="column" className={classes.playerL3} justifyContent="center" alignItems="center" spacing={1}>
 										<Grid item>
@@ -362,7 +365,17 @@ export default function ChannelPanel(props) {
 										)}
 									</Grid>
 								)}
-								{$state.state === 'connected' && <Player type="videojs-internal" source={manifest} poster={poster} autoplay mute controls />}
+								{$state.state === 'connected' && (
+									<Player
+										type="videojs-internal"
+										source={manifest}
+										poster={poster}
+										aspectRatio={vertical ? '9:16' : '16:9'}
+										autoplay
+										mute
+										controls
+									/>
+								)}
 							</Grid>
 						</Grid>
 					</Grid>
@@ -449,6 +462,8 @@ export default function ChannelPanel(props) {
 }
 
 ChannelPanel.defaultProps = {
+	// height of the player of a vertical (9:16) channel
+	verticalPlayerHeight: 'min(70vh, 746px)',
 	restreamer: null,
 	channelid: '',
 	unconfigured: null,

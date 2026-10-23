@@ -14,6 +14,7 @@ export default function Player(props) {
 			liveui: true,
 			responsive: true,
 			fluid: true,
+			aspectRatio: props.aspectRatio,
 			plugins: {
 				reloadSourceOnError: {},
 			},
@@ -84,6 +85,7 @@ export default function Player(props) {
 }
 
 Player.defaultProps = {
+	aspectRatio: '16:9',
 	type: 'videojs-internal',
 	source: '',
 	poster: '',
