@@ -105,6 +105,12 @@ export default function Edit(props) {
 		setProcess(proc);
 
 		let metadata = await props.restreamer.GetIngestMetadata(_channelid);
+		if (metadata.layout) {
+			// Channels composed from another channel are edited in the layout editor
+			navigate(`/${_channelid}/layout`, { replace: true });
+			return;
+		}
+
 		setData({
 			...$data,
 			...metadata,

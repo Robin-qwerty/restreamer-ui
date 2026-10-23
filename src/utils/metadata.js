@@ -301,6 +301,8 @@ const defaultIngestMetadata = {
 		},
 	},
 	license: 'CC BY 4.0',
+	// Set for channels that are composed from another channel (see misc/layout)
+	layout: null,
 };
 
 const defaultEgressMetadata = {

@@ -6,8 +6,10 @@ import EditService from './Publication/Edit';
 import Initializing from './Initializing';
 import Invalid from './Invalid';
 import Incompatible from './Incompatible';
+import Layout from './Layout';
 import Login from './Login';
 import Main from './Main';
+import Pair from './Pair';
 import Password from './Password';
 import Playersite from './Playersite';
 import Settings from './Settings';
@@ -21,8 +23,10 @@ export default {
 	Initializing,
 	Invalid,
 	Incompatible,
+	Layout,
 	Login,
 	Main,
+	Pair,
 	Playersite,
 	Settings,
 	Wizard,

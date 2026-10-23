@@ -10,6 +10,7 @@ import SemverMajor from 'semver/functions/major';
 import SemverMinor from 'semver/functions/minor';
 
 import * as M from './metadata';
+import { classify } from './channelStatus';
 import * as Storage from './storage';
 import * as Version from '../version';
 import API from './api';
@@ -1486,7 +1487,7 @@ class Restreamer {
 
 		metadata = M.initIngestMetadata(metadata);
 		if (metadata.meta.name.length === 0) {
-			metadata.meta.name = this.channel.name;
+			metadata.meta.name = channel.name;
 		}
 
 		return metadata;
@@ -1504,6 +1505,61 @@ class Restreamer {
 		});
 
 		return await this._setProcessMetadata(channel.id, metadata);
+	}
+
+	// Find channels that are composed from this channel (derived), or the channel this one is composed from (source)
+	async GetLinkedChannels(channelid) {
+		const linked = {
+			source: '',
+			derived: [],
+		};
+
+		const metadata = await this.GetIngestMetadata(channelid);
+		if (metadata.layout && metadata.layout.source && this.GetChannel(metadata.layout.source) !== null) {
+			linked.source = metadata.layout.source;
+			return linked;
+		}
+
+		for (let id of this.channels.keys()) {
+			if (id === channelid) {
+				continue;
+			}
+
+			const m = await this.GetIngestMetadata(id);
+			if (m.layout && m.layout.source === channelid) {
+				linked.derived.push(id);
+			}
+		}
+
+		return linked;
+	}
+
+	// Status of all channels (ingest and publications) with one request, see utils/channelStatus.js
+	async ListChannelStatus() {
+		const processes = await this._listProcesses(['state']);
+
+		const ingests = new Map();
+		const egresses = new Map();
+
+		for (let p of processes) {
+			if (p.id.startsWith('restreamer-ui:ingest:') && !p.id.endsWith('_snapshot')) {
+				ingests.set(p.reference, p.progress);
+			} else if (p.id.startsWith('restreamer-ui:egress:')) {
+				if (!egresses.has(p.reference)) {
+					egresses.set(p.reference, []);
+				}
+
+				egresses.get(p.reference).push(p.progress);
+			}
+		}
+
+		const status = {};
+
+		for (let channelid of this.channels.keys()) {
+			status[channelid] = classify(ingests.get(channelid) || null, egresses.get(channelid) || []);
+		}
+
+		return status;
 	}
 
 	// Get the ingest progress
