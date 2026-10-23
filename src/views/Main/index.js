@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack';
 import StayCurrentPortraitIcon from '@mui/icons-material/StayCurrentPortrait';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 
+import ActivityPanel from './ActivityPanel';
 import ChannelPanel from './ChannelPanel';
 import Publication from './Publication';
 import Welcome from '../Welcome';
@@ -64,8 +65,15 @@ export default function Main(props) {
 		}
 	};
 
+	const channel = props.restreamer.GetChannel(_channelid);
+
 	return (
 		<Grid container justifyContent="center" spacing={1} className={classes.gridContainerL1}>
+			<ActivityPanel
+				key={_channelid}
+				restreamer={props.restreamer}
+				channels={[{ channelid: _channelid, label: channel && channel.name ? channel.name : _channelid, color: '#b39ddb' }]}
+			/>
 			<Grid item xs={12} sm={12} md={8}>
 				<ChannelPanel
 					restreamer={props.restreamer}

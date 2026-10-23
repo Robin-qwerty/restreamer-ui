@@ -10,6 +10,7 @@ import SemverMajor from 'semver/functions/major';
 import SemverMinor from 'semver/functions/minor';
 
 import * as M from './metadata';
+import { classify } from './channelStatus';
 import * as Storage from './storage';
 import * as Version from '../version';
 import API from './api';
@@ -1531,6 +1532,34 @@ class Restreamer {
 		}
 
 		return linked;
+	}
+
+	// Status of all channels (ingest and publications) with one request, see utils/channelStatus.js
+	async ListChannelStatus() {
+		const processes = await this._listProcesses(['state']);
+
+		const ingests = new Map();
+		const egresses = new Map();
+
+		for (let p of processes) {
+			if (p.id.startsWith('restreamer-ui:ingest:') && !p.id.endsWith('_snapshot')) {
+				ingests.set(p.reference, p.progress);
+			} else if (p.id.startsWith('restreamer-ui:egress:')) {
+				if (!egresses.has(p.reference)) {
+					egresses.set(p.reference, []);
+				}
+
+				egresses.get(p.reference).push(p.progress);
+			}
+		}
+
+		const status = {};
+
+		for (let channelid of this.channels.keys()) {
+			status[channelid] = classify(ingests.get(channelid) || null, egresses.get(channelid) || []);
+		}
+
+		return status;
 	}
 
 	// Get the ingest progress

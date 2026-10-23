@@ -1,305 +1,327 @@
 import React from 'react';
 
-import { Trans } from '@lingui/macro';
-import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/styles';
+import { useLingui } from '@lingui/react';
+import { Trans, t } from '@lingui/macro';
 import makeStyles from '@mui/styles/makeStyles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import ButtonBase from '@mui/material/ButtonBase';
 import CloseIcon from '@mui/icons-material/Close';
-import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import Drawer from '@mui/material/Drawer';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import LensIcon from '@mui/icons-material/Lens';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import LinkOffIcon from '@mui/icons-material/LinkOff';
 import Stack from '@mui/material/Stack';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import WarningIcon from '@mui/icons-material/Warning';
 
+import { ORDER, sortChannels } from '../utils/channelStatus';
+import useInterval from '../hooks/useInterval';
 import Dialog from './modals/Dialog';
 
+const HEADER_HEIGHT = 132;
+const FOOTER_HEIGHT = 60;
+const PANEL_WIDTH = 320;
+const PANEL_PADDING = 16;
+const GROUP_HEIGHT = 30;
+const TOOLBAR_HEIGHT = 56;
+
+const STATUS_COLORS = {
+	live: '#4caf50',
+	receiving: '#b39ddb',
+	error: '#f44336',
+	inactive: '#9e9e9e',
+};
+
 const useStyles = makeStyles((theme) => ({
-	drawerPaper: {
-		marginBottom: '60px',
-		boxShadow: '0px -20px 10px -14px rgb(0 0 0 / 25%), 0px -20px 10px -10px rgb(0 0 0 / 10%)',
-		paddingLeft: 50,
-		paddingRight: 50,
+	paper: {
+		boxSizing: 'border-box',
+		padding: `0 ${PANEL_PADDING}px ${PANEL_PADDING}px ${PANEL_PADDING}px`,
+		backgroundColor: theme.palette.background.paper,
+		boxShadow: '-12px 0px 14px -10px rgb(0 0 0 / 35%)',
+		overflowY: 'auto',
 	},
-	drawerButtons: {
-		marginRight: '-15px!important',
+	toolbar: {
+		position: 'sticky',
+		top: 0,
+		zIndex: 2,
+		height: TOOLBAR_HEIGHT,
+		backgroundColor: theme.palette.background.paper,
 	},
-	channel: {
-		marginBottom: '1em',
+	grid: {
+		display: 'grid',
+		gap: 10,
 	},
-	channelBar: {
-		maxWidth: '1200px',
+	group: {
+		gridColumn: '1 / -1',
+		height: GROUP_HEIGHT - 10,
+		display: 'flex',
+		alignItems: 'flex-end',
+		textTransform: 'uppercase',
+		letterSpacing: '.05em',
+		fontSize: '.7rem!important',
+		opacity: 0.7,
 	},
-	channelItems: {
+	tile: {
+		display: 'block!important',
 		width: '100%',
-		maxWidth: '980px',
-	},
-	iconButton: {
-		'& .MuiSvgIcon-root': {
-			fontSize: '2.5em',
+		textAlign: 'left!important',
+		borderRadius: 4,
+		'&:hover .thumb, &.Mui-focusVisible .thumb': {
+			opacity: 0.8,
 		},
 	},
-	iconButtonLeft: {
-		marginLeft: '-1.5em!important',
-		paddingBottom: '1em',
+	thumb: {
+		position: 'relative',
+		width: '100%',
+		paddingTop: '56.25%',
+		borderRadius: 4,
+		overflow: 'hidden',
+		boxSizing: 'border-box',
+		border: `2px solid ${theme.palette.primary.dark}`,
+		backgroundColor: theme.palette.grey[800],
 	},
-	iconButtonRight: {
-		marginRight: '-1.5em!important',
-		paddingBottom: '1em',
+	thumbCurrent: {
+		borderColor: theme.palette.primary.light,
 	},
-	imageTitle: {
-		textAlign: 'initial',
-		padding: '.5em 0em 0em .1em',
+	thumbImage: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		width: '100%',
+		height: '100%',
+		objectFit: 'cover',
+	},
+	thumbOffline: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		color: theme.palette.grey[400],
+		backgroundColor: theme.palette.grey[700],
+	},
+	title: {
+		paddingTop: 4,
+		minHeight: 24,
+	},
+	titleText: {
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
+	},
+	dot: {
+		position: 'relative',
+		display: 'inline-flex',
+		flexShrink: 0,
+	},
+	dotWarning: {
+		position: 'absolute',
+		right: -6,
+		bottom: -4,
+		fontSize: '.85rem!important',
+		color: STATUS_COLORS.error,
+		filter: 'drop-shadow(0 0 1px black)',
+	},
+	pulse: {
+		animation: '$pulse 1.2s ease-in-out infinite',
+	},
+	'@keyframes pulse': {
+		'0%': { opacity: 1 },
+		'50%': { opacity: 0.3 },
+		'100%': { opacity: 1 },
 	},
 }));
 
-const ImageButton = styled(ButtonBase)(({ theme }) => ({
-	'&:hover, &.Mui-focusVisible': {
-		zIndex: 1,
-		'& .MuiImageBackdrop-root': {
-			opacity: 0.2,
-		},
-	},
-	'&:disabled': {
-		'& .MuiImageBackdrop-root': {
-			opacity: 0.2,
-		},
-		'& .MuiTypography-root': {
-			color: 'white',
-		},
-	},
-}));
-
-const Image = styled('span')(({ theme }) => ({
-	position: 'relative',
-}));
-
-const ImageSrc = styled('span')(({ theme }) => ({
-	position: 'absolute',
-	left: 0,
-	right: 0,
-	top: 0,
-	bottom: 0,
-	backgroundSize: 'cover',
-	backgroundPosition: 'center 40%',
-	borderRadius: 4,
-	border: `2px solid ${theme.palette.primary.dark}`,
-}));
-
-const ImageAlt = styled('span')(({ theme }) => ({
-	position: 'absolute',
-	left: 0,
-	right: 0,
-	top: 0,
-	bottom: 0,
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	color: theme.palette.common.white,
-}));
-
-const ImageBackdrop = styled('span')(({ theme }) => ({
-	position: 'absolute',
-	left: 0,
-	right: 0,
-	top: 0,
-	bottom: 0,
-	backgroundColor: theme.palette.common.black,
-	opacity: 0.5,
-	transition: theme.transitions.create('opacity'),
-	borderRadius: 4,
-	border: `2px solid ${theme.palette.primary.dark}`,
-}));
-
-function ChannelButton(props, largeChannelList) {
+// Show a new snapshot only once it is loaded, so refreshing does not flicker
+function Thumbnail(props) {
 	const classes = useStyles();
-	const theme = useTheme();
+	const [$src, setSrc] = React.useState('');
+	const [$failed, setFailed] = React.useState(false);
 
-	let color = theme.palette.primary.main;
-	switch (props.state) {
-		case 'disconnected':
-			color = theme.palette.primary.main;
-			break;
-		case 'connected':
-			color = theme.palette.secondary.main;
-			break;
-		case 'disconnecting':
-		case 'connecting':
-			color = theme.palette.warning.main;
-			break;
-		case 'error':
-			color = theme.palette.error.main;
-			break;
-		default:
-			color = theme.palette.primary.main;
-			break;
+	React.useEffect(() => {
+		if (props.src.length === 0) {
+			return;
+		}
+
+		let cancelled = false;
+		const img = new Image();
+		img.onload = () => {
+			if (!cancelled) {
+				setSrc(props.src);
+				setFailed(false);
+			}
+		};
+		img.onerror = () => {
+			if (!cancelled) {
+				setFailed(true);
+			}
+		};
+		img.src = props.src;
+
+		return () => {
+			cancelled = true;
+		};
+	}, [props.src]);
+
+	if (props.src.length === 0 || ($failed && $src.length === 0)) {
+		return (
+			<div className={classes.thumbOffline}>
+				<LinkOffIcon fontSize={props.small ? 'small' : 'large'} />
+				{!props.small && (
+					<Typography variant="body2" color="inherit">
+						<Trans>No input</Trans>
+					</Typography>
+				)}
+			</div>
+		);
 	}
 
-	let color_active = theme.palette.primary.main;
-	switch (props.disabled) {
-		case true:
-			color_active = theme.palette.primary.light;
-			break;
-		default:
-			color_active = theme.palette.primary.dark;
-			break;
+	if ($src.length === 0) {
+		return null;
 	}
+
+	return <img className={classes.thumbImage} src={$src} alt="" />;
+}
+
+Thumbnail.defaultProps = {
+	src: '',
+	small: false,
+};
+
+function StatusDot(props) {
+	const classes = useStyles();
+	const { i18n } = useLingui();
+	const status = props.status;
+
+	let text = i18n._(t`Inactive`);
+	if (status) {
+		switch (status.reason) {
+			case 'live':
+				text = i18n._(t`Live on ${status.live} of ${status.total} publications`);
+				if (status.warning) {
+					text += ' · ' + i18n._(t`${status.failing} failing`);
+				}
+				break;
+			case 'receiving':
+				text = i18n._(t`Receiving input, not published`);
+				break;
+			case 'publication':
+				text = i18n._(t`Receiving input, publication failing`);
+				break;
+			case 'input':
+				text = i18n._(t`Input lost`);
+				break;
+			case 'connecting':
+				text = i18n._(t`Waiting for input`);
+				break;
+			default:
+				break;
+		}
+	}
+
+	const color = STATUS_COLORS[status ? status.status : 'inactive'];
 
 	return (
-		<Grid item xs={12} sm={6} md={4} lg={3} style={{ paddingBottom: largeChannelList ? '10px' : 'auto' }}>
-			<ImageButton focusRipple disabled={props.disabled} onClick={props.onClick} style={{ width: props.width }}>
-				<Stack direction="column" spacing={0.5}>
-					<Image
-						style={{
-							width: props.width,
-							height: parseInt((props.width / 16) * 9),
-						}}
-					>
-						<ImageAlt>
-							<DoNotDisturbAltIcon fontSize="large" />
-						</ImageAlt>
-						<ImageSrc style={{ backgroundImage: `url(${props.url})`, borderColor: color_active }} />
-						<ImageBackdrop className="MuiImageBackdrop-root" style={{ borderColor: color_active }} />
-					</Image>
-					<Stack direction="row" alignItems="flex-start" justifyContent="space-between" className={classes.imageTitle}>
-						<Typography variant="body2" color="inherit">
-							{props.title}
-						</Typography>
-						<Typography variant="body2" color="inherit">
-							<LensIcon fontSize="small" style={{ color: color }} />
-						</Typography>
-					</Stack>
-				</Stack>
-			</ImageButton>
-		</Grid>
+		<Tooltip title={text} placement="left">
+			<span className={classes.dot}>
+				<LensIcon
+					fontSize="small"
+					style={{ color: color }}
+					className={status && status.reason === 'connecting' ? classes.pulse : ''}
+					aria-label={text}
+				/>
+				{status && status.warning && <WarningIcon className={classes.dotWarning} />}
+			</span>
+		</Tooltip>
 	);
 }
 
-ChannelButton.defaultProps = {
-	url: '',
-	width: 200,
-	title: '',
-	state: '',
-	disabled: false,
-	onClick: () => {},
-};
+function ChannelTile(props) {
+	const classes = useStyles();
+	const status = props.status;
 
-const calculateColumnsPerRow = (breakpointSmall, breakpointMedium, breakpointLarge) => {
-	if (breakpointLarge) {
-		return 4;
-	} else if (breakpointMedium) {
-		return 3;
-	} else if (breakpointSmall) {
-		return 2;
-	}
-	return 1;
-};
+	// the input is there, so the snapshot is up to date
+	const receiving = status && (status.status === 'live' || status.status === 'receiving' || status.reason === 'publication');
 
-const calculateRowsToFit = (windowHeight, thumbnailHeight, otherUIHeight) => {
-	return Math.floor((windowHeight - otherUIHeight) / thumbnailHeight);
+	return (
+		<ButtonBase focusRipple className={classes.tile} onClick={props.onClick} title={props.channel.name}>
+			<div className={`thumb ${classes.thumb} ${props.current ? classes.thumbCurrent : ''}`}>
+				<Thumbnail src={receiving ? `${props.channel.thumbnail}?t=${props.tick}` : ''} small={props.small} />
+			</div>
+			<Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1} className={classes.title}>
+				<Typography variant="body2" color="inherit" className={classes.titleText} fontWeight={props.current ? 600 : 400}>
+					{props.channel.name}
+				</Typography>
+				<StatusDot status={status} />
+			</Stack>
+		</ButtonBase>
+	);
+}
+
+// 1 column while all channels fit the height of the panel, otherwise 2 smaller columns
+const compactColumns = (nChannels, nGroups, height) => {
+	const tileWidth = PANEL_WIDTH - 2 * PANEL_PADDING;
+	const tileHeight = (tileWidth * 9) / 16 + 28 + 10;
+	const needed = TOOLBAR_HEIGHT + nGroups * GROUP_HEIGHT + nChannels * tileHeight;
+
+	return needed <= height ? 1 : 2;
 };
 
 export default function ChannelList(props) {
 	const classes = useStyles();
-	const theme = useTheme();
-	const breakpointSmall = useMediaQuery(theme.breakpoints.up('sm'));
-	const breakpointMedium = useMediaQuery(theme.breakpoints.up('md'));
-	const breakpointLarge = useMediaQuery(theme.breakpoints.up('lg'));
-	const [$pos, setPos] = React.useState(-1);
-	const [$nChannels, setNChannels] = React.useState(breakpointSmall ? (breakpointMedium ? (breakpointLarge ? 4 : 3) : 2) : 1);
-	const [$channels, setChannels] = React.useState([]);
+	const { i18n } = useLingui();
+	const [$large, setLarge] = React.useState(false);
+	const [$data, setData] = React.useState({
+		channels: props.channels,
+		status: {},
+	});
+	const [$tick, setTick] = React.useState(Math.floor(Date.now() / 60000));
+	const [$height, setHeight] = React.useState(window.innerHeight);
 	const [$addChannel, setAddChannel] = React.useState({
 		open: false,
 		name: '',
 	});
-	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-	const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
 
-	const { channels: allChannels, channelid, onClick, onClose, onState } = props;
-
-	const [$largeChannelList, setLargeChannelList] = React.useState(false);
-
-	React.useEffect(() => {
-		(async () => {
-			await onMount();
-		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	React.useEffect(() => {
-		setNChannels(breakpointSmall ? (breakpointMedium ? (breakpointLarge ? 4 : 3) : 2) : 1);
-	}, [breakpointSmall, breakpointMedium, breakpointLarge]);
-
-	React.useEffect(() => {
-		(async () => {
-			if (allChannels.length === 0) {
-				return;
-			}
-
-			let channels = allChannels
-				.sort((a, b) => {
-					const aname = a.name.toUpperCase();
-					const bname = b.name.toUpperCase();
-					return aname < bname ? -1 : aname > bname ? 1 : 0;
-				})
-				.slice($pos, $pos + $nChannels);
-
-			const states = await onState(channels.map((channel) => channel.id));
-
-			channels = channels.map((channel) => {
-				return (
-					<ChannelButton
-						key={channel.channelid}
-						url={channel.thumbnail}
-						width={200}
-						title={channel.name}
-						state={states[channel.id]}
-						disabled={channelid === channel.channelid}
-						onClick={() => {
-							onClick(channel.channelid);
-							if ($largeChannelList) {
-								onClose();
-							}
-						}}
-						largeChannelList={$largeChannelList}
-					/>
-				);
-			});
-
-			setChannels(channels);
-		})();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [$pos, allChannels, $nChannels, channelid, onClick, onState]);
-
-	const onMount = async () => {
-		setPos(0);
+	const update = async () => {
+		const data = await props.onStatus();
+		if (data) {
+			setData(data);
+		}
 	};
 
 	React.useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-			setWindowHeight(window.innerHeight);
-		};
+		if (props.open) {
+			setTick(Math.floor(Date.now() / 60000));
+			update();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [props.open]);
 
+	useInterval(update, props.open ? 5000 : null);
+
+	// new snapshots are taken every minute (the default snapshot interval)
+	useInterval(() => setTick(Math.floor(Date.now() / 60000)), props.open ? 60000 : null);
+
+	// Let the page content make room for the panel (see MainContent in RestreamerUI.js)
+	React.useEffect(() => {
+		document.documentElement.style.setProperty('--channels-width', props.open && !$large ? `${PANEL_WIDTH}px` : '0px');
+	}, [props.open, $large]);
+
+	React.useEffect(() => {
+		const handleResize = () => setHeight(window.innerHeight);
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
-
-	React.useEffect(() => {
-		const columns = calculateColumnsPerRow(breakpointSmall, breakpointMedium, breakpointLarge);
-		const rows = $largeChannelList ? calculateRowsToFit(windowHeight, 200, 60) : 1;
-		setNChannels(rows * columns);
-	}, [breakpointSmall, breakpointMedium, breakpointLarge, windowHeight, windowWidth, $largeChannelList]);
 
 	const handleAddChannelDialog = () => {
 		setAddChannel({
@@ -316,93 +338,77 @@ export default function ChannelList(props) {
 		});
 	};
 
-	if (props.open === false) {
-		return null;
-	}
+	const handleClick = (channelid) => () => {
+		props.onClick(channelid);
+		if ($large) {
+			props.onClose();
+		}
+	};
 
-	if ($pos < 0) {
-		return null;
-	}
+	const channels = sortChannels($data.channels, $data.status);
 
-	const handleLargeChannelList = () => {
-		setLargeChannelList(!$largeChannelList);
-		setPos(0);
+	const groupNames = {
+		live: i18n._(t`Live`),
+		receiving: i18n._(t`Receiving`),
+		error: i18n._(t`Problems`),
+		inactive: i18n._(t`Inactive`),
+	};
+
+	const groups = ORDER.map((name) => ({
+		name: name,
+		channels: channels.filter((c) => ($data.status[c.channelid] ? $data.status[c.channelid].status : 'inactive') === name),
+	})).filter((g) => g.channels.length !== 0);
+
+	const columns = $large ? 0 : compactColumns(channels.length, groups.length, $height - HEADER_HEIGHT - FOOTER_HEIGHT);
+
+	const paperStyle = $large
+		? { top: 0, height: '100vh', width: '100%', paddingLeft: 50, paddingRight: 50, backgroundColor: 'rgb(48, 46, 47)' }
+		: { top: HEADER_HEIGHT, height: `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`, width: PANEL_WIDTH };
+
+	const gridStyle = {
+		gridTemplateColumns: $large ? 'repeat(auto-fill, minmax(220px, 1fr))' : `repeat(${columns}, minmax(0, 1fr))`,
 	};
 
 	return (
 		<React.Fragment>
-			<SwipeableDrawer
-				anchor="bottom"
-				open={props.open}
-				onOpen={() => {}}
-				onClose={props.onClose}
-				sx={{
-					marginButtom: 60,
-					'& .MuiDrawer-paper': {
-						top: $largeChannelList ? '0px!important' : 'auto!important',
-						height: $largeChannelList ? '100vh' : 'auto',
-					},
-				}}
-				BackdropProps={{ invisible: true }}
-				classes={{
-					paper: classes.drawerPaper,
-				}}
-				disableScrollLock
-			>
-				<React.Fragment>
-					<Grid container spacing={2} justifyContent="center" className={classes.channel}>
-						<Grid item xs={12}>
-							<Stack direction="row" spacing={1} justifyContent="space-between">
-								<Stack direction="row" spacing={1} justifyContent="flex-start">
-									<Typography variant="h2">Channels</Typography>
-								</Stack>
-								<Stack direction="row" spacing={1} justifyContent="flex-end" className={classes.drawerButtons}>
-									<IconButton color="inherit" size="large" onClick={handleAddChannelDialog}>
-										<AddIcon />
-									</IconButton>
-									<IconButton color="inherit" size="large" onClick={handleLargeChannelList}>
-										{$largeChannelList ? <FullscreenExitIcon /> : <FullscreenIcon />}
-									</IconButton>
-									<IconButton color="inherit" size="large" onClick={props.onClose}>
-										<CloseIcon />
-									</IconButton>
-								</Stack>
-							</Stack>
-						</Grid>
-						<Grid item xs={12} textAlign="center">
-							<Stack direction="row" spacing={0} justifyContent="space-between">
-								<Stack direction="row" spacing={0} alignItems="center" className={classes.iconButtonLeft}>
-									<IconButton
-										onClick={() => {
-											setPos($pos - 1);
-										}}
-										disabled={$pos === 0}
-										className={classes.iconButton}
-									>
-										<NavigateBeforeIcon />
-									</IconButton>
-								</Stack>
-								<Stack direction="row" spacing={0} className={classes.channelItems}>
-									<Grid container spacing={0} justifyContent={$largeChannelList ? 'flex-start' : 'center'}>
-										{$channels}
-									</Grid>
-								</Stack>
-								<Stack direction="row" spacing={0} alignItems="center" className={classes.iconButtonRight}>
-									<IconButton
-										onClick={() => {
-											setPos($pos + 1);
-										}}
-										disabled={$pos + $nChannels >= allChannels.length}
-										className={classes.iconButton}
-									>
-										<NavigateNextIcon />
-									</IconButton>
-								</Stack>
-							</Stack>
-						</Grid>
-					</Grid>
-				</React.Fragment>
-			</SwipeableDrawer>
+			<Drawer anchor="right" variant="persistent" open={props.open} classes={{ paper: classes.paper }} PaperProps={{ style: paperStyle }}>
+				<Stack direction="row" alignItems="center" justifyContent="space-between" className={classes.toolbar}>
+					<Typography variant="h2">
+						<Trans>Channels</Trans>
+					</Typography>
+					<Stack direction="row" spacing={0}>
+						<IconButton color="inherit" size="small" onClick={handleAddChannelDialog} title={i18n._(t`Add channel`)}>
+							<AddIcon />
+						</IconButton>
+						<IconButton color="inherit" size="small" onClick={() => setLarge(!$large)} title={i18n._(t`Show all channels`)}>
+							{$large ? <FullscreenExitIcon /> : <FullscreenIcon />}
+						</IconButton>
+						<IconButton color="inherit" size="small" onClick={props.onClose}>
+							<CloseIcon />
+						</IconButton>
+					</Stack>
+				</Stack>
+				<div className={classes.grid} style={gridStyle}>
+					{groups.map((group) => (
+						<React.Fragment key={group.name}>
+							<Typography variant="body2" className={classes.group}>
+								{groupNames[group.name]} ({group.channels.length})
+							</Typography>
+							{group.channels.map((channel) => (
+								<ChannelTile
+									key={channel.channelid}
+									channel={channel}
+									status={$data.status[channel.channelid]}
+									current={channel.channelid === props.channelid}
+									small={columns === 2}
+									tick={$tick}
+									onClick={handleClick(channel.channelid)}
+								/>
+							))}
+						</React.Fragment>
+					))}
+				</div>
+			</Drawer>
 			<Dialog
 				open={$addChannel.open}
 				onClose={handleAddChannelDialog}
@@ -448,12 +454,7 @@ ChannelList.defaultProps = {
 	onClose: () => {},
 	onClick: (channelid) => {},
 	onAdd: (name) => {},
-	onState: (channelids) => {
-		const states = {};
-		for (let channelid of channelids) {
-			states[channelid] = '';
-		}
-
-		return states;
-	},
+	onStatus: async () => null,
 };
+
+export { compactColumns };

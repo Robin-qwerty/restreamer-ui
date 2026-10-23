@@ -6,6 +6,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import ActivityPanel from '../Main/ActivityPanel';
 import ChannelPanel from '../Main/ChannelPanel';
 import Paper from '../../misc/Paper';
 import Publication from '../Main/Publication';
@@ -61,8 +62,21 @@ export default function Pair(props) {
 		</Grid>
 	);
 
+	const label = (channelid) => {
+		const channel = props.restreamer.GetChannel(channelid);
+		return channel && channel.name ? channel.name : channelid;
+	};
+
 	return (
 		<Grid container justifyContent="center" spacing={1} className={classes.gridContainerL1}>
+			<ActivityPanel
+				key={`${_a}/${_b}`}
+				restreamer={props.restreamer}
+				channels={[
+					{ channelid: _a, label: label(_a), color: '#40c4ff' },
+					{ channelid: _b, label: label(_b), color: '#ffd740' },
+				]}
+			/>
 			{column(_a)}
 			{column(_b)}
 		</Grid>

@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%',
 		'& .MainContent-container': {
 			minHeight: 'calc(100vh - 230px)',
+			// open side panels (activity log left, channel list right) push the content on wide screens
+			'@media (min-width: 1280px)': {
+				paddingLeft: 'var(--activity-width, 0px)',
+				paddingRight: 'var(--channels-width, 0px)',
+				transition: 'padding 225ms',
+			},
 		},
 		'& .MainContent-item': {
 			maxWidth: '980px',
@@ -387,6 +393,15 @@ export default function RestreamerUI(props) {
 		});
 	};
 
+	// The camera button opens and closes the channel list
+	const handleToggleChannelList = () => {
+		if ($channelList.open) {
+			handleCloseChannelList();
+		} else {
+			handleChannelList();
+		}
+	};
+
 	const handleSelectChannel = (channelid) => {
 		restreamer.current.SelectChannel(channelid);
 		handleChannelList();
@@ -413,15 +428,13 @@ export default function RestreamerUI(props) {
 		document.location.hash = `#/${channelid}/edit/wizard`;
 	};
 
-	const handleStateChannel = async (channelids) => {
-		const processes = await restreamer.current.ListProcesses(['state'], channelids);
-		const states = {};
+	const handleChannelStatus = async () => {
+		const status = await restreamer.current.ListChannelStatus();
 
-		for (let p of processes) {
-			states[p.id] = p.progress.state;
-		}
-
-		return states;
+		return {
+			channels: restreamer.current.ListChannels(),
+			status: status,
+		};
 	};
 
 	const handleCloseSnack = () => {
@@ -507,7 +520,7 @@ export default function RestreamerUI(props) {
 							showSettings={$state.compatibility.compatible}
 							hasUpdates={$state.updates}
 							hasService={$state.service}
-							onChannel={handleChannelList}
+							onChannel={handleToggleChannelList}
 							onPlayersite={handlePlayersite}
 							onSettings={handleSettings}
 							onLogout={handleLogout}
@@ -545,7 +558,7 @@ export default function RestreamerUI(props) {
 						onClose={handleCloseChannelList}
 						onClick={handleSelectChannel}
 						onAdd={handleAddChannel}
-						onState={handleStateChannel}
+						onStatus={handleChannelStatus}
 					/>
 				)}
 				{expand && $changelog.open && (
