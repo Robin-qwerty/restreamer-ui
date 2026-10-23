@@ -21,6 +21,13 @@ import PaperHeader from '../../misc/PaperHeader';
 import Services from '../Publication/Services';
 
 const useStyles = makeStyles((theme) => ({
+	// viewers and bandwidth next to each other, around the middle
+	statLeft: {
+		paddingRight: '2em',
+	},
+	statRight: {
+		paddingLeft: '2em!important',
+	},
 	channelLabel: {
 		marginTop: '.6em',
 		opacity: 0.85,
@@ -166,8 +173,10 @@ export default function Publication(props) {
 	let egresses = [];
 
 	for (let c of channels) {
+		const rows = [];
+
 		if (multiple) {
-			egresses.push(
+			rows.push(
 				<Grid item xs={12} key={'label:' + c.channelid} className={classes.channelLabel}>
 					<Typography variant="body2" component="div">
 						<LensIcon style={{ color: c.color, fontSize: '.8rem', marginRight: 6, verticalAlign: 'middle' }} />
@@ -178,7 +187,7 @@ export default function Publication(props) {
 		}
 
 		for (let e of $egresses.filter((x) => x.channelid === c.channelid)) {
-			egresses.push(
+			rows.push(
 				<React.Fragment key={e.id}>
 					<Grid item xs={12}>
 						<Divider />
@@ -197,6 +206,19 @@ export default function Publication(props) {
 				</React.Fragment>,
 			);
 		}
+
+		if (multiple) {
+			// the channels next to each other
+			egresses.push(
+				<Grid item xs={12} md={6} key={'channel:' + c.channelid}>
+					<Grid container spacing={1}>
+						{rows}
+					</Grid>
+				</Grid>,
+			);
+		} else {
+			egresses.push(...rows);
+		}
 	}
 
 	return (
@@ -204,23 +226,37 @@ export default function Publication(props) {
 			<Paper marginBottom="0">
 				<PaperHeader title={<Trans>Publications</Trans>} onAdd={handleServiceAdd} onHelp={handleHelp} />
 				<Grid container spacing={1}>
-					<Grid item xs={12} align="center">
+					<Grid item xs={12}>
 						<Divider />
+					</Grid>
+					<Grid item xs={multiple ? 6 : 12} align={multiple ? 'right' : 'center'} className={multiple ? classes.statLeft : ''}>
 						<Typography component="div" className={classes.viewerCount}>
 							<Number value={$session.viewer} />
 						</Typography>
-						<Grid container direction="row" justifyContent="center" alignItems="center" className={classes.vierwerDescription}>
+						<Grid
+							container
+							direction="row"
+							justifyContent={multiple ? 'flex-end' : 'center'}
+							alignItems="center"
+							className={classes.vierwerDescription}
+						>
 							<PersonIcon fontSize="small" />
 							<Typography className={classes.vierwerTypo}>
 								<Trans>Viewer</Trans>
 							</Typography>
 						</Grid>
 					</Grid>
-					<Grid item xs={12} align="center" className={classes.bandwidth}>
-						<Typography component="div" className={classes.bandwidthCount}>
+					<Grid item xs={multiple ? 6 : 12} align={multiple ? 'left' : 'center'} className={multiple ? classes.statRight : classes.bandwidth}>
+						<Typography component="div" className={multiple ? classes.viewerCount : classes.bandwidthCount}>
 							<Number value={$session.bandwidth} />
 						</Typography>
-						<Grid container direction="row" justifyContent="center" alignItems="center" className={classes.bandwidthDescription}>
+						<Grid
+							container
+							direction="row"
+							justifyContent={multiple ? 'flex-start' : 'center'}
+							alignItems="center"
+							className={multiple ? classes.vierwerDescription : classes.bandwidthDescription}
+						>
 							<CloudUploadIcon className={classes.bandwidthIcon} />
 							<Typography>
 								<Trans>kbit/s</Trans>
