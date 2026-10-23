@@ -82,6 +82,8 @@ const initRegion = (region, canvas) => {
 	return {
 		id: region.id || 'r' + Math.random().toString(36).substring(2, 8),
 		name: region.name || '',
+		// keep the aspect ratio of the crop and the placement in sync while resizing
+		lock: region.lock !== false,
 		crop: {
 			x: round4(crop.x),
 			y: round4(crop.y),
@@ -225,9 +227,7 @@ const buildFilterComplex = (layout) => {
 	parts.push(`[0:v]fps=${fps},split=${splits.length}${splits.join('')}`);
 
 	if (layout.canvas.background === 'color') {
-		parts.push(
-			`[bgsrc]scale=${width}:${height}:flags=neighbor,setsar=1,drawbox=x=0:y=0:w=iw:h=ih:color=${sanitizeColor(layout.canvas.color)}:t=fill[bg]`,
-		);
+		parts.push(`[bgsrc]scale=${width}:${height}:flags=neighbor,setsar=1,drawbox=x=0:y=0:w=iw:h=ih:color=${sanitizeColor(layout.canvas.color)}:t=fill[bg]`);
 	} else {
 		parts.push(
 			`[bgsrc]scale=${even(width / 8)}:${even(height / 8)}:force_original_aspect_ratio=increase,crop=${even(width / 8)}:${even(height / 8)},boxblur=8:2,scale=${width}:${height},setsar=1[bg]`,

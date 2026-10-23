@@ -1486,7 +1486,7 @@ class Restreamer {
 
 		metadata = M.initIngestMetadata(metadata);
 		if (metadata.meta.name.length === 0) {
-			metadata.meta.name = this.channel.name;
+			metadata.meta.name = channel.name;
 		}
 
 		return metadata;
@@ -1504,6 +1504,33 @@ class Restreamer {
 		});
 
 		return await this._setProcessMetadata(channel.id, metadata);
+	}
+
+	// Find channels that are composed from this channel (derived), or the channel this one is composed from (source)
+	async GetLinkedChannels(channelid) {
+		const linked = {
+			source: '',
+			derived: [],
+		};
+
+		const metadata = await this.GetIngestMetadata(channelid);
+		if (metadata.layout && metadata.layout.source && this.GetChannel(metadata.layout.source) !== null) {
+			linked.source = metadata.layout.source;
+			return linked;
+		}
+
+		for (let id of this.channels.keys()) {
+			if (id === channelid) {
+				continue;
+			}
+
+			const m = await this.GetIngestMetadata(id);
+			if (m.layout && m.layout.source === channelid) {
+				linked.derived.push(id);
+			}
+		}
+
+		return linked;
 	}
 
 	// Get the ingest progress
