@@ -43,8 +43,8 @@ msgid "7 (+ fragmented MP4 format)"
 msgstr "7 (+ фрагментований формат MP4)"
 
 #: src/misc/ChannelList.js:412
-#: src/views/Edit/index.js:647
-#: src/views/Edit/index.js:666
+#: src/views/Edit/index.js:653
+#: src/views/Edit/index.js:672
 #: src/views/Edit/Profile.js:599
 #: src/views/Edit/Wizard/Abort.js:14
 #: src/views/Publication/Edit.js:631
@@ -218,6 +218,7 @@ msgstr "Застосунок"
 msgid "Are you sure you want to abort the wizard?"
 msgstr "Ви впевнені, що хочете перервати роботу майстра?"
 
+#: src/views/Layout/index.js:673
 #: src/views/Publication/Add.js:527
 msgid "Audio"
 msgstr "Аудіо"
@@ -302,6 +303,10 @@ msgstr "avoid_negative_ts"
 msgid "Back"
 msgstr "Назад"
 
+#: src/views/Layout/index.js:624
+msgid "Background"
+msgstr ""
+
 #: src/views/Playersite.js:601
 msgid "Background colors"
 msgstr "Кольори фону"
@@ -361,11 +366,15 @@ msgstr "Типи кешу блокування"
 msgid "blue"
 msgstr "блакитний"
 
+#: src/views/Layout/index.js:628
+msgid "Blurred source"
+msgstr ""
+
 #: src/misc/filters/video/Bwdif.js:62
 msgid "Bottom field"
 msgstr "Нижнє поле"
 
-#: src/views/Edit/index.js:582
+#: src/views/Edit/index.js:588
 #: src/views/Edit/Wizard/Metadata.js:24
 msgid "Briefly describe what the audience will see during the live stream."
 msgstr "Коротко опишіть, що побачать глядачі під час прямого ефіру."
@@ -410,7 +419,11 @@ msgstr "Захоплювати кліки"
 msgid "Capture cursor"
 msgstr "Захоплювати курсор"
 
-#: src/views/Edit/index.js:351
+#: src/views/Layout/index.js:506
+msgid "Center crop"
+msgstr ""
+
+#: src/views/Edit/index.js:357
 msgid "Channel \"{0}\" saved"
 msgstr "Канал \"{0}\" збережено"
 
@@ -473,7 +486,8 @@ msgstr "Чанк"
 #: src/misc/Changelog.js:177
 #: src/misc/ModalContent.js:77
 #: src/misc/modals/Hint.js:181
-#: src/views/Edit/index.js:621
+#: src/views/Edit/index.js:627
+#: src/views/Layout/index.js:719
 #: src/views/Playersite.js:823
 #: src/views/Publication/Add.js:404
 #: src/views/Publication/Add.js:558
@@ -494,6 +508,8 @@ msgid "Codec"
 msgstr "Кодек"
 
 #: src/views/Edit/Sources/VirtualAudio.js:110
+#: src/views/Layout/index.js:629
+#: src/views/Layout/index.js:638
 msgid "Color"
 msgstr "Колір"
 
@@ -522,7 +538,7 @@ msgid "Connected since <0/>"
 msgstr "З'єднано з <0/>"
 
 #: src/misc/ActionButton.js:12
-#: src/views/Main/index.js:337
+#: src/views/Main/ChannelPanel.js:324
 #: src/views/Publication/Process.js:40
 msgid "Connecting ..."
 msgstr "З'єднання ..."
@@ -549,7 +565,7 @@ msgstr "Режим постійного квантування (від -1 до 2
 msgid "Content"
 msgstr "Вміст"
 
-#: src/views/Main/index.js:397
+#: src/views/Main/ChannelPanel.js:375
 msgid "Content URL"
 msgstr "URL-адреса вмісту"
 
@@ -573,9 +589,17 @@ msgstr "Обмеження процесора (у відсотках)"
 msgid "CPU usage limit in percent (0-100%), 0 for unlimited."
 msgstr "Обмеження використання процесора у відсотках (0-100%), 0 - необмежене."
 
+#: src/views/Main/index.js:90
+msgid "Create vertical channel"
+msgstr ""
+
 #: src/misc/controls/License/index.js:112
 msgid "Creative Commons"
 msgstr "Творчі спільноти"
+
+#: src/views/Layout/index.js:602
+msgid "Crop from source (%)"
+msgstr ""
 
 #: src/misc/coders/Encoders/audio/opus.js:66
 #: src/misc/coders/settings/Audio.js:25
@@ -732,13 +756,21 @@ msgstr "Затримка"
 msgid "Delay (ms)"
 msgstr "Затримка (ms)"
 
-#: src/views/Edit/index.js:635
-#: src/views/Edit/index.js:671
+#: src/views/Edit/index.js:641
+#: src/views/Edit/index.js:677
 #: src/views/Playersite.js:506
 #: src/views/Publication/Edit.js:604
 #: src/views/Publication/Edit.js:636
 msgid "Delete"
 msgstr "Видалити"
+
+#: src/views/Layout/index.js:723
+msgid "Delete channel"
+msgstr ""
+
+#: src/views/Layout/index.js:401
+msgid "Delete this channel and all its publications?"
+msgstr ""
 
 #: src/views/Publication/Edit.js:641
 msgid "Deleting a publication service cannot be reversed. The publication stops immediately."
@@ -771,7 +803,7 @@ msgstr "Пристрій"
 msgid "Disconnect"
 msgstr "Відключити"
 
-#: src/views/Edit/index.js:652
+#: src/views/Edit/index.js:658
 msgid "Disconnect & Continue"
 msgstr "Відключити і продовжити"
 
@@ -799,7 +831,7 @@ msgstr "Дисковий накопичувач"
 msgid "Do you really want to restart the application now?"
 msgstr "Ви дійсно бажаєте перезапустити програму?"
 
-#: src/views/Edit/index.js:663
+#: src/views/Edit/index.js:669
 msgid "Do you want to delete \"{0}\"?"
 msgstr "Ви хочете видалити \"{0}\"?"
 
@@ -807,7 +839,7 @@ msgstr "Ви хочете видалити \"{0}\"?"
 msgid "Do you want to delete {title}?"
 msgstr "Бажаєте видалити {title}?"
 
-#: src/views/Edit/index.js:644
+#: src/views/Edit/index.js:650
 msgid "Do you want to disconnect \"{0}\"?"
 msgstr "Ви хочете відключити \"{0}\"?"
 
@@ -828,6 +860,19 @@ msgstr "Документи"
 msgid "Documentation"
 msgstr "Документація"
 
+#: src/views/Layout/index.js:499
+msgid "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
+msgstr ""
+
+#: src/views/Main/index.js:80
+#: src/views/Main/index.js:85
+msgid "Dual view"
+msgstr ""
+
+#: src/views/Main/index.js:85
+msgid "Dual view {0}"
+msgstr ""
+
 #: src/misc/Progress.js:157
 msgid "Dup. frames"
 msgstr "Дуб. кадри"
@@ -840,11 +885,11 @@ msgstr "Кожне поле"
 msgid "Each frames"
 msgstr "Кожен кадр"
 
-#: src/views/Edit/index.js:409
+#: src/views/Edit/index.js:415
 msgid "Edit"
 msgstr "Змінити"
 
-#: src/views/Edit/index.js:435
+#: src/views/Edit/index.js:441
 msgid "Edit the audio and video sources for the live stream. Add a description, and set your desired content license."
 msgstr "Відредагуйте аудіо- та відеоджерела для прямого ефіру. Додайте опис і встановіть бажану ліцензію на контент."
 
@@ -973,7 +1018,7 @@ msgstr "Помилка"
 msgid "Error while copying data to clipboard"
 msgstr "Помилка під час копіювання даних у буфер обміну"
 
-#: src/views/Main/index.js:356
+#: src/views/Main/ChannelPanel.js:336
 #: src/views/Publication/Process.js:64
 msgid "Error: {0}"
 msgstr "Помилка: {0}"
@@ -1010,6 +1055,10 @@ msgstr "Розгорнути нижній колонтитул"
 msgid "Extend header"
 msgstr "Розгорнути верхній колонтитул"
 
+#: src/views/Layout/index.js:509
+msgid "Facecam + gameplay"
+msgstr ""
+
 #: src/views/Publication/Add.js:229
 msgid "Failed to create publication service ({0})"
 msgstr "Не вдалося створити службу публікації ({0})"
@@ -1027,11 +1076,12 @@ msgstr "Не вдалось отримати джерело. Перевірте 
 msgid "Failed to refresh token: {0}"
 msgstr "Не вдалося оновити токен: {0}"
 
-#: src/views/Edit/index.js:316
+#: src/views/Edit/index.js:322
+#: src/views/Layout/index.js:356
 msgid "Failed to save ingest metadata"
 msgstr "Не вдалося зберегти метадані прийому"
 
-#: src/views/Edit/index.js:187
+#: src/views/Edit/index.js:193
 msgid "Failed to stop process"
 msgstr "Не вдалося зупинити процес"
 
@@ -1043,19 +1093,21 @@ msgstr "Не вдалося зберегти налаштування розмі
 msgid "Failed to store publication service ({0})"
 msgstr "Не вдалося зберегти службу публікації ({0})"
 
-#: src/views/Edit/index.js:309
+#: src/views/Edit/index.js:315
+#: src/views/Layout/index.js:339
 msgid "Failed to update ingest process ({0})"
 msgstr "Не вдалося оновити процес завантаження ({0})"
 
-#: src/views/Edit/index.js:322
+#: src/views/Edit/index.js:328
+#: src/views/Layout/index.js:361
 msgid "Failed to update ingest snapshot process ({0})"
 msgstr "Не вдалося оновити процес створення знімка ({0})"
 
-#: src/views/Edit/index.js:328
+#: src/views/Edit/index.js:334
 msgid "Failed to update the player"
 msgstr "Не вдалося оновити програвач"
 
-#: src/views/Edit/index.js:334
+#: src/views/Edit/index.js:340
 msgid "Failed to update the playersite"
 msgstr "Не вдалося оновити сайт гравця"
 
@@ -1129,6 +1181,7 @@ msgstr "Фреймбуфер"
 #: src/misc/coders/settings/Video.js:135
 #: src/misc/filters/video/Framerate.js:65
 #: src/views/Edit/Sources/Network.js:574
+#: src/views/Layout/index.js:655
 msgid "Framerate"
 msgstr "Частота кадрів"
 
@@ -1144,8 +1197,12 @@ msgstr "Режим частоти кадрів"
 msgid "Frequency (Hz)"
 msgstr "Частота (Hz)"
 
-#: src/views/Edit/index.js:418
-#: src/views/Edit/index.js:430
+#: src/views/Layout/index.js:512
+msgid "Full frame"
+msgstr ""
+
+#: src/views/Edit/index.js:424
+#: src/views/Edit/index.js:436
 #: src/views/Edit/Sources/Network.js:612
 #: src/views/Playersite.js:328
 #: src/views/Playersite.js:341
@@ -1206,11 +1263,11 @@ msgstr "Заголовок"
 msgid "Height"
 msgstr "Висота"
 
-#: src/views/Main/index.js:406
+#: src/views/Main/ChannelPanel.js:384
 msgid "HLS"
 msgstr "HLS"
 
-#: src/views/Edit/index.js:490
+#: src/views/Edit/index.js:496
 msgid "HLS output"
 msgstr "HLS вивід"
 
@@ -1353,6 +1410,10 @@ msgstr "Сповіщення про проблему"
 msgid "kbit/s"
 msgstr "кбіт/с"
 
+#: src/views/Layout/index.js:580
+msgid "Keep proportions"
+msgstr ""
+
 #: src/misc/coders/settings/Video.js:90
 msgid "Keyframe interval (seconds)"
 msgstr "Інтервал між ключовими кадрами (секунди)"
@@ -1361,6 +1422,10 @@ msgstr "Інтервал між ключовими кадрами (секунд�
 #: src/misc/filters/audio/Resample.js:89
 msgid "Layout"
 msgstr "Макет"
+
+#: src/views/Layout/index.js:381
+msgid "Layout saved"
+msgstr ""
 
 #: src/views/Settings.js:1453
 msgid "Let's Encrypt certification"
@@ -1378,8 +1443,8 @@ msgstr "Рівень"
 msgid "Level of system protocol."
 msgstr "Рівень системного протоколу."
 
-#: src/views/Edit/index.js:421
-#: src/views/Edit/index.js:597
+#: src/views/Edit/index.js:427
+#: src/views/Edit/index.js:603
 #: src/views/Edit/Wizard/License.js:17
 msgid "License"
 msgstr "Ліцензія"
@@ -1388,7 +1453,7 @@ msgstr "Ліцензія"
 msgid "Life color"
 msgstr "Колір життя"
 
-#: src/views/Edit/index.js:565
+#: src/views/Edit/index.js:571
 #: src/views/Publication/Add.js:458
 #: src/views/Publication/Edit.js:470
 msgid "Limits"
@@ -1521,7 +1586,7 @@ msgstr "Нормалізація гучності"
 msgid "Low latency (Buffer)"
 msgstr "Низька затримка (буфер)"
 
-#: src/views/Main/index.js:292
+#: src/views/Main/ChannelPanel.js:293
 #: src/views/Playersite.js:367
 msgid "Main channel"
 msgstr "Основний канал"
@@ -1538,7 +1603,7 @@ msgstr "Головний канал збережено"
 msgid "Main page channel (index.html)."
 msgstr "Канал головної сторінки (index.html)."
 
-#: src/views/Edit/index.js:398
+#: src/views/Edit/index.js:404
 msgid "Main Source"
 msgstr "Основне джерело"
 
@@ -1630,11 +1695,11 @@ msgstr "Обмеження пам'яті (мегабайти)"
 msgid "Memory usage limit in megabytes, 0 for unlimited."
 msgstr "Обмеження на використання пам'яті в мегабайтах, 0 для необмеженого."
 
-#: src/views/Edit/index.js:420
+#: src/views/Edit/index.js:426
 msgid "Meta information"
 msgstr "Мета інформація"
 
-#: src/views/Edit/index.js:577
+#: src/views/Edit/index.js:583
 #: src/views/Edit/Wizard/Metadata.js:17
 msgid "Metadata"
 msgstr "Метадані"
@@ -1692,6 +1757,7 @@ msgstr "Вимкнути звук зліва"
 #: src/misc/ChannelList.js:436
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
+#: src/views/Layout/index.js:464
 #: src/views/Playersite.js:521
 #: src/views/Settings.js:1344
 msgid "Name"
@@ -1732,6 +1798,7 @@ msgstr "Немає"
 
 #: src/views/Edit/Sources/NoAudio.js:45
 #: src/views/Edit/Wizard/Audio.js:98
+#: src/views/Layout/index.js:676
 msgid "No audio"
 msgstr "Немає звуку"
 
@@ -1764,7 +1831,7 @@ msgstr "Відповідний енкодер не знайдено."
 msgid "No suitable filter found."
 msgstr "Відповідний фільтр не знайдено."
 
-#: src/views/Main/index.js:318
+#: src/views/Main/ChannelPanel.js:312
 #: src/views/Publication/Player.js:356
 msgid "No video"
 msgstr "Немає відео"
@@ -1834,6 +1901,10 @@ msgstr "Один реферал на рядок, наприклад, http://www.
 msgid "Open"
 msgstr "Відкрити"
 
+#: src/views/Layout/index.js:697
+msgid "Output"
+msgstr ""
+
 #: src/misc/coders/Encoders/video/h264_v4l2m2m.js:196
 msgid "Output buffer"
 msgstr "Вихідний буфер"
@@ -1854,6 +1925,10 @@ msgstr "Ключова фраза для шифрування SRT."
 #: src/views/Settings.js:2073
 msgid "Passphrase must be between 10 and 79 characters long"
 msgstr "Пароль повинен мати довжину від 10 до 79 символів"
+
+#: src/views/Layout/index.js:674
+msgid "Passthrough"
+msgstr ""
 
 #: src/views/Publication/Edit.js:533
 msgid "Passthrough (copy) should only be disabled if necessary. Each encoding requires additional CPU/GPU resources."
@@ -1940,7 +2015,7 @@ msgstr "Плейлист"
 msgid "Playlist version (M3U8). Version 3 has the best browser/client compatibility."
 msgstr "Версія плейлиста (M3U8). Версія 3 має найкращу сумісність з браузером/клієнтом."
 
-#: src/views/Main/index.js:361
+#: src/views/Main/ChannelPanel.js:341
 msgid "Please check the <0>process log</0>"
 msgstr "Перевірте <0>журнал процесу</0>"
 
@@ -2010,6 +2085,10 @@ msgstr "Порт"
 msgid "Position"
 msgstr "Позиція"
 
+#: src/views/Layout/index.js:585
+msgid "Position in output (px)"
+msgstr ""
+
 #: src/views/Publication/Player.js:383
 msgid "Poster"
 msgstr "Постер"
@@ -2048,7 +2127,7 @@ msgstr "Ключ первинного потоку"
 msgid "Probe"
 msgstr "Зонд"
 
-#: src/views/Edit/index.js:554
+#: src/views/Edit/index.js:560
 #: src/views/Publication/Add.js:447
 #: src/views/Publication/Edit.js:459
 msgid "Process"
@@ -2059,22 +2138,22 @@ msgstr "Процес"
 msgid "Process control"
 msgstr "Керування процесом"
 
-#: src/views/Main/index.js:451
-#: src/views/Main/index.js:467
+#: src/views/Main/ChannelPanel.js:419
+#: src/views/Main/ChannelPanel.js:435
 #: src/views/Publication/Edit.js:494
 #: src/views/Publication/Edit.js:613
 msgid "Process details"
 msgstr "Деталі процесу"
 
-#: src/views/Main/index.js:454
-#: src/views/Main/index.js:475
+#: src/views/Main/ChannelPanel.js:422
+#: src/views/Main/ChannelPanel.js:443
 #: src/views/Publication/Edit.js:497
 #: src/views/Publication/Edit.js:621
 msgid "Process report"
 msgstr "Звіт про процес"
 
-#: src/views/Edit/index.js:419
-#: src/views/Edit/index.js:482
+#: src/views/Edit/index.js:425
+#: src/views/Edit/index.js:488
 msgid "Processing & Control"
 msgstr "Обробка та контроль"
 
@@ -2178,6 +2257,14 @@ msgstr "rav1e Параметри"
 msgid "Read input at native speed"
 msgstr "Читання введених даних із рідною швидкістю"
 
+#: src/views/Layout/index.js:684
+msgid "Reads the source from its HLS stream. Enable the RTMP server in the settings and in the source channel for lower delay."
+msgstr ""
+
+#: src/views/Layout/index.js:682
+msgid "Reads the source from the internal RTMP server (low delay)."
+msgstr ""
+
 #: src/views/Edit/Sources/Network.js:1155
 msgid "Receive Mode"
 msgstr "Режим отримання"
@@ -2192,7 +2279,7 @@ msgstr "Повторне підключення"
 msgid "Reconnect delay (seconds)"
 msgstr "Затримка перепідключення (секунди)"
 
-#: src/views/Main/index.js:372
+#: src/views/Main/ChannelPanel.js:352
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
 msgid "Reconnecting in {0}s"
@@ -2227,6 +2314,23 @@ msgstr "Оновити"
 #: src/views/Publication/Services/Twitter.js:166
 msgid "Region"
 msgstr "Регіон"
+
+#: src/views/Layout/index.js:246
+#: src/views/Layout/index.js:534
+msgid "Region {0}"
+msgstr ""
+
+#: src/views/Layout/index.js:572
+msgid "Region name"
+msgstr ""
+
+#: src/views/Layout/index.js:519
+msgid "Regions"
+msgstr ""
+
+#: src/views/Layout/index.js:561
+msgid "Regions lower in the list are drawn on top."
+msgstr ""
 
 #: src/views/Password.js:146
 msgid "Register user"
@@ -2294,7 +2398,7 @@ msgstr "Інструкції для рестрімера"
 msgid "Restreamer Service"
 msgstr "Служба рестрімерів"
 
-#: src/views/Main/index.js:276
+#: src/views/Main/ChannelPanel.js:277
 msgid "Retrieving stream data ..."
 msgstr "Отримання даних потоку..."
 
@@ -2312,7 +2416,7 @@ msgstr "Тестовий шаблон RGB"
 msgid "Rotate"
 msgstr "Поворот"
 
-#: src/views/Main/index.js:415
+#: src/views/Main/ChannelPanel.js:388
 #: src/views/Settings.js:1239
 #: src/views/Settings.js:1920
 msgid "RTMP"
@@ -2322,7 +2426,7 @@ msgstr "RTMP"
 msgid "RTMP app for publishing."
 msgstr "Програма RTMP для публікації."
 
-#: src/views/Edit/index.js:505
+#: src/views/Edit/index.js:511
 msgid "RTMP output"
 msgstr "Вихід RTMP"
 
@@ -2374,8 +2478,9 @@ msgid "Sampling"
 msgstr "Випробування"
 
 #: src/misc/modals/Hint.js:186
-#: src/views/Edit/index.js:632
+#: src/views/Edit/index.js:638
 #: src/views/Edit/Wizard/License.js:43
+#: src/views/Layout/index.js:735
 #: src/views/Playersite.js:829
 #: src/views/Publication/Add.js:567
 #: src/views/Publication/Edit.js:601
@@ -2446,6 +2551,10 @@ msgstr "Сегментація"
 #: src/views/Edit/Wizard/Sources/V4L.js:114
 msgid "Select a device:"
 msgstr "Виберіть пристрій:"
+
+#: src/views/Layout/index.js:333
+msgid "Select a source channel and add at least one region."
+msgstr ""
 
 #: src/views/Edit/Sources/VirtualAudio.js:84
 msgid "Select audio source:"
@@ -2607,8 +2716,8 @@ msgstr "Назва сайту"
 msgid "Size"
 msgstr "Розмір"
 
-#: src/views/Edit/index.js:543
-#: src/views/Main/index.js:434
+#: src/views/Edit/index.js:549
+#: src/views/Main/ChannelPanel.js:402
 msgid "Snapshot"
 msgstr "Знімок"
 
@@ -2627,6 +2736,7 @@ msgstr "Програмне забезпечення"
 #: src/misc/controls/Source.js:74
 #: src/views/Edit/Sources/VirtualAudio.js:88
 #: src/views/Edit/Sources/VirtualVideo.js:112
+#: src/views/Layout/index.js:482
 #: src/views/Publication/Add.js:475
 #: src/views/Publication/Edit.js:515
 msgid "Source"
@@ -2639,6 +2749,10 @@ msgstr "Джерело"
 msgid "Source & Encoding"
 msgstr "Джерело та кодування"
 
+#: src/views/Layout/index.js:467
+msgid "Source channel"
+msgstr ""
+
 #: src/misc/Progress.js:131
 msgid "Speed"
 msgstr "Швидкість"
@@ -2647,13 +2761,13 @@ msgstr "Швидкість"
 msgid "Speed Preset"
 msgstr "Попереднє налаштування швидкості"
 
-#: src/views/Main/index.js:425
+#: src/views/Main/ChannelPanel.js:393
 #: src/views/Settings.js:1240
 #: src/views/Settings.js:2019
 msgid "SRT"
 msgstr "SRT"
 
-#: src/views/Edit/index.js:524
+#: src/views/Edit/index.js:530
 msgid "SRT output"
 msgstr "Вихід SRT"
 
@@ -2821,19 +2935,19 @@ msgstr "Бітрейт аудіопотоку."
 msgid "The carrier frequency"
 msgstr "Несуча частота"
 
-#: src/views/Edit/index.js:376
+#: src/views/Edit/index.js:382
 msgid "The channel \"{0}\" could not be deleted"
 msgstr "Канал \"{0}\" не вдалося видалити"
 
-#: src/views/Edit/index.js:385
+#: src/views/Edit/index.js:391
 msgid "The channel \"{0}\" has been deleted"
 msgstr "Канал \"{0}\" було видалено"
 
-#: src/views/Edit/index.js:676
+#: src/views/Edit/index.js:682
 msgid "The deletion of this channel can not be recovered. All publications of this channel will be removed."
 msgstr "Видалення цього каналу не можна відновити. Всі публікації цього каналу будуть видалені."
 
-#: src/views/Edit/index.js:302
+#: src/views/Edit/index.js:308
 #: src/views/Edit/Wizard/index.js:176
 #: src/views/Publication/Edit.js:262
 msgid "The input profile is not complete. Please define a video and audio source."
@@ -2974,6 +3088,10 @@ msgstr "Помилки в налаштуваннях. Налаштування �
 msgid "There's no login method available."
 msgstr "Відсутній метод входу."
 
+#: src/views/Pair/index.js:46
+msgid "This channel is not configured yet."
+msgstr ""
+
 #: src/views/Publication/Services/Dummy.js:26
 msgid "This is a dummy service that explains to you the concepts of service."
 msgstr "Це фіктивний сервіс, який пояснює вам концепцію сервісу."
@@ -3014,7 +3132,7 @@ msgstr "Ця ліцензія дозволяє повторним користу
 msgid "This protocol is unknown or not supported by the available FFmpeg binary."
 msgstr "Цей протокол невідомий або не підтримується наявним бінарним файлом FFmpeg."
 
-#: src/views/Edit/index.js:657
+#: src/views/Edit/index.js:663
 msgid "This source cannot be edited while it is in use. To continue, you have to disconnect the source."
 msgstr "Це джерело не можна редагувати, поки воно використовується. Щоб продовжити, вам потрібно від'єднати джерело."
 
@@ -3272,7 +3390,7 @@ msgstr "Час роботи"
 msgid "Use Auth0 for your running Restreamer Core. More <0>details</0>."
 msgstr "Використовуйте Auth0 для вашого запущеного ядра рестрімера. Більше <0>подробиць</0>."
 
-#: src/views/Edit/index.js:444
+#: src/views/Edit/index.js:450
 msgid "Use the wizard (<0/>) for a quick and easy setup, or edit (<1/>) the sources directly in custom mode."
 msgstr "Скористайтеся майстром (<0/>) для швидкого і простого налаштування або редагуйте (<1/>) коди безпосередньо у користувацькому режимі."
 
@@ -3280,7 +3398,7 @@ msgstr "Скористайтеся майстром (<0/>) для швидког
 msgid "Use your copyright and choose the correct image license. Whether free for all or highly restricted. Briefly discuss what others are allowed to do with your image."
 msgstr "Використовуйте свої авторські права і виберіть правильну ліцензію зображення. Вільну для всіх або дуже обмежену. Коротко обговоріть, що інші можуть робити з вашим зображенням."
 
-#: src/views/Edit/index.js:602
+#: src/views/Edit/index.js:608
 msgid "Use your copyright and choose the right image licence. Whether free for all or highly restricted. Briefly discuss what others are allowed to do with your image."
 msgstr "Вкажіть свої авторські права та виберіть правильну ліцензію на зображення. Незалежно від того, безкоштовний для всіх чи з суворими обмеженнями. Коротко обговоріть, що іншим дозволено робити з вашим зображенням."
 
@@ -3328,13 +3446,25 @@ msgstr "Змінна частота кадрів (VFR)"
 msgid "velvet"
 msgstr "оксамитовий"
 
+#: src/views/Layout/index.js:351
+msgid "Vertical channel"
+msgstr ""
+
 #: src/misc/filters/video/VFlip.js:65
 msgid "Vertical Flip"
 msgstr "Вертикальне перевертання"
 
+#: src/views/Layout/index.js:461
+msgid "Vertical layout"
+msgstr ""
+
 #: src/views/Publication/Add.js:502
 msgid "Video"
 msgstr "Відео"
+
+#: src/views/Layout/index.js:667
+msgid "Video bitrate (kbit/s)"
+msgstr ""
 
 #: src/views/Edit/Sources/AVFoundation.js:126
 #: src/views/Edit/Sources/Raspicam.js:98
@@ -3344,6 +3474,10 @@ msgstr "Відео"
 #: src/views/Edit/Wizard/Sources/V4L.js:105
 msgid "Video device"
 msgstr "Відеопристрій"
+
+#: src/views/Layout/index.js:646
+msgid "Video encoder"
+msgstr ""
 
 #: src/views/Edit/Profile.js:490
 #: src/views/Edit/ProfileSummary.js:66
@@ -3429,7 +3563,7 @@ msgstr "Ви не можете перервати роботу майстра, �
 msgid "You have changed the configuration. In order for the changes to take effect, you have to restart the application. Do you want to restart now?"
 msgstr "Ви змінили конфігурацію. Необхідно перезапустити програму. Ви хочете перезапустити зараз?"
 
-#: src/views/Main/index.js:379
+#: src/views/Main/ChannelPanel.js:359
 #: src/views/Publication/Process.js:73
 msgid "You have to reconnect manually"
 msgstr "Ви повинні підключитися вручну"

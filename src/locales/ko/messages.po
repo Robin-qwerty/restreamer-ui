@@ -43,8 +43,8 @@ msgid "7 (+ fragmented MP4 format)"
 msgstr "7 (+ 조각난 MP4 형식)"
 
 #: src/misc/ChannelList.js:412
-#: src/views/Edit/index.js:647
-#: src/views/Edit/index.js:666
+#: src/views/Edit/index.js:653
+#: src/views/Edit/index.js:672
 #: src/views/Edit/Profile.js:599
 #: src/views/Edit/Wizard/Abort.js:14
 #: src/views/Publication/Edit.js:631
@@ -218,6 +218,7 @@ msgstr "애플리케이션"
 msgid "Are you sure you want to abort the wizard?"
 msgstr "정말 설정 마법사를 취소하시겠습니까?"
 
+#: src/views/Layout/index.js:673
 #: src/views/Publication/Add.js:527
 msgid "Audio"
 msgstr "소리"
@@ -302,6 +303,10 @@ msgstr "avoid_negative_ts"
 msgid "Back"
 msgstr "뒤로"
 
+#: src/views/Layout/index.js:624
+msgid "Background"
+msgstr ""
+
 #: src/views/Playersite.js:601
 msgid "Background colors"
 msgstr "배경 색상"
@@ -361,11 +366,15 @@ msgstr "불허할 캐시 유형"
 msgid "blue"
 msgstr "파란색"
 
+#: src/views/Layout/index.js:628
+msgid "Blurred source"
+msgstr ""
+
 #: src/misc/filters/video/Bwdif.js:62
 msgid "Bottom field"
 msgstr "하단 필드"
 
-#: src/views/Edit/index.js:582
+#: src/views/Edit/index.js:588
 #: src/views/Edit/Wizard/Metadata.js:24
 msgid "Briefly describe what the audience will see during the live stream."
 msgstr "이 영상이 어떤 것인지 시청자에게 간략히 설명해주세요."
@@ -410,7 +419,11 @@ msgstr "클릭 캡쳐"
 msgid "Capture cursor"
 msgstr "커서 캡쳐"
 
-#: src/views/Edit/index.js:351
+#: src/views/Layout/index.js:506
+msgid "Center crop"
+msgstr ""
+
+#: src/views/Edit/index.js:357
 msgid "Channel \"{0}\" saved"
 msgstr "\"{0}\" 채널을 저장했습니다."
 
@@ -473,7 +486,8 @@ msgstr "조각"
 #: src/misc/Changelog.js:177
 #: src/misc/ModalContent.js:77
 #: src/misc/modals/Hint.js:181
-#: src/views/Edit/index.js:621
+#: src/views/Edit/index.js:627
+#: src/views/Layout/index.js:719
 #: src/views/Playersite.js:823
 #: src/views/Publication/Add.js:404
 #: src/views/Publication/Add.js:558
@@ -494,6 +508,8 @@ msgid "Codec"
 msgstr "코덱"
 
 #: src/views/Edit/Sources/VirtualAudio.js:110
+#: src/views/Layout/index.js:629
+#: src/views/Layout/index.js:638
 msgid "Color"
 msgstr "색상"
 
@@ -522,7 +538,7 @@ msgid "Connected since <0/>"
 msgstr "<0/> 부터 연결됨"
 
 #: src/misc/ActionButton.js:12
-#: src/views/Main/index.js:337
+#: src/views/Main/ChannelPanel.js:324
 #: src/views/Publication/Process.js:40
 msgid "Connecting ..."
 msgstr "연결 중..."
@@ -549,7 +565,7 @@ msgstr "상수 퀀타이저 모드(-1~255)."
 msgid "Content"
 msgstr "내용"
 
-#: src/views/Main/index.js:397
+#: src/views/Main/ChannelPanel.js:375
 msgid "Content URL"
 msgstr "내용 URL"
 
@@ -573,9 +589,17 @@ msgstr "CPU 제한(퍼센트)"
 msgid "CPU usage limit in percent (0-100%), 0 for unlimited."
 msgstr "CPU 사용량 제한(%)(0-100%), 무제한은 0입니다."
 
+#: src/views/Main/index.js:90
+msgid "Create vertical channel"
+msgstr ""
+
 #: src/misc/controls/License/index.js:112
 msgid "Creative Commons"
 msgstr "크리에이티브 커먼즈"
+
+#: src/views/Layout/index.js:602
+msgid "Crop from source (%)"
+msgstr ""
 
 #: src/misc/coders/Encoders/audio/opus.js:66
 #: src/misc/coders/settings/Audio.js:25
@@ -732,13 +756,21 @@ msgstr "딜레이"
 msgid "Delay (ms)"
 msgstr "딜레이 (ms)"
 
-#: src/views/Edit/index.js:635
-#: src/views/Edit/index.js:671
+#: src/views/Edit/index.js:641
+#: src/views/Edit/index.js:677
 #: src/views/Playersite.js:506
 #: src/views/Publication/Edit.js:604
 #: src/views/Publication/Edit.js:636
 msgid "Delete"
 msgstr "삭제"
+
+#: src/views/Layout/index.js:723
+msgid "Delete channel"
+msgstr ""
+
+#: src/views/Layout/index.js:401
+msgid "Delete this channel and all its publications?"
+msgstr ""
 
 #: src/views/Publication/Edit.js:641
 msgid "Deleting a publication service cannot be reversed. The publication stops immediately."
@@ -771,7 +803,7 @@ msgstr "장치"
 msgid "Disconnect"
 msgstr "연결 해제"
 
-#: src/views/Edit/index.js:652
+#: src/views/Edit/index.js:658
 msgid "Disconnect & Continue"
 msgstr "연결 끊고 계속"
 
@@ -799,7 +831,7 @@ msgstr "저장소 사용량"
 msgid "Do you really want to restart the application now?"
 msgstr "바로 애플리케이션을 다시 시작할까요?"
 
-#: src/views/Edit/index.js:663
+#: src/views/Edit/index.js:669
 msgid "Do you want to delete \"{0}\"?"
 msgstr "\"{0}\"을(를) 삭제하시겠습니까?"
 
@@ -807,7 +839,7 @@ msgstr "\"{0}\"을(를) 삭제하시겠습니까?"
 msgid "Do you want to delete {title}?"
 msgstr "{title}을(를) 삭제할까요?"
 
-#: src/views/Edit/index.js:644
+#: src/views/Edit/index.js:650
 msgid "Do you want to disconnect \"{0}\"?"
 msgstr "\"{0}\"의 연결을 끊겠습니까?"
 
@@ -828,6 +860,19 @@ msgstr "문서"
 msgid "Documentation"
 msgstr "문서"
 
+#: src/views/Layout/index.js:499
+msgid "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
+msgstr ""
+
+#: src/views/Main/index.js:80
+#: src/views/Main/index.js:85
+msgid "Dual view"
+msgstr ""
+
+#: src/views/Main/index.js:85
+msgid "Dual view {0}"
+msgstr ""
+
 #: src/misc/Progress.js:157
 msgid "Dup. frames"
 msgstr "복제된 프레임"
@@ -840,11 +885,11 @@ msgstr "각 필드"
 msgid "Each frames"
 msgstr "각 프레임"
 
-#: src/views/Edit/index.js:409
+#: src/views/Edit/index.js:415
 msgid "Edit"
 msgstr "수정"
 
-#: src/views/Edit/index.js:435
+#: src/views/Edit/index.js:441
 msgid "Edit the audio and video sources for the live stream. Add a description, and set your desired content license."
 msgstr "실시간 송출을 위한 영상과 소리 원본을 설정하세요. 설명을 더하고, 원하는 저작권 정책을 책정할 수 있습니다."
 
@@ -973,7 +1018,7 @@ msgstr "오류"
 msgid "Error while copying data to clipboard"
 msgstr "데이터를 클립보드로 복사하는 중 오류 발생"
 
-#: src/views/Main/index.js:356
+#: src/views/Main/ChannelPanel.js:336
 #: src/views/Publication/Process.js:64
 msgid "Error: {0}"
 msgstr "오류: {0}"
@@ -1010,6 +1055,10 @@ msgstr "하단 확장"
 msgid "Extend header"
 msgstr "헤더 확장"
 
+#: src/views/Layout/index.js:509
+msgid "Facecam + gameplay"
+msgstr ""
+
 #: src/views/Publication/Add.js:229
 msgid "Failed to create publication service ({0})"
 msgstr "송출 서비스 생성 실패 ({0})"
@@ -1027,11 +1076,12 @@ msgstr "원본을 확인하지 못했습니다. <0>확인 결과</0>를 검토�
 msgid "Failed to refresh token: {0}"
 msgstr "토큰 갱신 실패: {0}"
 
-#: src/views/Edit/index.js:316
+#: src/views/Edit/index.js:322
+#: src/views/Layout/index.js:356
 msgid "Failed to save ingest metadata"
 msgstr "삽입 메타데이터 저장 실패"
 
-#: src/views/Edit/index.js:187
+#: src/views/Edit/index.js:193
 msgid "Failed to stop process"
 msgstr "프로세스 중지 실패"
 
@@ -1043,19 +1093,21 @@ msgstr "재생기 크기 설정을 저장하는데 실패했습니다."
 msgid "Failed to store publication service ({0})"
 msgstr "송출 서비스 저장 실패 ({0})"
 
-#: src/views/Edit/index.js:309
+#: src/views/Edit/index.js:315
+#: src/views/Layout/index.js:339
 msgid "Failed to update ingest process ({0})"
 msgstr "삽입 프로세스 갱신 실패 ({0})"
 
-#: src/views/Edit/index.js:322
+#: src/views/Edit/index.js:328
+#: src/views/Layout/index.js:361
 msgid "Failed to update ingest snapshot process ({0})"
 msgstr "삽입 스냅샷 프로세스 갱신 실패 ({0})"
 
-#: src/views/Edit/index.js:328
+#: src/views/Edit/index.js:334
 msgid "Failed to update the player"
 msgstr "재생기 갱신 실패"
 
-#: src/views/Edit/index.js:334
+#: src/views/Edit/index.js:340
 msgid "Failed to update the playersite"
 msgstr "재생 사이트 갱신 실패"
 
@@ -1129,6 +1181,7 @@ msgstr "프레임버퍼"
 #: src/misc/coders/settings/Video.js:135
 #: src/misc/filters/video/Framerate.js:65
 #: src/views/Edit/Sources/Network.js:574
+#: src/views/Layout/index.js:655
 msgid "Framerate"
 msgstr "프레임률"
 
@@ -1144,8 +1197,12 @@ msgstr "프레임율 방식"
 msgid "Frequency (Hz)"
 msgstr "주파수 (Hz)"
 
-#: src/views/Edit/index.js:418
-#: src/views/Edit/index.js:430
+#: src/views/Layout/index.js:512
+msgid "Full frame"
+msgstr ""
+
+#: src/views/Edit/index.js:424
+#: src/views/Edit/index.js:436
 #: src/views/Edit/Sources/Network.js:612
 #: src/views/Playersite.js:328
 #: src/views/Playersite.js:341
@@ -1206,11 +1263,11 @@ msgstr "헤드라인"
 msgid "Height"
 msgstr "높이"
 
-#: src/views/Main/index.js:406
+#: src/views/Main/ChannelPanel.js:384
 msgid "HLS"
 msgstr "HLS"
 
-#: src/views/Edit/index.js:490
+#: src/views/Edit/index.js:496
 msgid "HLS output"
 msgstr "HLS 출력"
 
@@ -1353,6 +1410,10 @@ msgstr "문제 알리기"
 msgid "kbit/s"
 msgstr "kbit/s"
 
+#: src/views/Layout/index.js:580
+msgid "Keep proportions"
+msgstr ""
+
 #: src/misc/coders/settings/Video.js:90
 msgid "Keyframe interval (seconds)"
 msgstr "키프레임 간격 (초)"
@@ -1361,6 +1422,10 @@ msgstr "키프레임 간격 (초)"
 #: src/misc/filters/audio/Resample.js:89
 msgid "Layout"
 msgstr "레이아웃"
+
+#: src/views/Layout/index.js:381
+msgid "Layout saved"
+msgstr ""
 
 #: src/views/Settings.js:1453
 msgid "Let's Encrypt certification"
@@ -1378,8 +1443,8 @@ msgstr "레벨"
 msgid "Level of system protocol."
 msgstr "시스템 프로토콜의 레벨입니다."
 
-#: src/views/Edit/index.js:421
-#: src/views/Edit/index.js:597
+#: src/views/Edit/index.js:427
+#: src/views/Edit/index.js:603
 #: src/views/Edit/Wizard/License.js:17
 msgid "License"
 msgstr "라이선스"
@@ -1388,7 +1453,7 @@ msgstr "라이선스"
 msgid "Life color"
 msgstr "활성화 색상"
 
-#: src/views/Edit/index.js:565
+#: src/views/Edit/index.js:571
 #: src/views/Publication/Add.js:458
 #: src/views/Publication/Edit.js:470
 msgid "Limits"
@@ -1521,7 +1586,7 @@ msgstr "소리 크기 평균화"
 msgid "Low latency (Buffer)"
 msgstr "낮은 지연시간 (버퍼)"
 
-#: src/views/Main/index.js:292
+#: src/views/Main/ChannelPanel.js:293
 #: src/views/Playersite.js:367
 msgid "Main channel"
 msgstr "주 채널"
@@ -1538,7 +1603,7 @@ msgstr "기본 채널 저장됨"
 msgid "Main page channel (index.html)."
 msgstr "접속시 보여질 채널입니다(index.html)."
 
-#: src/views/Edit/index.js:398
+#: src/views/Edit/index.js:404
 msgid "Main Source"
 msgstr "기본 원본"
 
@@ -1630,11 +1695,11 @@ msgstr "메모리 제한(메가바이트)"
 msgid "Memory usage limit in megabytes, 0 for unlimited."
 msgstr "메모리 사용량 제한은 메가바이트 단위로, 무제한은 0입니다."
 
-#: src/views/Edit/index.js:420
+#: src/views/Edit/index.js:426
 msgid "Meta information"
 msgstr "메타 정보"
 
-#: src/views/Edit/index.js:577
+#: src/views/Edit/index.js:583
 #: src/views/Edit/Wizard/Metadata.js:17
 msgid "Metadata"
 msgstr "메타데이터"
@@ -1692,6 +1757,7 @@ msgstr "오른쪽 음소거"
 #: src/misc/ChannelList.js:436
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
+#: src/views/Layout/index.js:464
 #: src/views/Playersite.js:521
 #: src/views/Settings.js:1344
 msgid "Name"
@@ -1732,6 +1798,7 @@ msgstr "아니오"
 
 #: src/views/Edit/Sources/NoAudio.js:45
 #: src/views/Edit/Wizard/Audio.js:98
+#: src/views/Layout/index.js:676
 msgid "No audio"
 msgstr "소리 없음"
 
@@ -1764,7 +1831,7 @@ msgstr "적절한 인코더가 없습니다."
 msgid "No suitable filter found."
 msgstr "적절한 필터를 찾을 수 없습니다."
 
-#: src/views/Main/index.js:318
+#: src/views/Main/ChannelPanel.js:312
 #: src/views/Publication/Player.js:356
 msgid "No video"
 msgstr "비디오 없음"
@@ -1834,6 +1901,10 @@ msgstr "한 줄에 하나의 리퍼러만 입력합니다. 예) http://www.examp
 msgid "Open"
 msgstr "열기"
 
+#: src/views/Layout/index.js:697
+msgid "Output"
+msgstr ""
+
 #: src/misc/coders/Encoders/video/h264_v4l2m2m.js:196
 msgid "Output buffer"
 msgstr "출력 버퍼"
@@ -1854,6 +1925,10 @@ msgstr "SRT 암호화를 위한 암호문"
 #: src/views/Settings.js:2073
 msgid "Passphrase must be between 10 and 79 characters long"
 msgstr "암호문은 10에서 79자 사이여야 합니다."
+
+#: src/views/Layout/index.js:674
+msgid "Passthrough"
+msgstr ""
 
 #: src/views/Publication/Edit.js:533
 msgid "Passthrough (copy) should only be disabled if necessary. Each encoding requires additional CPU/GPU resources."
@@ -1940,7 +2015,7 @@ msgstr "재생목록"
 msgid "Playlist version (M3U8). Version 3 has the best browser/client compatibility."
 msgstr "M3U8 버전입니다. 버전 3이  가장 좋은 브라우저와 클라이언트 사이의 호환성을 보장합니다."
 
-#: src/views/Main/index.js:361
+#: src/views/Main/ChannelPanel.js:341
 msgid "Please check the <0>process log</0>"
 msgstr "<0>프로세스 기록</0>을 검토해주세요."
 
@@ -2010,6 +2085,10 @@ msgstr "포트"
 msgid "Position"
 msgstr "위치"
 
+#: src/views/Layout/index.js:585
+msgid "Position in output (px)"
+msgstr ""
+
 #: src/views/Publication/Player.js:383
 msgid "Poster"
 msgstr "포스터"
@@ -2048,7 +2127,7 @@ msgstr "프라이머리 스트림 키"
 msgid "Probe"
 msgstr "확인하기"
 
-#: src/views/Edit/index.js:554
+#: src/views/Edit/index.js:560
 #: src/views/Publication/Add.js:447
 #: src/views/Publication/Edit.js:459
 msgid "Process"
@@ -2059,22 +2138,22 @@ msgstr "프로세스"
 msgid "Process control"
 msgstr "프로세스 조절"
 
-#: src/views/Main/index.js:451
-#: src/views/Main/index.js:467
+#: src/views/Main/ChannelPanel.js:419
+#: src/views/Main/ChannelPanel.js:435
 #: src/views/Publication/Edit.js:494
 #: src/views/Publication/Edit.js:613
 msgid "Process details"
 msgstr "프로세스 상세"
 
-#: src/views/Main/index.js:454
-#: src/views/Main/index.js:475
+#: src/views/Main/ChannelPanel.js:422
+#: src/views/Main/ChannelPanel.js:443
 #: src/views/Publication/Edit.js:497
 #: src/views/Publication/Edit.js:621
 msgid "Process report"
 msgstr "프로세스 보고서"
 
-#: src/views/Edit/index.js:419
-#: src/views/Edit/index.js:482
+#: src/views/Edit/index.js:425
+#: src/views/Edit/index.js:488
 msgid "Processing & Control"
 msgstr "프로세싱과 조절"
 
@@ -2178,6 +2257,14 @@ msgstr "rav1e 매개변수"
 msgid "Read input at native speed"
 msgstr "원본 속도로 입력 읽어들이기"
 
+#: src/views/Layout/index.js:684
+msgid "Reads the source from its HLS stream. Enable the RTMP server in the settings and in the source channel for lower delay."
+msgstr ""
+
+#: src/views/Layout/index.js:682
+msgid "Reads the source from the internal RTMP server (low delay)."
+msgstr ""
+
 #: src/views/Edit/Sources/Network.js:1155
 msgid "Receive Mode"
 msgstr "수신 모드"
@@ -2192,7 +2279,7 @@ msgstr "재연결"
 msgid "Reconnect delay (seconds)"
 msgstr "재연결 지연시간 (초)"
 
-#: src/views/Main/index.js:372
+#: src/views/Main/ChannelPanel.js:352
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
 msgid "Reconnecting in {0}s"
@@ -2227,6 +2314,23 @@ msgstr "다시 보기"
 #: src/views/Publication/Services/Twitter.js:166
 msgid "Region"
 msgstr "지역"
+
+#: src/views/Layout/index.js:246
+#: src/views/Layout/index.js:534
+msgid "Region {0}"
+msgstr ""
+
+#: src/views/Layout/index.js:572
+msgid "Region name"
+msgstr ""
+
+#: src/views/Layout/index.js:519
+msgid "Regions"
+msgstr ""
+
+#: src/views/Layout/index.js:561
+msgid "Regions lower in the list are drawn on top."
+msgstr ""
 
 #: src/views/Password.js:146
 msgid "Register user"
@@ -2294,7 +2398,7 @@ msgstr "Restreamer 사용법"
 msgid "Restreamer Service"
 msgstr "Restreamer 서비스"
 
-#: src/views/Main/index.js:276
+#: src/views/Main/ChannelPanel.js:277
 msgid "Retrieving stream data ..."
 msgstr "스트림 데이터 검색중..."
 
@@ -2312,7 +2416,7 @@ msgstr "RGB 테스트 패턴"
 msgid "Rotate"
 msgstr "회전"
 
-#: src/views/Main/index.js:415
+#: src/views/Main/ChannelPanel.js:388
 #: src/views/Settings.js:1239
 #: src/views/Settings.js:1920
 msgid "RTMP"
@@ -2322,7 +2426,7 @@ msgstr "RTMP"
 msgid "RTMP app for publishing."
 msgstr "송출을 위한 RTMP 앱입니다."
 
-#: src/views/Edit/index.js:505
+#: src/views/Edit/index.js:511
 msgid "RTMP output"
 msgstr "RTMP 출력"
 
@@ -2374,8 +2478,9 @@ msgid "Sampling"
 msgstr "샘플링"
 
 #: src/misc/modals/Hint.js:186
-#: src/views/Edit/index.js:632
+#: src/views/Edit/index.js:638
 #: src/views/Edit/Wizard/License.js:43
+#: src/views/Layout/index.js:735
 #: src/views/Playersite.js:829
 #: src/views/Publication/Add.js:567
 #: src/views/Publication/Edit.js:601
@@ -2446,6 +2551,10 @@ msgstr "조각화"
 #: src/views/Edit/Wizard/Sources/V4L.js:114
 msgid "Select a device:"
 msgstr "장치 선택:"
+
+#: src/views/Layout/index.js:333
+msgid "Select a source channel and add at least one region."
+msgstr ""
 
 #: src/views/Edit/Sources/VirtualAudio.js:84
 msgid "Select audio source:"
@@ -2607,8 +2716,8 @@ msgstr "사이트 이름"
 msgid "Size"
 msgstr "크기"
 
-#: src/views/Edit/index.js:543
-#: src/views/Main/index.js:434
+#: src/views/Edit/index.js:549
+#: src/views/Main/ChannelPanel.js:402
 msgid "Snapshot"
 msgstr "스냅샷"
 
@@ -2627,6 +2736,7 @@ msgstr "소프트웨어"
 #: src/misc/controls/Source.js:74
 #: src/views/Edit/Sources/VirtualAudio.js:88
 #: src/views/Edit/Sources/VirtualVideo.js:112
+#: src/views/Layout/index.js:482
 #: src/views/Publication/Add.js:475
 #: src/views/Publication/Edit.js:515
 msgid "Source"
@@ -2639,6 +2749,10 @@ msgstr "원본"
 msgid "Source & Encoding"
 msgstr "원본과 인코딩"
 
+#: src/views/Layout/index.js:467
+msgid "Source channel"
+msgstr ""
+
 #: src/misc/Progress.js:131
 msgid "Speed"
 msgstr "속도"
@@ -2647,13 +2761,13 @@ msgstr "속도"
 msgid "Speed Preset"
 msgstr "속도 프리셋"
 
-#: src/views/Main/index.js:425
+#: src/views/Main/ChannelPanel.js:393
 #: src/views/Settings.js:1240
 #: src/views/Settings.js:2019
 msgid "SRT"
 msgstr "SRT"
 
-#: src/views/Edit/index.js:524
+#: src/views/Edit/index.js:530
 msgid "SRT output"
 msgstr "SRT 출력"
 
@@ -2821,19 +2935,19 @@ msgstr "소리 스트림의 비트율입니다."
 msgid "The carrier frequency"
 msgstr "반송주파수"
 
-#: src/views/Edit/index.js:376
+#: src/views/Edit/index.js:382
 msgid "The channel \"{0}\" could not be deleted"
 msgstr "\"{0}\" 채널을 삭제할 수 없음"
 
-#: src/views/Edit/index.js:385
+#: src/views/Edit/index.js:391
 msgid "The channel \"{0}\" has been deleted"
 msgstr "\"{0}\" 채널 삭제함"
 
-#: src/views/Edit/index.js:676
+#: src/views/Edit/index.js:682
 msgid "The deletion of this channel can not be recovered. All publications of this channel will be removed."
 msgstr "채널 삭제는 되돌릴 수 없습니다. 이 채널에 연결된 모든 송출 서비스도 삭제됩니다."
 
-#: src/views/Edit/index.js:302
+#: src/views/Edit/index.js:308
 #: src/views/Edit/Wizard/index.js:176
 #: src/views/Publication/Edit.js:262
 msgid "The input profile is not complete. Please define a video and audio source."
@@ -2974,6 +3088,10 @@ msgstr "설정에 오류가 있습니다. 설정을 저장하지 않습니다."
 msgid "There's no login method available."
 msgstr "로그인 할 수 있는 방법이 없습니다."
 
+#: src/views/Pair/index.js:46
+msgid "This channel is not configured yet."
+msgstr ""
+
 #: src/views/Publication/Services/Dummy.js:26
 msgid "This is a dummy service that explains to you the concepts of service."
 msgstr "이 서비스는 개념을 설명하는 모의 서비스입니다."
@@ -3014,7 +3132,7 @@ msgstr "이 라이선스는 이용자가 저작자 및 출처만 표시한다면
 msgid "This protocol is unknown or not supported by the available FFmpeg binary."
 msgstr "이 프로토콜은 확인할 수 없거나 현재 FFmpeg 바이너리에서 지원하지 않습니다."
 
-#: src/views/Edit/index.js:657
+#: src/views/Edit/index.js:663
 msgid "This source cannot be edited while it is in use. To continue, you have to disconnect the source."
 msgstr "이 원본은 사용 중일 때엔 편집할 수 없습니다. 계속하려면 원본의 연결을 해제하세요."
 
@@ -3272,7 +3390,7 @@ msgstr "가동시간"
 msgid "Use Auth0 for your running Restreamer Core. More <0>details</0>."
 msgstr "Restreamer Core에 Auto0을 적용합니다. <0>자세한 내용</0>"
 
-#: src/views/Edit/index.js:444
+#: src/views/Edit/index.js:450
 msgid "Use the wizard (<0/>) for a quick and easy setup, or edit (<1/>) the sources directly in custom mode."
 msgstr "설정 마법사(<0/>)를 통해 쉽고 빠르게 구성하거나, 사용자 모드에서 직접 구성(<1/>)할 수 있습니다."
 
@@ -3280,7 +3398,7 @@ msgstr "설정 마법사(<0/>)를 통해 쉽고 빠르게 구성하거나, 사�
 msgid "Use your copyright and choose the correct image license. Whether free for all or highly restricted. Briefly discuss what others are allowed to do with your image."
 msgstr "저작권을 명기해 올바른 이미지 라이선스를 선택하세요. 자유롭게 제공하거나 철저히 제한할 수 있습니다. 다른 사람이 당신의 이미지로 무엇을 할 수 있는지 간략히 설명하세요."
 
-#: src/views/Edit/index.js:602
+#: src/views/Edit/index.js:608
 msgid "Use your copyright and choose the right image licence. Whether free for all or highly restricted. Briefly discuss what others are allowed to do with your image."
 msgstr "저작권을 명기해 올바른 이미지 라이선스를 선택하세요. 자유롭게 제공하거나 철저히 제한할 수 있습니다. 다른 사람이 당신의 이미지로 무엇을 할 수 있는지 간략히 설명하세요."
 
@@ -3328,13 +3446,25 @@ msgstr "가변 프레임율 (VFR)"
 msgid "velvet"
 msgstr "자주색"
 
+#: src/views/Layout/index.js:351
+msgid "Vertical channel"
+msgstr ""
+
 #: src/misc/filters/video/VFlip.js:65
 msgid "Vertical Flip"
 msgstr "위/아래 뒤집기"
 
+#: src/views/Layout/index.js:461
+msgid "Vertical layout"
+msgstr ""
+
 #: src/views/Publication/Add.js:502
 msgid "Video"
 msgstr "영상"
+
+#: src/views/Layout/index.js:667
+msgid "Video bitrate (kbit/s)"
+msgstr ""
 
 #: src/views/Edit/Sources/AVFoundation.js:126
 #: src/views/Edit/Sources/Raspicam.js:98
@@ -3344,6 +3474,10 @@ msgstr "영상"
 #: src/views/Edit/Wizard/Sources/V4L.js:105
 msgid "Video device"
 msgstr "영상 장치"
+
+#: src/views/Layout/index.js:646
+msgid "Video encoder"
+msgstr ""
 
 #: src/views/Edit/Profile.js:490
 #: src/views/Edit/ProfileSummary.js:66
@@ -3429,7 +3563,7 @@ msgstr "설정 마법사를 취소할 수 없습니다. 적어도 하나의 입�
 msgid "You have changed the configuration. In order for the changes to take effect, you have to restart the application. Do you want to restart now?"
 msgstr "변경된 구성이 반영되려면 애플리케이션을 다시 시작해야 합니다. 지금 하시겠습니까?"
 
-#: src/views/Main/index.js:379
+#: src/views/Main/ChannelPanel.js:359
 #: src/views/Publication/Process.js:73
 msgid "You have to reconnect manually"
 msgstr "수동으로 재연결해야 합니다"
