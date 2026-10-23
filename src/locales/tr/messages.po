@@ -80,6 +80,10 @@ msgstr ""
 msgid "Add"
 msgstr "Ekle"
 
+#: src/views/Main/Publication.js:235
+msgid "Add a publication to"
+msgstr ""
+
 #: src/misc/modals/Hint.js:154
 msgid "Add Audio"
 msgstr ""
@@ -1500,7 +1504,7 @@ msgstr ""
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
-#: src/views/Main/Publication.js:184
+#: src/views/Main/Publication.js:226
 msgid "kbit/s"
 msgstr "kbit/s"
 
@@ -2348,7 +2352,7 @@ msgstr "Yayın web sitesi ayarları kaydedildi"
 
 #: src/views/Main/ActivityLog.js:246
 #: src/views/Main/ActivityLog.js:534
-#: src/views/Main/Publication.js:163
+#: src/views/Main/Publication.js:205
 msgid "Publications"
 msgstr "Yayınlar"
 
@@ -3293,7 +3297,7 @@ msgstr "Ayarlarda bazı hatalar vardı. Ayarlar kaydedilmedi."
 msgid "There's no login method available."
 msgstr "Herhangi bir giriş yöntemi mevcut değildir."
 
-#: src/views/Pair/index.js:57
+#: src/views/Pair/index.js:63
 msgid "This channel is not configured yet."
 msgstr ""
 
@@ -3712,7 +3716,7 @@ msgstr "Video kaynağı"
 #: src/Footer.js:227
 #: src/Footer.js:232
 #: src/Footer.js:245
-#: src/views/Main/Publication.js:173
+#: src/views/Main/Publication.js:215
 msgid "Viewer"
 msgstr "Görüntüleyici"
 

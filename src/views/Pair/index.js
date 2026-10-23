@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-// Two channels side by side (e.g. a horizontal channel and the vertical channel composed from it),
-// each with its own player, stats and publications.
+// Two channels side by side: a (the horizontal channel) gets 2/3 of the width with the publications of
+// both channels below it, b (the vertical channel composed from it) 1/3, so its player can be tall.
 export default function Pair(props) {
 	const classes = useStyles();
 	const navigate = useNavigate();
@@ -30,9 +30,15 @@ export default function Pair(props) {
 	const theme = useTheme();
 	const twoColumns = useMediaQuery(theme.breakpoints.up('md'));
 
-	// Side by side, a vertical player is about 1.3x as high as a 16:9 player in the other column
-	// (column = 50cqw, minus the paddings of the panel), so both look about the same size.
-	const verticalPlayerHeight = twoColumns ? 'min(75vh, calc((50cqw - 66px) * 0.5625 * 1.3))' : 'min(70vh, 746px)';
+	// The vertical player is about 1.3x as high as the 16:9 player in the wide column
+	// (column = 66.67cqw, minus the paddings of the panel), but never higher than 80% of the window.
+	const verticalPlayerHeight = twoColumns ? 'min(80vh, calc((66.67cqw - 66px) * 0.5625 * 1.3))' : 'min(70vh, 746px)';
+
+	// use more of the screen than the other pages
+	React.useEffect(() => {
+		document.documentElement.style.setProperty('--content-max-width', '1700px');
+		return () => document.documentElement.style.removeProperty('--content-max-width');
+	}, []);
 
 	React.useEffect(() => {
 		if (props.restreamer.GetChannel(_a) === null || props.restreamer.GetChannel(_b) === null) {
@@ -59,18 +65,15 @@ export default function Pair(props) {
 		</Paper>
 	);
 
-	const column = (channelid) => (
-		<Grid item xs={12} md={6} key={channelid}>
-			<ChannelPanel
-				restreamer={props.restreamer}
-				channelid={channelid}
-				unconfigured={unconfigured}
-				onEdit={handleEdit(channelid)}
-				onInvalid={() => navigate('/', { replace: true })}
-				verticalPlayerHeight={verticalPlayerHeight}
-			/>
-			<Publication restreamer={props.restreamer} channelid={channelid} />
-		</Grid>
+	const panel = (channelid) => (
+		<ChannelPanel
+			restreamer={props.restreamer}
+			channelid={channelid}
+			unconfigured={unconfigured}
+			onEdit={handleEdit(channelid)}
+			onInvalid={() => navigate('/', { replace: true })}
+			verticalPlayerHeight={verticalPlayerHeight}
+		/>
 	);
 
 	const label = (channelid) => {
@@ -78,18 +81,21 @@ export default function Pair(props) {
 		return channel && channel.name ? channel.name : channelid;
 	};
 
+	const channels = [
+		{ channelid: _a, label: label(_a), color: '#40c4ff' },
+		{ channelid: _b, label: label(_b), color: '#ffd740' },
+	];
+
 	return (
 		<Grid container justifyContent="center" spacing={1} className={classes.gridContainerL1}>
-			<ActivityPanel
-				key={`${_a}/${_b}`}
-				restreamer={props.restreamer}
-				channels={[
-					{ channelid: _a, label: label(_a), color: '#40c4ff' },
-					{ channelid: _b, label: label(_b), color: '#ffd740' },
-				]}
-			/>
-			{column(_a)}
-			{column(_b)}
+			<ActivityPanel key={`${_a}/${_b}`} restreamer={props.restreamer} channels={channels} />
+			<Grid item xs={12} md={8}>
+				{panel(_a)}
+				<Publication restreamer={props.restreamer} channels={channels} />
+			</Grid>
+			<Grid item xs={12} md={4}>
+				{panel(_b)}
+			</Grid>
 		</Grid>
 	);
 }

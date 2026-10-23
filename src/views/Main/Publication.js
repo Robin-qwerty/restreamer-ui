@@ -6,6 +6,9 @@ import makeStyles from '@mui/styles/makeStyles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
+import LensIcon from '@mui/icons-material/Lens';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import PersonIcon from '@mui/icons-material/Person';
 import Typography from '@mui/material/Typography';
 
@@ -18,6 +21,10 @@ import PaperHeader from '../../misc/PaperHeader';
 import Services from '../Publication/Services';
 
 const useStyles = makeStyles((theme) => ({
+	channelLabel: {
+		marginTop: '.6em',
+		opacity: 0.85,
+	},
 	viewerCount: {
 		fontSize: '3.5rem',
 		fontWeight: 600,
@@ -50,6 +57,11 @@ export default function Publication(props) {
 	const navigate = useNavigate();
 	const services = Services.IDs();
 	const [$egresses, setEgresses] = React.useState([]);
+	const [$addMenu, setAddMenu] = React.useState(null);
+
+	// One channel (channelid) or several (channels: [{ channelid, label, color }]), e.g. on the dual view
+	const channels = props.channels.length !== 0 ? props.channels : [{ channelid: props.channelid, label: '', color: '' }];
+	const multiple = channels.length > 1;
 	const [$session, setSession] = React.useState({
 		viewer: 0,
 		bandwidth: 0,
@@ -73,16 +85,19 @@ export default function Publication(props) {
 	const update = async () => {
 		const egresses = [];
 
-		const processes = await props.restreamer.ListIngestEgresses(props.channelid, services);
+		for (let c of channels) {
+			const processes = await props.restreamer.ListIngestEgresses(c.channelid, services);
 
-		for (let p of processes) {
-			egresses.push({
-				id: p.id,
-				name: p.name,
-				service: p.service,
-				index: p.index,
-				progress: p.progress,
-			});
+			for (let p of processes) {
+				egresses.push({
+					channelid: c.channelid,
+					id: p.id,
+					name: p.name,
+					service: p.service,
+					index: p.index,
+					progress: p.progress,
+				});
+			}
 		}
 
 		setEgresses(egresses);
@@ -100,11 +115,25 @@ export default function Publication(props) {
 	const handleServiceAdd = (event) => {
 		event.preventDefault();
 
-		navigate(`/${props.channelid}/publication/`);
+		if (multiple) {
+			// ask for which channel first
+			setAddMenu(event.currentTarget);
+			return;
+		}
+
+		navigate(`/${channels[0].channelid}/publication/`);
 	};
 
-	const handleServiceEdit = (service, index) => () => {
-		let target = `/${props.channelid}/publication/${service}`;
+	const handleServiceAddTo = (channelid) => () => {
+		setAddMenu(null);
+		props.restreamer.SelectChannel(channelid);
+		navigate(`/${channelid}/publication/`);
+	};
+
+	const handleServiceEdit = (channelid, service, index) => () => {
+		props.restreamer.SelectChannel(channelid);
+
+		let target = `/${channelid}/publication/${service}`;
 
 		if (service !== 'player') {
 			target = target + '/' + index;
@@ -113,18 +142,18 @@ export default function Publication(props) {
 		navigate(target);
 	};
 
-	const handleOrderChange = (id) => async (order) => {
+	const handleOrderChange = (channelid, id) => async (order) => {
 		let res = false;
 
 		if (order === 'start') {
-			res = await props.restreamer.StartEgress(props.channelid, id);
+			res = await props.restreamer.StartEgress(channelid, id);
 		} else if (order === 'restart') {
-			res = await props.restreamer.StopEgress(props.channelid, id);
+			res = await props.restreamer.StopEgress(channelid, id);
 			if (res === true) {
-				res = await props.restreamer.StartEgress(props.channelid, id);
+				res = await props.restreamer.StartEgress(channelid, id);
 			}
 		} else if (order === 'stop') {
-			res = await props.restreamer.StopEgress(props.channelid, id);
+			res = await props.restreamer.StopEgress(channelid, id);
 		}
 
 		return res;
@@ -136,25 +165,38 @@ export default function Publication(props) {
 
 	let egresses = [];
 
-	for (let e of $egresses.values()) {
-		egresses.push(
-			<React.Fragment key={e.id}>
-				<Grid item xs={12}>
-					<Divider />
-				</Grid>
-				<Grid item xs={12}>
-					<Egress
-						service={e.service}
-						name={e.name}
-						state={e.progress.state}
-						order={e.progress.order}
-						reconnect={e.progress.reconnect !== -1}
-						onEdit={handleServiceEdit(e.service, e.index)}
-						onOrder={handleOrderChange(e.id)}
-					/>
-				</Grid>
-			</React.Fragment>
-		);
+	for (let c of channels) {
+		if (multiple) {
+			egresses.push(
+				<Grid item xs={12} key={'label:' + c.channelid} className={classes.channelLabel}>
+					<Typography variant="body2" component="div">
+						<LensIcon style={{ color: c.color, fontSize: '.8rem', marginRight: 6, verticalAlign: 'middle' }} />
+						{c.label}
+					</Typography>
+				</Grid>,
+			);
+		}
+
+		for (let e of $egresses.filter((x) => x.channelid === c.channelid)) {
+			egresses.push(
+				<React.Fragment key={e.id}>
+					<Grid item xs={12}>
+						<Divider />
+					</Grid>
+					<Grid item xs={12}>
+						<Egress
+							service={e.service}
+							name={e.name}
+							state={e.progress.state}
+							order={e.progress.order}
+							reconnect={e.progress.reconnect !== -1}
+							onEdit={handleServiceEdit(c.channelid, e.service, e.index)}
+							onOrder={handleOrderChange(c.channelid, e.id)}
+						/>
+					</Grid>
+				</React.Fragment>,
+			);
+		}
 	}
 
 	return (
@@ -188,11 +230,23 @@ export default function Publication(props) {
 					{egresses}
 				</Grid>
 			</Paper>
+			<Menu anchorEl={$addMenu} open={$addMenu !== null} onClose={() => setAddMenu(null)} disableScrollLock>
+				<MenuItem disabled>
+					<Trans>Add a publication to</Trans>
+				</MenuItem>
+				{channels.map((c) => (
+					<MenuItem key={c.channelid} onClick={handleServiceAddTo(c.channelid)}>
+						<LensIcon style={{ color: c.color, fontSize: '.8rem', marginRight: 8 }} />
+						{c.label}
+					</MenuItem>
+				))}
+			</Menu>
 		</React.Fragment>
 	);
 }
 
 Publication.defaultProps = {
 	channelid: '',
+	channels: [],
 	restreamer: null,
 };

@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 		'& .MainContent-item': {
-			maxWidth: '980px',
+			// pages can widen the content, e.g. the dual view (see views/Pair)
+			maxWidth: 'var(--content-max-width, 980px)',
 		},
 	},
 }));

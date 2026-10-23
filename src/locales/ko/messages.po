@@ -80,6 +80,10 @@ msgstr ""
 msgid "Add"
 msgstr "추가"
 
+#: src/views/Main/Publication.js:235
+msgid "Add a publication to"
+msgstr ""
+
 #: src/misc/modals/Hint.js:154
 msgid "Add Audio"
 msgstr ""
@@ -1500,7 +1504,7 @@ msgstr ""
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
-#: src/views/Main/Publication.js:184
+#: src/views/Main/Publication.js:226
 msgid "kbit/s"
 msgstr "kbit/s"
 
@@ -2348,7 +2352,7 @@ msgstr "송출 웹사이트 설정 저장"
 
 #: src/views/Main/ActivityLog.js:246
 #: src/views/Main/ActivityLog.js:534
-#: src/views/Main/Publication.js:163
+#: src/views/Main/Publication.js:205
 msgid "Publications"
 msgstr "공개"
 
@@ -3293,7 +3297,7 @@ msgstr "설정에 오류가 있습니다. 설정을 저장하지 않습니다."
 msgid "There's no login method available."
 msgstr "로그인 할 수 있는 방법이 없습니다."
 
-#: src/views/Pair/index.js:57
+#: src/views/Pair/index.js:63
 msgid "This channel is not configured yet."
 msgstr ""
 
@@ -3712,7 +3716,7 @@ msgstr "영상 원본"
 #: src/Footer.js:227
 #: src/Footer.js:232
 #: src/Footer.js:245
-#: src/views/Main/Publication.js:173
+#: src/views/Main/Publication.js:215
 msgid "Viewer"
 msgstr "뷰어"
 

@@ -80,6 +80,10 @@ msgstr ""
 msgid "Add"
 msgstr "Adicione"
 
+#: src/views/Main/Publication.js:235
+msgid "Add a publication to"
+msgstr ""
+
 #: src/misc/modals/Hint.js:154
 msgid "Add Audio"
 msgstr ""
@@ -1504,7 +1508,7 @@ msgstr ""
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
-#: src/views/Main/Publication.js:184
+#: src/views/Main/Publication.js:226
 msgid "kbit/s"
 msgstr "kbit/s"
 
@@ -2352,7 +2356,7 @@ msgstr "Configurações do site de publicação salvas"
 
 #: src/views/Main/ActivityLog.js:246
 #: src/views/Main/ActivityLog.js:534
-#: src/views/Main/Publication.js:163
+#: src/views/Main/Publication.js:205
 msgid "Publications"
 msgstr "Publicações"
 
@@ -3297,7 +3301,7 @@ msgstr "Houve alguns erros nas configurações. As configurações não foram sa
 msgid "There's no login method available."
 msgstr "Não há nenhum método de login disponível."
 
-#: src/views/Pair/index.js:57
+#: src/views/Pair/index.js:63
 msgid "This channel is not configured yet."
 msgstr ""
 
@@ -3716,7 +3720,7 @@ msgstr "Fonte do vídeo"
 #: src/Footer.js:227
 #: src/Footer.js:232
 #: src/Footer.js:245
-#: src/views/Main/Publication.js:173
+#: src/views/Main/Publication.js:215
 msgid "Viewer"
 msgstr "Visualizador"
 
