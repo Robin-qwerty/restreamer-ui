@@ -1,6 +1,8 @@
 import React from 'react';
 
 import makeStyles from '@mui/styles/makeStyles';
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 // An area with a fixed aspect ratio that contains movable and resizable rectangles.
 // All rectangles use normalized coordinates (0..1) relative to the area.
@@ -48,6 +50,26 @@ const useStyles = makeStyles((theme) => ({
 		boxSizing: 'border-box',
 		border: `2px solid ${theme.palette.common.black}`,
 	},
+	edge: {
+		position: 'absolute',
+		boxSizing: 'border-box',
+		border: `2px solid ${theme.palette.common.black}`,
+		borderRadius: 3,
+	},
+	lock: {
+		position: 'absolute',
+		top: 2,
+		right: 2,
+		zIndex: 11,
+		display: 'flex',
+		padding: 2,
+		borderRadius: 3,
+		cursor: 'pointer',
+		color: theme.palette.common.black,
+		'& svg': {
+			fontSize: '1rem',
+		},
+	},
 }));
 
 const MIN_SIZE = 0.02;
@@ -55,7 +77,8 @@ const MIN_SIZE = 0.02;
 const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
 // Apply a pointer movement (dx, dy in normalized units) to a rectangle.
-// mode is 'move' or a corner ('nw', 'ne', 'sw', 'se'). ratio is the normalized w/h ratio to keep, or 0.
+// mode is 'move', a corner ('nw', 'ne', 'sw', 'se') or an edge ('n', 'e', 's', 'w').
+// ratio is the normalized w/h ratio to keep while resizing from a corner, or 0.
 const applyDrag = (start, mode, dx, dy, ratio) => {
 	if (mode === 'move') {
 		return {
@@ -67,6 +90,13 @@ const applyDrag = (start, mode, dx, dy, ratio) => {
 
 	const west = mode.includes('w');
 	const north = mode.includes('n');
+	// an edge only changes one side
+	const horizontal = west || mode.includes('e');
+	const vertical = north || mode.includes('s');
+
+	if (!horizontal || !vertical) {
+		ratio = 0;
+	}
 
 	// the fixed corner
 	const fx = west ? start.x + start.w : start.x;
@@ -76,8 +106,8 @@ const applyDrag = (start, mode, dx, dy, ratio) => {
 	const maxW = west ? fx : 1 - fx;
 	const maxH = north ? fy : 1 - fy;
 
-	let w = clamp(start.w + (west ? -dx : dx), MIN_SIZE, maxW);
-	let h = clamp(start.h + (north ? -dy : dy), MIN_SIZE, maxH);
+	let w = horizontal ? clamp(start.w + (west ? -dx : dx), MIN_SIZE, maxW) : start.w;
+	let h = vertical ? clamp(start.h + (north ? -dy : dy), MIN_SIZE, maxH) : start.h;
 
 	if (ratio > 0) {
 		// follow the dominant direction, then fit into the available space
@@ -206,6 +236,43 @@ export default function RectEditor(props) {
 									onPointerDown={handlePointerDown(rect, corner)}
 								/>
 							))}
+						{selected &&
+							rect.ratio === 0 &&
+							['n', 'e', 's', 'w'].map((edge) => {
+								const across = edge === 'n' || edge === 's';
+								return (
+									<span
+										key={edge}
+										className={classes.edge}
+										style={{
+											backgroundColor: rect.color,
+											zIndex: 10,
+											cursor: across ? 'ns-resize' : 'ew-resize',
+											width: across ? 22 : 10,
+											height: across ? 10 : 22,
+											top: edge === 'n' ? -6 : edge === 's' ? 'auto' : 'calc(50% - 11px)',
+											bottom: edge === 's' ? -6 : 'auto',
+											left: edge === 'w' ? -6 : edge === 'e' ? 'auto' : 'calc(50% - 11px)',
+											right: edge === 'e' ? -6 : 'auto',
+										}}
+										onPointerDown={handlePointerDown(rect, edge)}
+									/>
+								);
+							})}
+						{selected && typeof props.onToggleLock === 'function' && (
+							<span
+								className={classes.lock}
+								style={{ backgroundColor: rect.color }}
+								title={rect.locked ? props.lockTitle : props.unlockTitle}
+								onPointerDown={(event) => {
+									event.preventDefault();
+									event.stopPropagation();
+									props.onToggleLock(rect.id);
+								}}
+							>
+								{rect.locked ? <LockIcon /> : <LockOpenIcon />}
+							</span>
+						)}
 					</div>
 				);
 			})}
@@ -219,6 +286,9 @@ RectEditor.defaultProps = {
 	selected: '',
 	fill: false,
 	onSelect: function (id) {},
+	onToggleLock: null,
+	lockTitle: '',
+	unlockTitle: '',
 	onChange: function (id, rect) {},
 };
 

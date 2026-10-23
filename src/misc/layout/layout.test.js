@@ -101,3 +101,20 @@ test('layout: output streams', () => {
 
 	expect(L.createOutputStreams({ source: 'abc', encoding: { audio: 'none' } }, source).length).toBe(1);
 });
+
+test('layout: resize to aspect keeps one side and the center', () => {
+	// wider: keep the height
+	expect(L.resizeToAspect({ x: 100, y: 100, w: 200, h: 200 }, 2, 'h', 1080, 1920)).toEqual({ x: 0, y: 100, w: 400, h: 200 });
+	// taller: keep the width
+	expect(L.resizeToAspect({ x: 100, y: 100, w: 200, h: 200 }, 0.5, 'w', 1080, 1920)).toEqual({ x: 100, y: 0, w: 200, h: 400 });
+	// too big for the bounds: shrink and keep the aspect
+	const r = L.resizeToAspect({ x: 0, y: 0, w: 1000, h: 500 }, 4, 'h', 1920, 1080);
+	expect(r.w).toBe(1920);
+	expect(r.h).toBe(480);
+
+	expect(L.keptSide({ w: 100, h: 100 }, { w: 150, h: 100 })).toBe('h');
+	expect(L.keptSide({ w: 100, h: 100 }, { w: 100, h: 130 })).toBe('w');
+
+	expect(L.initRegion({}).stretch).toBe(false);
+	expect(L.initRegion({ stretch: true }).stretch).toBe(true);
+});

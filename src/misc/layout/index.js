@@ -84,6 +84,8 @@ const initRegion = (region, canvas) => {
 		name: region.name || '',
 		// keep the aspect ratio of the crop and the placement in sync while resizing
 		lock: region.lock !== false,
+		// unlocked only: let width and height of the placement change independently of the crop (distorts the picture)
+		stretch: region.stretch === true,
 		crop: {
 			x: round4(crop.x),
 			y: round4(crop.y),
@@ -200,6 +202,47 @@ const presetFit = (layout, srcWidth, srcHeight) => {
 	];
 
 	return layout;
+};
+
+// Give a rectangle (pixels) a new aspect ratio (w/h). keep is the side that stays the same ('w' or 'h'),
+// the rectangle keeps its center and is shrunk if it does not fit into maxW x maxH.
+const resizeToAspect = (rect, aspect, keep, maxW, maxH) => {
+	let w = rect.w;
+	let h = rect.h;
+
+	if (keep === 'w') {
+		h = w / aspect;
+	} else {
+		w = h * aspect;
+	}
+
+	if (w > maxW) {
+		w = maxW;
+		h = w / aspect;
+	}
+
+	if (h > maxH) {
+		h = maxH;
+		w = h * aspect;
+	}
+
+	const cx = rect.x + rect.w / 2;
+	const cy = rect.y + rect.h / 2;
+
+	return {
+		x: clamp(cx - w / 2, 0, maxW - w),
+		y: clamp(cy - h / 2, 0, maxH - h),
+		w: w,
+		h: h,
+	};
+};
+
+// The side of a resized rectangle that changed the least (relative), i.e. the one the other box keeps.
+const keptSide = (before, after) => {
+	const dw = Math.abs(after.w - before.w) / before.w;
+	const dh = Math.abs(after.h - before.h) / before.h;
+
+	return dw > dh ? 'h' : 'w';
 };
 
 const presets = {
@@ -427,6 +470,8 @@ export {
 	initLayout,
 	initRegion,
 	presets,
+	resizeToAspect,
+	keptSide,
 	buildFilterComplex,
 	createVideoEncoderOptions,
 	createAudioEncoderOptions,

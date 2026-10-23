@@ -217,13 +217,44 @@ export default function Layout(props) {
 		setImageVersion($imageVersion + 1);
 	};
 
+	// Unlocked regions can get any shape. Unless "stretch" is on, the other box follows the new shape,
+	// so the picture is cropped differently instead of being distorted.
+	const follows = (region) => !region.lock && !region.stretch;
+
 	const handleCropChange = (id, rect) => {
-		updateRegion(id, { crop: rect });
+		const region = $layout.regions.find((r) => r.id === id);
+		const change = { crop: rect };
+
+		if (region && follows(region)) {
+			const { width, height } = $layout.canvas;
+			const aspect = (rect.w * $source.width) / (rect.h * $source.height);
+			change.dst = L.resizeToAspect(region.dst, aspect, L.keptSide(region.crop, rect), width, height);
+		}
+
+		updateRegion(id, change);
 	};
 
 	const handleDstChange = (id, rect) => {
 		const { width, height } = $layout.canvas;
-		updateRegion(id, { dst: { x: rect.x * width, y: rect.y * height, w: rect.w * width, h: rect.h * height } });
+		const dst = { x: rect.x * width, y: rect.y * height, w: rect.w * width, h: rect.h * height };
+		const region = $layout.regions.find((r) => r.id === id);
+		const change = { dst: dst };
+
+		if (region && follows(region)) {
+			// in source pixels
+			const sw = $source.width;
+			const sh = $source.height;
+			const crop = { x: region.crop.x * sw, y: region.crop.y * sh, w: region.crop.w * sw, h: region.crop.h * sh };
+			const c = L.resizeToAspect(crop, dst.w / dst.h, L.keptSide(region.dst, dst), sw, sh);
+			change.crop = { x: c.x / sw, y: c.y / sh, w: c.w / sw, h: c.h / sh };
+		}
+
+		updateRegion(id, change);
+	};
+
+	const handleToggleLock = (id) => {
+		const region = $layout.regions.find((r) => r.id === id);
+		handleLockChange(id)({ target: { checked: !region.lock } });
 	};
 
 	const handlePreset = (name) => () => {
@@ -293,7 +324,8 @@ export default function Layout(props) {
 
 		if (lock) {
 			// match the placement to the crop, keeping its width
-			updateRegion(id, { lock: true, dst: { ...region.dst, h: region.dst.w / cropAspect(region) } });
+			const { width, height } = $layout.canvas;
+			updateRegion(id, { lock: true, dst: L.resizeToAspect(region.dst, cropAspect(region), 'w', width, height) });
 		} else {
 			updateRegion(id, { lock: false });
 		}
@@ -440,6 +472,7 @@ export default function Layout(props) {
 		h: r.crop.h,
 		// in normalized source units, the w/h ratio that matches the placement
 		ratio: r.lock ? (dstAspect(r) * $source.height) / $source.width : 0,
+		locked: r.lock,
 	}));
 
 	const dstRects = $layout.regions.map((r) => ({
@@ -451,6 +484,7 @@ export default function Layout(props) {
 		w: r.dst.w / CW,
 		h: r.dst.h / CH,
 		ratio: r.lock ? (cropAspect(r) * CH) / CW : 0,
+		locked: r.lock,
 	}));
 
 	return (
@@ -491,6 +525,9 @@ export default function Layout(props) {
 													selected={$selected}
 													onSelect={setSelected}
 													onChange={handleCropChange}
+													onToggleLock={handleToggleLock}
+													lockTitle={i18n._(t`Proportions locked, click to unlock`)}
+													unlockTitle={i18n._(t`Proportions unlocked, click to lock`)}
 													fill
 												>
 													<img ref={image} src={snapshot} alt="" onLoad={handleImageLoad} style={{ width: '100%', height: '100%' }} />
@@ -579,6 +616,28 @@ export default function Layout(props) {
 																control={<Switch checked={selected.lock} onChange={handleLockChange(selected.id)} />}
 																label={<Trans>Keep proportions</Trans>}
 															/>
+															{!selected.lock && (
+																<FormControlLabel
+																	control={
+																		<Switch
+																			checked={selected.stretch}
+																			onChange={(event) => updateRegion(selected.id, { stretch: event.target.checked })}
+																		/>
+																	}
+																	label={<Trans>Stretch picture</Trans>}
+																/>
+															)}
+															<Typography variant="body2" style={{ opacity: 0.7 }}>
+																{selected.lock ? (
+																	<Trans>Unlock to change width and height separately (lock icon on the box).</Trans>
+																) : selected.stretch ? (
+																	<Trans>Width and height are free, the picture is stretched to fit.</Trans>
+																) : (
+																	<Trans>
+																		Drag the edges to change width or height. The crop follows, so nothing is stretched.
+																	</Trans>
+																)}
+															</Typography>
 														</Grid>
 														<Grid item xs={12}>
 															<Typography variant="body2">
@@ -703,6 +762,9 @@ export default function Layout(props) {
 												selected={$selected}
 												onSelect={setSelected}
 												onChange={handleDstChange}
+												onToggleLock={handleToggleLock}
+												lockTitle={i18n._(t`Proportions locked, click to unlock`)}
+												unlockTitle={i18n._(t`Proportions unlocked, click to lock`)}
 											>
 												<Preview layout={$layout} image={image.current} imageVersion={$imageVersion} />
 											</RectEditor>

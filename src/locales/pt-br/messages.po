@@ -241,7 +241,7 @@ msgstr "Aplicação"
 msgid "Are you sure you want to abort the wizard?"
 msgstr "Você tem certeza de que quer abortar o feiticeiro?"
 
-#: src/views/Layout/index.js:673
+#: src/views/Layout/index.js:732
 #: src/views/Publication/Add.js:527
 msgid "Audio"
 msgstr "Áudio"
@@ -326,7 +326,7 @@ msgstr "avoid_negative_ts"
 msgid "Back"
 msgstr "Voltar"
 
-#: src/views/Layout/index.js:624
+#: src/views/Layout/index.js:683
 msgid "Background"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr "Tipos de cache em bloco"
 msgid "blue"
 msgstr "azul"
 
-#: src/views/Layout/index.js:628
+#: src/views/Layout/index.js:687
 msgid "Blurred source"
 msgstr ""
 
@@ -454,7 +454,7 @@ msgstr "Cliques de captura"
 msgid "Capture cursor"
 msgstr "Captura do cursor"
 
-#: src/views/Layout/index.js:506
+#: src/views/Layout/index.js:543
 msgid "Center crop"
 msgstr ""
 
@@ -523,7 +523,7 @@ msgstr "Pedaço"
 #: src/misc/ModalContent.js:77
 #: src/misc/modals/Hint.js:181
 #: src/views/Edit/index.js:627
-#: src/views/Layout/index.js:719
+#: src/views/Layout/index.js:781
 #: src/views/Playersite.js:823
 #: src/views/Publication/Add.js:404
 #: src/views/Publication/Add.js:558
@@ -544,8 +544,8 @@ msgid "Codec"
 msgstr "Codec"
 
 #: src/views/Edit/Sources/VirtualAudio.js:110
-#: src/views/Layout/index.js:629
-#: src/views/Layout/index.js:638
+#: src/views/Layout/index.js:688
+#: src/views/Layout/index.js:697
 msgid "Color"
 msgstr "Cor"
 
@@ -582,7 +582,7 @@ msgid "Connecting"
 msgstr ""
 
 #: src/misc/ActionButton.js:12
-#: src/views/Main/ChannelPanel.js:324
+#: src/views/Main/ChannelPanel.js:327
 #: src/views/Publication/Process.js:40
 msgid "Connecting ..."
 msgstr "Conectando ..."
@@ -609,7 +609,7 @@ msgstr "Modo Quantizador Constante (-1 a 255)."
 msgid "Content"
 msgstr "Conteúdo"
 
-#: src/views/Main/ChannelPanel.js:375
+#: src/views/Main/ChannelPanel.js:388
 msgid "Content URL"
 msgstr "URL do conteúdo"
 
@@ -645,7 +645,7 @@ msgstr ""
 msgid "Creative Commons"
 msgstr "Creative Commons"
 
-#: src/views/Layout/index.js:602
+#: src/views/Layout/index.js:661
 msgid "Crop from source (%)"
 msgstr ""
 
@@ -812,11 +812,11 @@ msgstr "Atraso (ms)"
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/views/Layout/index.js:723
+#: src/views/Layout/index.js:785
 msgid "Delete channel"
 msgstr ""
 
-#: src/views/Layout/index.js:401
+#: src/views/Layout/index.js:433
 msgid "Delete this channel and all its publications?"
 msgstr ""
 
@@ -912,8 +912,12 @@ msgstr "Docs"
 msgid "Documentation"
 msgstr "Documentação"
 
-#: src/views/Layout/index.js:499
+#: src/views/Layout/index.js:536
 msgid "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
+msgstr ""
+
+#: src/views/Layout/index.js:636
+msgid "Drag the edges to change width or height. The crop follows, so nothing is stretched."
 msgstr ""
 
 #: src/views/Main/ActivityLog.js:208
@@ -1083,7 +1087,7 @@ msgstr "Erro ao copiar dados para a prancheta"
 msgid "Error, retry in {0}s"
 msgstr ""
 
-#: src/views/Main/ChannelPanel.js:336
+#: src/views/Main/ChannelPanel.js:339
 #: src/views/Publication/Process.js:64
 msgid "Error: {0}"
 msgstr "Erro: {0}"
@@ -1124,7 +1128,7 @@ msgstr "Ampliar o rodapé"
 msgid "Extend header"
 msgstr "Ampliar cabeçalho"
 
-#: src/views/Layout/index.js:509
+#: src/views/Layout/index.js:546
 msgid "Facecam + gameplay"
 msgstr ""
 
@@ -1146,7 +1150,7 @@ msgid "Failed to refresh token: {0}"
 msgstr "Falha em atualizar a ficha: {0}"
 
 #: src/views/Edit/index.js:322
-#: src/views/Layout/index.js:356
+#: src/views/Layout/index.js:388
 msgid "Failed to save ingest metadata"
 msgstr "Falha em salvar metadados ingeridos"
 
@@ -1163,12 +1167,12 @@ msgid "Failed to store publication service ({0})"
 msgstr "Falha no serviço de publicação de lojas ({0})"
 
 #: src/views/Edit/index.js:315
-#: src/views/Layout/index.js:339
+#: src/views/Layout/index.js:371
 msgid "Failed to update ingest process ({0})"
 msgstr "Falha em atualizar o processo de ingestão ({0})"
 
 #: src/views/Edit/index.js:328
-#: src/views/Layout/index.js:361
+#: src/views/Layout/index.js:393
 msgid "Failed to update ingest snapshot process ({0})"
 msgstr "Falha na atualização do processo de ingestão de instantâneos ({0})"
 
@@ -1254,7 +1258,7 @@ msgstr "Framebuffer"
 #: src/misc/coders/settings/Video.js:135
 #: src/misc/filters/video/Framerate.js:65
 #: src/views/Edit/Sources/Network.js:574
-#: src/views/Layout/index.js:655
+#: src/views/Layout/index.js:714
 msgid "Framerate"
 msgstr "Framerate"
 
@@ -1270,7 +1274,7 @@ msgstr "Modo Framerate"
 msgid "Frequency (Hz)"
 msgstr "Freqüência (Hz)"
 
-#: src/views/Layout/index.js:512
+#: src/views/Layout/index.js:549
 msgid "Full frame"
 msgstr ""
 
@@ -1340,7 +1344,7 @@ msgstr "Altura"
 msgid "Hide activity"
 msgstr ""
 
-#: src/views/Main/ChannelPanel.js:384
+#: src/views/Main/ChannelPanel.js:397
 msgid "HLS"
 msgstr "HLS"
 
@@ -1504,7 +1508,7 @@ msgstr ""
 msgid "kbit/s"
 msgstr "kbit/s"
 
-#: src/views/Layout/index.js:580
+#: src/views/Layout/index.js:617
 msgid "Keep proportions"
 msgstr ""
 
@@ -1517,7 +1521,7 @@ msgstr "Intervalo do quadro-chave (segundos)"
 msgid "Layout"
 msgstr "Layout"
 
-#: src/views/Layout/index.js:381
+#: src/views/Layout/index.js:413
 msgid "Layout saved"
 msgstr ""
 
@@ -1688,7 +1692,7 @@ msgstr "Normalização do ruído"
 msgid "Low latency (Buffer)"
 msgstr "Baixa latência (Buffer)"
 
-#: src/views/Main/ChannelPanel.js:293
+#: src/views/Main/ChannelPanel.js:291
 #: src/views/Playersite.js:367
 msgid "Main channel"
 msgstr "Canal principal"
@@ -1859,7 +1863,7 @@ msgstr "Direito mudo"
 #: src/misc/ChannelList.js:442
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
-#: src/views/Layout/index.js:464
+#: src/views/Layout/index.js:498
 #: src/views/Playersite.js:521
 #: src/views/Settings.js:1344
 msgid "Name"
@@ -1900,7 +1904,7 @@ msgstr "Não"
 
 #: src/views/Edit/Sources/NoAudio.js:45
 #: src/views/Edit/Wizard/Audio.js:98
-#: src/views/Layout/index.js:676
+#: src/views/Layout/index.js:735
 msgid "No audio"
 msgstr "Sem áudio"
 
@@ -1941,7 +1945,7 @@ msgstr "Não foi encontrado nenhum codificador adequado."
 msgid "No suitable filter found."
 msgstr "Não foi encontrado nenhum filtro adequado."
 
-#: src/views/Main/ChannelPanel.js:312
+#: src/views/Main/ChannelPanel.js:315
 #: src/views/Publication/Player.js:356
 msgid "No video"
 msgstr "Nenhum vídeo"
@@ -2019,7 +2023,7 @@ msgstr "Uma referência por linha, por exemplo http://www.example.com"
 msgid "Open"
 msgstr "Aberto"
 
-#: src/views/Layout/index.js:697
+#: src/views/Layout/index.js:756
 msgid "Output"
 msgstr ""
 
@@ -2044,7 +2048,7 @@ msgstr "Frases para criptografia SRT."
 msgid "Passphrase must be between 10 and 79 characters long"
 msgstr "A frase-senha deve ter entre 10 e 79 caracteres"
 
-#: src/views/Layout/index.js:674
+#: src/views/Layout/index.js:733
 msgid "Passthrough"
 msgstr ""
 
@@ -2133,7 +2137,7 @@ msgstr "Lista de reprodução"
 msgid "Playlist version (M3U8). Version 3 has the best browser/client compatibility."
 msgstr "Versão da lista de reprodução (M3U8). A versão 3 tem a melhor compatibilidade navegador/cliente."
 
-#: src/views/Main/ChannelPanel.js:341
+#: src/views/Main/ChannelPanel.js:344
 msgid "Please check the <0>process log</0>"
 msgstr "Por favor, verifique o <0>log de processo</0>"
 
@@ -2203,7 +2207,7 @@ msgstr "Porto"
 msgid "Position"
 msgstr "Posição"
 
-#: src/views/Layout/index.js:585
+#: src/views/Layout/index.js:644
 msgid "Position in output (px)"
 msgstr ""
 
@@ -2262,8 +2266,8 @@ msgid "Process control"
 msgstr "Controle de processo"
 
 #: src/views/Main/ActivityLog.js:552
-#: src/views/Main/ChannelPanel.js:419
-#: src/views/Main/ChannelPanel.js:435
+#: src/views/Main/ChannelPanel.js:432
+#: src/views/Main/ChannelPanel.js:448
 #: src/views/Publication/Edit.js:494
 #: src/views/Publication/Edit.js:613
 msgid "Process details"
@@ -2271,8 +2275,8 @@ msgstr "Detalhes do processo"
 
 #: src/views/Main/ActivityLog.js:303
 #: src/views/Main/ActivityLog.js:556
-#: src/views/Main/ChannelPanel.js:422
-#: src/views/Main/ChannelPanel.js:443
+#: src/views/Main/ChannelPanel.js:435
+#: src/views/Main/ChannelPanel.js:456
 #: src/views/Publication/Edit.js:497
 #: src/views/Publication/Edit.js:621
 msgid "Process report"
@@ -2292,6 +2296,16 @@ msgstr "Processamento e controle"
 #: src/views/Edit/Wizard/VideoProfile.js:27
 msgid "Profile"
 msgstr "Perfil"
+
+#: src/views/Layout/index.js:529
+#: src/views/Layout/index.js:766
+msgid "Proportions locked, click to unlock"
+msgstr ""
+
+#: src/views/Layout/index.js:530
+#: src/views/Layout/index.js:767
+msgid "Proportions unlocked, click to lock"
+msgstr ""
 
 #: src/views/Edit/Sources/Network.js:856
 #: src/views/Publication/Services/Akamai.js:144
@@ -2389,11 +2403,11 @@ msgstr ""
 msgid "Read input at native speed"
 msgstr "Ler a entrada em velocidade nativa"
 
-#: src/views/Layout/index.js:684
+#: src/views/Layout/index.js:743
 msgid "Reads the source from its HLS stream. Enable the RTMP server in the settings and in the source channel for lower delay."
 msgstr ""
 
-#: src/views/Layout/index.js:682
+#: src/views/Layout/index.js:741
 msgid "Reads the source from the internal RTMP server (low delay)."
 msgstr ""
 
@@ -2428,7 +2442,7 @@ msgid "Reconnect delay (seconds)"
 msgstr "Retardo de reconexão (segundos)"
 
 #: src/views/Main/ActivityLog.js:176
-#: src/views/Main/ChannelPanel.js:352
+#: src/views/Main/ChannelPanel.js:355
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
 msgid "Reconnecting in {0}s"
@@ -2464,20 +2478,20 @@ msgstr "Atualização"
 msgid "Region"
 msgstr "Região"
 
-#: src/views/Layout/index.js:246
-#: src/views/Layout/index.js:534
+#: src/views/Layout/index.js:277
+#: src/views/Layout/index.js:571
 msgid "Region {0}"
 msgstr ""
 
-#: src/views/Layout/index.js:572
+#: src/views/Layout/index.js:609
 msgid "Region name"
 msgstr ""
 
-#: src/views/Layout/index.js:519
+#: src/views/Layout/index.js:556
 msgid "Regions"
 msgstr ""
 
-#: src/views/Layout/index.js:561
+#: src/views/Layout/index.js:598
 msgid "Regions lower in the list are drawn on top."
 msgstr ""
 
@@ -2559,7 +2573,7 @@ msgstr "Instruções do Restreamer"
 msgid "Restreamer Service"
 msgstr "Serviço de Restreamer"
 
-#: src/views/Main/ChannelPanel.js:277
+#: src/views/Main/ChannelPanel.js:275
 msgid "Retrieving stream data ..."
 msgstr "Recuperando dados do fluxo ..."
 
@@ -2577,7 +2591,7 @@ msgstr "Padrão de teste RGB"
 msgid "Rotate"
 msgstr "Girar"
 
-#: src/views/Main/ChannelPanel.js:388
+#: src/views/Main/ChannelPanel.js:401
 #: src/views/Settings.js:1239
 #: src/views/Settings.js:1920
 msgid "RTMP"
@@ -2641,7 +2655,7 @@ msgstr "Amostragem"
 #: src/misc/modals/Hint.js:186
 #: src/views/Edit/index.js:638
 #: src/views/Edit/Wizard/License.js:43
-#: src/views/Layout/index.js:735
+#: src/views/Layout/index.js:797
 #: src/views/Playersite.js:829
 #: src/views/Publication/Add.js:567
 #: src/views/Publication/Edit.js:601
@@ -2713,7 +2727,7 @@ msgstr "Segmentação"
 msgid "Select a device:"
 msgstr "Selecione um dispositivo:"
 
-#: src/views/Layout/index.js:333
+#: src/views/Layout/index.js:365
 msgid "Select a source channel and add at least one region."
 msgstr ""
 
@@ -2890,7 +2904,7 @@ msgid "Size"
 msgstr "Tamanho"
 
 #: src/views/Edit/index.js:549
-#: src/views/Main/ChannelPanel.js:402
+#: src/views/Main/ChannelPanel.js:415
 msgid "Snapshot"
 msgstr "Snapshot"
 
@@ -2913,7 +2927,7 @@ msgstr ""
 #: src/misc/controls/Source.js:74
 #: src/views/Edit/Sources/VirtualAudio.js:88
 #: src/views/Edit/Sources/VirtualVideo.js:112
-#: src/views/Layout/index.js:482
+#: src/views/Layout/index.js:516
 #: src/views/Publication/Add.js:475
 #: src/views/Publication/Edit.js:515
 msgid "Source"
@@ -2926,7 +2940,7 @@ msgstr "Fonte"
 msgid "Source & Encoding"
 msgstr "Fonte e Codificação"
 
-#: src/views/Layout/index.js:467
+#: src/views/Layout/index.js:501
 msgid "Source channel"
 msgstr ""
 
@@ -2939,7 +2953,7 @@ msgstr "Velocidade"
 msgid "Speed Preset"
 msgstr "Velocidade predefinida"
 
-#: src/views/Main/ChannelPanel.js:393
+#: src/views/Main/ChannelPanel.js:406
 #: src/views/Settings.js:1240
 #: src/views/Settings.js:2019
 msgid "SRT"
@@ -3061,6 +3075,10 @@ msgstr "Fonte do fluxo para o serviço de publicação (experimental)."
 #: src/views/Publication/Services/Dailymotion.js:86
 msgid "Stream URL"
 msgstr "URL do fluxo"
+
+#: src/views/Layout/index.js:627
+msgid "Stretch picture"
+msgstr ""
 
 #: src/views/Playersite.js:457
 msgid "Support datarhei Restreamer"
@@ -3279,7 +3297,7 @@ msgstr "Houve alguns erros nas configurações. As configurações não foram sa
 msgid "There's no login method available."
 msgstr "Não há nenhum método de login disponível."
 
-#: src/views/Pair/index.js:47
+#: src/views/Pair/index.js:57
 msgid "This channel is not configured yet."
 msgstr ""
 
@@ -3530,6 +3548,10 @@ msgstr "Desconhecido"
 msgid "Unknown upload error"
 msgstr "Erro de upload desconhecido"
 
+#: src/views/Layout/index.js:632
+msgid "Unlock to change width and height separately (lock icon on the box)."
+msgstr ""
+
 #: src/views/Playersite.js:635
 msgid "Unselected"
 msgstr "Não selecionado"
@@ -3642,7 +3664,7 @@ msgstr "Taxa de quadros variável (VFR)"
 msgid "velvet"
 msgstr "veludo"
 
-#: src/views/Layout/index.js:351
+#: src/views/Layout/index.js:383
 msgid "Vertical channel"
 msgstr ""
 
@@ -3650,7 +3672,7 @@ msgstr ""
 msgid "Vertical Flip"
 msgstr "Vertical Flip"
 
-#: src/views/Layout/index.js:461
+#: src/views/Layout/index.js:495
 msgid "Vertical layout"
 msgstr ""
 
@@ -3658,7 +3680,7 @@ msgstr ""
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/views/Layout/index.js:667
+#: src/views/Layout/index.js:726
 msgid "Video bitrate (kbit/s)"
 msgstr ""
 
@@ -3671,7 +3693,7 @@ msgstr ""
 msgid "Video device"
 msgstr "Dispositivo de vídeo"
 
-#: src/views/Layout/index.js:646
+#: src/views/Layout/index.js:705
 msgid "Video encoder"
 msgstr ""
 
@@ -3744,6 +3766,10 @@ msgstr "branco"
 msgid "Width"
 msgstr "Largura"
 
+#: src/views/Layout/index.js:634
+msgid "Width and height are free, the picture is stretched to fit."
+msgstr ""
+
 #: src/views/Settings.js:1701
 msgid "Write protection"
 msgstr "Proteção de escrita"
@@ -3764,7 +3790,7 @@ msgstr "Você não pode abortar o assistente porque pelo menos uma entrada deve 
 msgid "You have changed the configuration. In order for the changes to take effect, you have to restart the application. Do you want to restart now?"
 msgstr "Você mudou a configuração. Para que as mudanças tenham efeito, você tem que reiniciar a aplicação. Você quer reiniciar agora?"
 
-#: src/views/Main/ChannelPanel.js:359
+#: src/views/Main/ChannelPanel.js:362
 #: src/views/Publication/Process.js:73
 msgid "You have to reconnect manually"
 msgstr "Você tem que reconectar manualmente"

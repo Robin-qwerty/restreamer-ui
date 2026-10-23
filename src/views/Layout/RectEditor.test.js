@@ -28,3 +28,18 @@ test('rect editor: resize keeps the ratio and the bounds', () => {
 	expect(r.w).toBeCloseTo(0.02);
 	expect(r.h).toBeCloseTo(0.02);
 });
+
+test('rect editor: edges change one side only and ignore the ratio', () => {
+	let r = applyDrag(start, 'e', 0.1, 0.3, 2);
+	expect(r).toEqual({ x: 0.2, y: 0.2, w: 0.5, h: 0.4 });
+
+	r = applyDrag(start, 'n', 0.3, -0.1, 2);
+	expect(r.x).toBe(0.2);
+	expect(r.w).toBe(0.4);
+	expect(r.y).toBeCloseTo(0.1);
+	expect(r.h).toBeCloseTo(0.5);
+
+	r = applyDrag(start, 'w', 1, 0, 0);
+	expect(r.w).toBeCloseTo(0.02);
+	expect(r.x + r.w).toBeCloseTo(0.6);
+});
