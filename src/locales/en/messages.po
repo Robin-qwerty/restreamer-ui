@@ -13,6 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/misc/ChannelList.js:212
+#: src/views/Main/ActivityLog.js:253
+msgid "{0} failing"
+msgstr "{0} failing"
+
+#: src/views/Main/ActivityLog.js:249
+msgid "{0} live"
+msgstr "{0} live"
+
+#: src/views/Main/ActivityLog.js:372
+msgid "{0} times, first at {1}"
+msgstr "{0} times, first at {1}"
+
 #: src/misc/EncodingSelect.js:237
 msgid "<0>Compatibility list</0>"
 msgstr "<0>Compatibility list</0>"
@@ -42,7 +55,7 @@ msgstr "6 (+ guaranteed to start with a Key frame)"
 msgid "7 (+ fragmented MP4 format)"
 msgstr "7 (+ fragmented MP4 format)"
 
-#: src/misc/ChannelList.js:412
+#: src/misc/ChannelList.js:418
 #: src/views/Edit/index.js:653
 #: src/views/Edit/index.js:672
 #: src/views/Edit/Profile.js:599
@@ -58,7 +71,12 @@ msgstr "Abort"
 msgid "About"
 msgstr "About"
 
-#: src/misc/ChannelList.js:425
+#: src/views/Main/ActivityPanel.js:143
+#: src/views/Main/ActivityPanel.js:150
+msgid "Activity"
+msgstr "Activity"
+
+#: src/misc/ChannelList.js:431
 msgid "Add"
 msgstr "Add"
 
@@ -66,11 +84,15 @@ msgstr "Add"
 msgid "Add Audio"
 msgstr "Add Audio"
 
+#: src/misc/ChannelList.js:380
+msgid "Add channel"
+msgstr "Add channel"
+
 #: src/views/Playersite.js:733
 msgid "Add external widgets and styles to the publication site. You can find some examples on the help page."
 msgstr "Add external widgets and styles to the publication site. You can find some examples on the help page."
 
-#: src/misc/ChannelList.js:409
+#: src/misc/ChannelList.js:415
 msgid "Add new channel"
 msgstr "Add new channel"
 
@@ -168,6 +190,7 @@ msgstr "AirPlay"
 msgid "Alerting by email"
 msgstr "Alerting by email"
 
+#: src/views/Main/ActivityLog.js:530
 #: src/views/Publication/Add.js:386
 msgid "All"
 msgstr "All"
@@ -358,6 +381,18 @@ msgstr "Beep factor"
 msgid "Bitrate"
 msgstr "Bitrate"
 
+#: src/views/Main/ActivityLog.js:206
+msgid "bitrate jumps"
+msgstr "bitrate jumps"
+
+#: src/views/Main/ActivityLog.js:294
+msgid "Bitrate variation"
+msgstr "Bitrate variation"
+
+#: src/views/Main/ActivityLog.js:277
+msgid "Bitrate, last 5 min"
+msgstr "Bitrate, last 5 min"
+
 #: src/views/Settings.js:1903
 msgid "Block cache types"
 msgstr "Block cache types"
@@ -427,6 +462,7 @@ msgstr "Center crop"
 msgid "Channel \"{0}\" saved"
 msgstr "Channel \"{0}\" saved"
 
+#: src/misc/ChannelList.js:377
 #: src/views/Edit/Sources/ALSA.js:129
 msgid "Channels"
 msgstr "Channels"
@@ -513,6 +549,10 @@ msgstr "Codec"
 msgid "Color"
 msgstr "Color"
 
+#: src/views/Main/ActivityPanel.js:159
+msgid "Combined"
+msgstr "Combined"
+
 #: src/misc/modals/Process.js:134
 msgid "Command"
 msgstr "Command"
@@ -536,6 +576,10 @@ msgstr "Connected device"
 #: src/views/Publication/Process.js:54
 msgid "Connected since <0/>"
 msgstr "Connected since <0/>"
+
+#: src/views/Main/ActivityLog.js:180
+msgid "Connecting"
+msgstr "Connecting"
 
 #: src/misc/ActionButton.js:12
 #: src/views/Main/ChannelPanel.js:324
@@ -589,7 +633,7 @@ msgstr "CPU Limit (percent)"
 msgid "CPU usage limit in percent (0-100%), 0 for unlimited."
 msgstr "CPU usage limit in percent (0-100%), 0 for unlimited."
 
-#: src/views/Main/index.js:90
+#: src/views/Main/index.js:98
 msgid "Create vertical channel"
 msgstr "Create vertical channel"
 
@@ -807,6 +851,10 @@ msgstr "Disconnect"
 msgid "Disconnect & Continue"
 msgstr "Disconnect & Continue"
 
+#: src/views/Main/ActivityLog.js:176
+msgid "Disconnected"
+msgstr "Disconnected"
+
 #: src/misc/ActionButton.js:18
 #: src/views/Publication/Process.js:47
 msgid "Disconnecting ..."
@@ -864,12 +912,20 @@ msgstr "Documentation"
 msgid "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
 msgstr "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
 
-#: src/views/Main/index.js:80
-#: src/views/Main/index.js:85
+#: src/views/Main/ActivityLog.js:208
+msgid "dropped frames"
+msgstr "dropped frames"
+
+#: src/views/Main/ActivityLog.js:291
+msgid "Dropped frames"
+msgstr "Dropped frames"
+
+#: src/views/Main/index.js:88
+#: src/views/Main/index.js:93
 msgid "Dual view"
 msgstr "Dual view"
 
-#: src/views/Main/index.js:85
+#: src/views/Main/index.js:93
 msgid "Dual view {0}"
 msgstr "Dual view {0}"
 
@@ -983,7 +1039,7 @@ msgstr "Encoding"
 msgid "Encryption"
 msgstr "Encryption"
 
-#: src/misc/ChannelList.js:432
+#: src/misc/ChannelList.js:438
 msgid "Enter a name for the new channel."
 msgstr "Enter a name for the new channel."
 
@@ -1007,6 +1063,7 @@ msgstr "Entropy coder"
 #: src/views/Edit/Wizard/Error.js:16
 #: src/views/Incompatible.js:30
 #: src/views/Invalid.js:29
+#: src/views/Main/ActivityLog.js:172
 #: src/views/Publication/Process.js:63
 #: src/views/Settings.js:1202
 msgid "Error"
@@ -1018,10 +1075,18 @@ msgstr "Error"
 msgid "Error while copying data to clipboard"
 msgstr "Error while copying data to clipboard"
 
+#: src/views/Main/ActivityLog.js:172
+msgid "Error, retry in {0}s"
+msgstr "Error, retry in {0}s"
+
 #: src/views/Main/ChannelPanel.js:336
 #: src/views/Publication/Process.js:64
 msgid "Error: {0}"
 msgstr "Error: {0}"
+
+#: src/views/Main/ActivityLog.js:527
+msgid "Events"
+msgstr "Events"
 
 #: src/views/Playersite.js:773
 msgid "Expands the area above the channel list (live chat)."
@@ -1072,7 +1137,7 @@ msgstr "Failed to create publication website files."
 msgid "Failed to probe the source. Please check the <0>probe details</0>."
 msgstr "Failed to probe the source. Please check the <0>probe details</0>."
 
-#: src/utils/restreamer.js:449
+#: src/utils/restreamer.js:450
 msgid "Failed to refresh token: {0}"
 msgstr "Failed to refresh token: {0}"
 
@@ -1165,6 +1230,10 @@ msgstr "Format"
 #: src/views/Main/Progress.js:77
 msgid "FPS"
 msgstr "FPS"
+
+#: src/views/Main/ActivityLog.js:283
+msgid "FPS, last 5 min"
+msgstr "FPS, last 5 min"
 
 #: src/misc/Progress.js:144
 msgid "Frame drops"
@@ -1263,6 +1332,10 @@ msgstr "Headline"
 msgid "Height"
 msgstr "Height"
 
+#: src/views/Main/ActivityPanel.js:152
+msgid "Hide activity"
+msgstr "Hide activity"
+
 #: src/views/Main/ChannelPanel.js:384
 msgid "HLS"
 msgstr "HLS"
@@ -1351,6 +1424,11 @@ msgstr "In-memory"
 msgid "In-memory storage"
 msgstr "In-memory storage"
 
+#: src/misc/ChannelList.js:206
+#: src/misc/ChannelList.js:354
+msgid "Inactive"
+msgstr "Inactive"
+
 #: src/views/Publication/Add.js:313
 msgid "Incompatible"
 msgstr "Incompatible"
@@ -1380,6 +1458,14 @@ msgstr "Inject 3"
 msgid "Inject 4"
 msgstr "Inject 4"
 
+#: src/misc/ChannelList.js:222
+msgid "Input lost"
+msgstr "Input lost"
+
+#: src/views/Main/ActivityLog.js:264
+msgid "Input stability"
+msgstr "Input stability"
+
 #: src/views/Edit/Sources/Network.js:961
 #: src/views/Edit/Sources/Network.js:1055
 #: src/views/Edit/Wizard/Sources/InternalRTMP.js:111
@@ -1403,6 +1489,10 @@ msgstr "Interval (seconds)"
 #: src/Header.js:336
 msgid "Issue alert"
 msgstr "Issue alert"
+
+#: src/views/Main/ActivityLog.js:367
+msgid "It is restarted automatically."
+msgstr "It is restarted automatically."
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
@@ -1492,6 +1582,14 @@ msgstr "List of IP ranges in CIDR notation, e.g., 127.0.0.1/32, that the statist
 msgid "List size (segments)"
 msgstr "List size (segments)"
 
+#: src/misc/ChannelList.js:351
+msgid "Live"
+msgstr "Live"
+
+#: src/misc/ChannelList.js:210
+msgid "Live on {0} of {1} publications"
+msgstr "Live on {0} of {1} publications"
+
 #: src/views/Publication/Services/DLive.js:15
 msgid "Live-Streaming to dlive Live RTMP Service."
 msgstr "Live-Streaming to dlive Live RTMP Service."
@@ -1549,15 +1647,15 @@ msgstr "Logging"
 msgid "Login"
 msgstr "Login"
 
-#: src/utils/restreamer.js:262
-#: src/utils/restreamer.js:296
+#: src/utils/restreamer.js:263
+#: src/utils/restreamer.js:297
 msgid "Login failed: {0}"
 msgstr "Login failed: {0}"
 
-#: src/utils/restreamer.js:271
-#: src/utils/restreamer.js:276
-#: src/utils/restreamer.js:305
-#: src/utils/restreamer.js:310
+#: src/utils/restreamer.js:272
+#: src/utils/restreamer.js:277
+#: src/utils/restreamer.js:306
+#: src/utils/restreamer.js:311
 msgid "Login failed: Couldn't load API details"
 msgstr "Login failed: Couldn't load API details"
 
@@ -1754,7 +1852,7 @@ msgstr "Mute left"
 msgid "Mute right"
 msgstr "Mute right"
 
-#: src/misc/ChannelList.js:436
+#: src/misc/ChannelList.js:442
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
 #: src/views/Layout/index.js:464
@@ -1806,6 +1904,14 @@ msgstr "No audio"
 msgid "No audio stream available"
 msgstr "No audio stream available"
 
+#: src/views/Main/ActivityLog.js:201
+msgid "No data yet"
+msgstr "No data yet"
+
+#: src/misc/ChannelList.js:182
+msgid "No input"
+msgstr "No input"
+
 #: src/views/Edit/Wizard/Sources/AVFoundation.js:70
 #: src/views/Edit/Wizard/Sources/V4L.js:99
 msgid "No input device available"
@@ -1856,10 +1962,18 @@ msgstr "Noise"
 msgid "None"
 msgstr "None"
 
+#: src/views/Main/ActivityLog.js:207
+msgid "not real-time"
+msgstr "not real-time"
+
 #: src/views/Playersite.js:331
 #: src/views/Playersite.js:685
 msgid "Notes"
 msgstr "Notes"
+
+#: src/views/Main/ActivityLog.js:542
+msgid "Nothing to show yet."
+msgstr "Nothing to show yet."
 
 #: src/views/Settings.js:2176
 #: src/views/Settings.js:2195
@@ -2127,6 +2241,11 @@ msgstr "Primary stream key"
 msgid "Probe"
 msgstr "Probe"
 
+#: src/misc/ChannelList.js:353
+#: src/views/Main/ActivityLog.js:531
+msgid "Problems"
+msgstr "Problems"
+
 #: src/views/Edit/index.js:560
 #: src/views/Publication/Add.js:447
 #: src/views/Publication/Edit.js:459
@@ -2138,6 +2257,7 @@ msgstr "Process"
 msgid "Process control"
 msgstr "Process control"
 
+#: src/views/Main/ActivityLog.js:552
 #: src/views/Main/ChannelPanel.js:419
 #: src/views/Main/ChannelPanel.js:435
 #: src/views/Publication/Edit.js:494
@@ -2145,6 +2265,8 @@ msgstr "Process control"
 msgid "Process details"
 msgstr "Process details"
 
+#: src/views/Main/ActivityLog.js:303
+#: src/views/Main/ActivityLog.js:556
 #: src/views/Main/ChannelPanel.js:422
 #: src/views/Main/ChannelPanel.js:443
 #: src/views/Publication/Edit.js:497
@@ -2210,6 +2332,8 @@ msgstr "Publication service not found"
 msgid "Publication website settings saved"
 msgstr "Publication website settings saved"
 
+#: src/views/Main/ActivityLog.js:246
+#: src/views/Main/ActivityLog.js:534
 #: src/views/Main/Publication.js:163
 msgid "Publications"
 msgstr "Publications"
@@ -2253,6 +2377,10 @@ msgstr "Ratio"
 msgid "rav1e Parameters"
 msgstr "rav1e Parameters"
 
+#: src/views/Main/ActivityLog.js:300
+msgid "Raw process log"
+msgstr "Raw process log"
+
 #: src/views/Edit/Sources/Network.js:556
 msgid "Read input at native speed"
 msgstr "Read input at native speed"
@@ -2269,6 +2397,22 @@ msgstr "Reads the source from the internal RTMP server (low delay)."
 msgid "Receive Mode"
 msgstr "Receive Mode"
 
+#: src/misc/ChannelList.js:352
+msgid "Receiving"
+msgstr "Receiving"
+
+#: src/views/Main/ActivityLog.js:164
+msgid "Receiving input"
+msgstr "Receiving input"
+
+#: src/misc/ChannelList.js:216
+msgid "Receiving input, not published"
+msgstr "Receiving input, not published"
+
+#: src/misc/ChannelList.js:219
+msgid "Receiving input, publication failing"
+msgstr "Receiving input, publication failing"
+
 #: src/misc/ActionButton.js:32
 #: src/misc/ActionButton.js:53
 #: src/misc/controls/Process.js:47
@@ -2279,6 +2423,7 @@ msgstr "Reconnect"
 msgid "Reconnect delay (seconds)"
 msgstr "Reconnect delay (seconds)"
 
+#: src/views/Main/ActivityLog.js:176
 #: src/views/Main/ChannelPanel.js:352
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
@@ -2376,6 +2521,10 @@ msgstr "Restart"
 msgid "Restart required"
 msgstr "Restart required"
 
+#: src/views/Main/ActivityLog.js:338
+msgid "Restarted"
+msgstr "Restarted"
+
 #: src/views/Password.js:155
 #: src/views/Settings.js:2234
 msgid "Restarting"
@@ -2389,6 +2538,14 @@ msgstr "Restarting Restreamer Core ..."
 #: src/views/Settings.js:1108
 msgid "Restarting the application failed."
 msgstr "Restarting the application failed."
+
+#: src/views/Main/ActivityLog.js:205
+msgid "restarts"
+msgstr "restarts"
+
+#: src/views/Main/ActivityLog.js:288
+msgid "Restarts (1h)"
+msgstr "Restarts (1h)"
 
 #: src/views/Publication/Services/Core.js:206
 msgid "Restreamer instructions"
@@ -2688,9 +2845,21 @@ msgstr "Settings saved. All changes will be applied after restarting the applica
 msgid "Share button"
 msgstr "Share button"
 
+#: src/views/Main/ActivityPanel.js:141
+msgid "Show activity"
+msgstr "Show activity"
+
+#: src/misc/ChannelList.js:383
+msgid "Show all channels"
+msgstr "Show all channels"
+
 #: src/views/Playersite.js:463
 msgid "Shows a reference to the project."
 msgstr "Shows a reference to the project."
+
+#: src/views/Main/ActivityPanel.js:162
+msgid "Side by side"
+msgstr "Side by side"
 
 #: src/views/Login.js:332
 msgid "Sign up (free)"
@@ -2733,6 +2902,10 @@ msgstr "Socket timeout (microseconds)"
 msgid "Software"
 msgstr "Software"
 
+#: src/views/Main/ActivityLog.js:199
+msgid "Some issues"
+msgstr "Some issues"
+
 #: src/misc/controls/Source.js:74
 #: src/views/Edit/Sources/VirtualAudio.js:88
 #: src/views/Edit/Sources/VirtualVideo.js:112
@@ -2754,6 +2927,7 @@ msgid "Source channel"
 msgstr "Source channel"
 
 #: src/misc/Progress.js:131
+#: src/views/Main/ActivityLog.js:234
 msgid "Speed"
 msgstr "Speed"
 
@@ -2789,6 +2963,10 @@ msgstr "SRT server listen address."
 msgid "SRT token for publishing and playing. The token is the value of the streamid parameter 'token.'"
 msgstr "SRT token for publishing and playing. The token is the value of the streamid parameter 'token.'"
 
+#: src/views/Main/ActivityLog.js:198
+msgid "Stable"
+msgstr "Stable"
+
 #: src/misc/controls/Process.js:69
 msgid "Stale timeout (seconds)"
 msgstr "Stale timeout (seconds)"
@@ -2797,9 +2975,18 @@ msgstr "Stale timeout (seconds)"
 msgid "start_at_zero"
 msgstr "start_at_zero"
 
+#: src/views/Main/ActivityLog.js:337
+msgid "Started"
+msgstr "Started"
+
 #: src/views/Settings.js:1621
 msgid "Statistics"
 msgstr "Statistics"
+
+#: src/views/Main/ActivityLog.js:158
+#: src/views/Main/ActivityLog.js:339
+msgid "Stopped"
+msgstr "Stopped"
 
 #: src/misc/controls/HLS.js:65
 #: src/views/Settings.js:1238
@@ -3088,7 +3275,7 @@ msgstr "There were some errors in the settings. Settings not saved."
 msgid "There's no login method available."
 msgstr "There's no login method available."
 
-#: src/views/Pair/index.js:46
+#: src/views/Pair/index.js:47
 msgid "This channel is not configured yet."
 msgstr "This channel is not configured yet."
 
@@ -3343,6 +3530,10 @@ msgstr "Unknown upload error"
 msgid "Unselected"
 msgstr "Unselected"
 
+#: src/views/Main/ActivityLog.js:200
+msgid "Unstable"
+msgstr "Unstable"
+
 #: src/misc/Changelog.js:173
 msgid "Update details (Changelog)"
 msgstr "Update details (Changelog)"
@@ -3382,6 +3573,7 @@ msgstr "Uploading the poster failed"
 
 #: src/Footer.js:165
 #: src/misc/Progress.js:53
+#: src/views/Main/ActivityLog.js:231
 #: src/views/Main/Progress.js:57
 msgid "Uptime"
 msgstr "Uptime"
@@ -3518,6 +3710,11 @@ msgstr "Volume"
 #: src/views/Publication/Services/Livespotting.js:88
 msgid "VPU ID"
 msgstr "VPU ID"
+
+#: src/misc/ChannelList.js:225
+#: src/views/Main/ActivityLog.js:168
+msgid "Waiting for input"
+msgstr "Waiting for input"
 
 #: src/misc/coders/Encoders/video/h264_v4l2m2m.js:169
 msgid "We recommend OpenMAX IL for Raspberry PI (3/4) with a 32-bit operating system."

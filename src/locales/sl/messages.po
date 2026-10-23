@@ -13,6 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/misc/ChannelList.js:212
+#: src/views/Main/ActivityLog.js:253
+msgid "{0} failing"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:249
+msgid "{0} live"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:372
+msgid "{0} times, first at {1}"
+msgstr ""
+
 #: src/misc/EncodingSelect.js:237
 msgid "<0>Compatibility list</0>"
 msgstr "<0>Seznam združljivosti</0>"
@@ -42,7 +55,7 @@ msgstr "6 (+ zajamčen začetek z okvirjem ključa)"
 msgid "7 (+ fragmented MP4 format)"
 msgstr "7 (+ razdrobljen format MP4)"
 
-#: src/misc/ChannelList.js:412
+#: src/misc/ChannelList.js:418
 #: src/views/Edit/index.js:653
 #: src/views/Edit/index.js:672
 #: src/views/Edit/Profile.js:599
@@ -58,7 +71,12 @@ msgstr "Prekliči"
 msgid "About"
 msgstr "O"
 
-#: src/misc/ChannelList.js:425
+#: src/views/Main/ActivityPanel.js:143
+#: src/views/Main/ActivityPanel.js:150
+msgid "Activity"
+msgstr ""
+
+#: src/misc/ChannelList.js:431
 msgid "Add"
 msgstr "Dodaj"
 
@@ -66,11 +84,15 @@ msgstr "Dodaj"
 msgid "Add Audio"
 msgstr ""
 
+#: src/misc/ChannelList.js:380
+msgid "Add channel"
+msgstr ""
+
 #: src/views/Playersite.js:733
 msgid "Add external widgets and styles to the publication site. You can find some examples on the help page."
 msgstr "Dodajanje zunanjih gradnikov in slogov na spletno mesto objave. Nekaj primerov najdete na strani s pomočjo."
 
-#: src/misc/ChannelList.js:409
+#: src/misc/ChannelList.js:415
 msgid "Add new channel"
 msgstr "Dodajanje novega kanala"
 
@@ -168,6 +190,7 @@ msgstr "AirPlay"
 msgid "Alerting by email"
 msgstr "Opozarjanje po e-pošti"
 
+#: src/views/Main/ActivityLog.js:530
 #: src/views/Publication/Add.js:386
 msgid "All"
 msgstr "Vse"
@@ -358,6 +381,18 @@ msgstr "Dejavnik piskanja"
 msgid "Bitrate"
 msgstr "Bitrate"
 
+#: src/views/Main/ActivityLog.js:206
+msgid "bitrate jumps"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:294
+msgid "Bitrate variation"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:277
+msgid "Bitrate, last 5 min"
+msgstr ""
+
 #: src/views/Settings.js:1903
 msgid "Block cache types"
 msgstr "Vrste blokovnega predpomnilnika"
@@ -427,6 +462,7 @@ msgstr ""
 msgid "Channel \"{0}\" saved"
 msgstr "Kanal \"{0}\" shranjen"
 
+#: src/misc/ChannelList.js:377
 #: src/views/Edit/Sources/ALSA.js:129
 msgid "Channels"
 msgstr "Kanali"
@@ -513,6 +549,10 @@ msgstr "Kodek"
 msgid "Color"
 msgstr "Barva"
 
+#: src/views/Main/ActivityPanel.js:159
+msgid "Combined"
+msgstr ""
+
 #: src/misc/modals/Process.js:134
 msgid "Command"
 msgstr "Ukaz"
@@ -536,6 +576,10 @@ msgstr "Povezana naprava"
 #: src/views/Publication/Process.js:54
 msgid "Connected since <0/>"
 msgstr "Povezan od <0/>"
+
+#: src/views/Main/ActivityLog.js:180
+msgid "Connecting"
+msgstr ""
 
 #: src/misc/ActionButton.js:12
 #: src/views/Main/ChannelPanel.js:324
@@ -589,7 +633,7 @@ msgstr "Omejitev procesorja (v odstotkih)"
 msgid "CPU usage limit in percent (0-100%), 0 for unlimited."
 msgstr "Omejitev uporabe procesorja v odstotkih (0-100 %), 0 pomeni neomejeno."
 
-#: src/views/Main/index.js:90
+#: src/views/Main/index.js:98
 msgid "Create vertical channel"
 msgstr ""
 
@@ -807,6 +851,10 @@ msgstr "Prekini"
 msgid "Disconnect & Continue"
 msgstr "Odklop in nadaljevanje"
 
+#: src/views/Main/ActivityLog.js:176
+msgid "Disconnected"
+msgstr ""
+
 #: src/misc/ActionButton.js:18
 #: src/views/Publication/Process.js:47
 msgid "Disconnecting ..."
@@ -864,12 +912,20 @@ msgstr "Dokumentacija"
 msgid "Drag the colored boxes to choose which part of the source each region shows. The picture is the channel snapshot, use the refresh button to update it."
 msgstr ""
 
-#: src/views/Main/index.js:80
-#: src/views/Main/index.js:85
+#: src/views/Main/ActivityLog.js:208
+msgid "dropped frames"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:291
+msgid "Dropped frames"
+msgstr ""
+
+#: src/views/Main/index.js:88
+#: src/views/Main/index.js:93
 msgid "Dual view"
 msgstr ""
 
-#: src/views/Main/index.js:85
+#: src/views/Main/index.js:93
 msgid "Dual view {0}"
 msgstr ""
 
@@ -983,7 +1039,7 @@ msgstr "Enkodiranje"
 msgid "Encryption"
 msgstr "Zaščita"
 
-#: src/misc/ChannelList.js:432
+#: src/misc/ChannelList.js:438
 msgid "Enter a name for the new channel."
 msgstr "Vnesite ime novega kanala."
 
@@ -1007,6 +1063,7 @@ msgstr "Kodirnik entropije"
 #: src/views/Edit/Wizard/Error.js:16
 #: src/views/Incompatible.js:30
 #: src/views/Invalid.js:29
+#: src/views/Main/ActivityLog.js:172
 #: src/views/Publication/Process.js:63
 #: src/views/Settings.js:1202
 msgid "Error"
@@ -1018,10 +1075,18 @@ msgstr "Napaka"
 msgid "Error while copying data to clipboard"
 msgstr "Napaka pri kopiranju podatkov v odložišče"
 
+#: src/views/Main/ActivityLog.js:172
+msgid "Error, retry in {0}s"
+msgstr ""
+
 #: src/views/Main/ChannelPanel.js:336
 #: src/views/Publication/Process.js:64
 msgid "Error: {0}"
 msgstr "Napaka: {0}"
+
+#: src/views/Main/ActivityLog.js:527
+msgid "Events"
+msgstr ""
 
 #: src/views/Playersite.js:773
 msgid "Expands the area above the channel list (live chat)."
@@ -1072,7 +1137,7 @@ msgstr "Ni uspelo ustvariti datotek spletne strani objave."
 msgid "Failed to probe the source. Please check the <0>probe details</0>."
 msgstr "Ni uspelo preveriti vira. Prosimo, preverite <0>podrobnosti o sondi</0>."
 
-#: src/utils/restreamer.js:449
+#: src/utils/restreamer.js:450
 msgid "Failed to refresh token: {0}"
 msgstr "Ni uspelo osvežiti žetona: {0}"
 
@@ -1165,6 +1230,10 @@ msgstr "Zapis"
 #: src/views/Main/Progress.js:77
 msgid "FPS"
 msgstr "FPS"
+
+#: src/views/Main/ActivityLog.js:283
+msgid "FPS, last 5 min"
+msgstr ""
 
 #: src/misc/Progress.js:144
 msgid "Frame drops"
@@ -1263,6 +1332,10 @@ msgstr "Naslov"
 msgid "Height"
 msgstr "Višina"
 
+#: src/views/Main/ActivityPanel.js:152
+msgid "Hide activity"
+msgstr ""
+
 #: src/views/Main/ChannelPanel.js:384
 msgid "HLS"
 msgstr "HLS"
@@ -1351,6 +1424,11 @@ msgstr "V pomnilniku"
 msgid "In-memory storage"
 msgstr "Shranjevanje v pomnilniku"
 
+#: src/misc/ChannelList.js:206
+#: src/misc/ChannelList.js:354
+msgid "Inactive"
+msgstr ""
+
 #: src/views/Publication/Add.js:313
 msgid "Incompatible"
 msgstr "Nezdružljivo"
@@ -1380,6 +1458,14 @@ msgstr "Vbrizgavanje 3"
 msgid "Inject 4"
 msgstr "Vbrizgavanje 4"
 
+#: src/misc/ChannelList.js:222
+msgid "Input lost"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:264
+msgid "Input stability"
+msgstr ""
+
 #: src/views/Edit/Sources/Network.js:961
 #: src/views/Edit/Sources/Network.js:1055
 #: src/views/Edit/Wizard/Sources/InternalRTMP.js:111
@@ -1403,6 +1489,10 @@ msgstr "Interval (sekunde)"
 #: src/Header.js:336
 msgid "Issue alert"
 msgstr "Opozorilo o problemu"
+
+#: src/views/Main/ActivityLog.js:367
+msgid "It is restarted automatically."
+msgstr ""
 
 #: src/misc/Progress.js:105
 #: src/views/Main/Progress.js:67
@@ -1492,6 +1582,14 @@ msgstr "Seznam območij IP v zapisu CIDR, npr. 127.0.0.1/32, ki jih statistika n
 msgid "List size (segments)"
 msgstr "Velikost seznama (segmenti)"
 
+#: src/misc/ChannelList.js:351
+msgid "Live"
+msgstr ""
+
+#: src/misc/ChannelList.js:210
+msgid "Live on {0} of {1} publications"
+msgstr ""
+
 #: src/views/Publication/Services/DLive.js:15
 msgid "Live-Streaming to dlive Live RTMP Service."
 msgstr "Prenos v živo v storitev dlive Live RTMP."
@@ -1549,15 +1647,15 @@ msgstr "Prijava"
 msgid "Login"
 msgstr "Prijava"
 
-#: src/utils/restreamer.js:262
-#: src/utils/restreamer.js:296
+#: src/utils/restreamer.js:263
+#: src/utils/restreamer.js:297
 msgid "Login failed: {0}"
 msgstr "Prijava ni uspela: {0}"
 
-#: src/utils/restreamer.js:271
-#: src/utils/restreamer.js:276
-#: src/utils/restreamer.js:305
-#: src/utils/restreamer.js:310
+#: src/utils/restreamer.js:272
+#: src/utils/restreamer.js:277
+#: src/utils/restreamer.js:306
+#: src/utils/restreamer.js:311
 msgid "Login failed: Couldn't load API details"
 msgstr "Prijava ni uspela: Ni bilo mogoče naložiti podrobnosti API"
 
@@ -1754,7 +1852,7 @@ msgstr "Izklop mikrofona na levi strani"
 msgid "Mute right"
 msgstr "Utišajte desno stran"
 
-#: src/misc/ChannelList.js:436
+#: src/misc/ChannelList.js:442
 #: src/misc/controls/Metadata.js:76
 #: src/misc/controls/Metadata.js:98
 #: src/views/Layout/index.js:464
@@ -1806,6 +1904,14 @@ msgstr "Brez zvoka"
 msgid "No audio stream available"
 msgstr "Zvočni tok ni na voljo"
 
+#: src/views/Main/ActivityLog.js:201
+msgid "No data yet"
+msgstr ""
+
+#: src/misc/ChannelList.js:182
+msgid "No input"
+msgstr ""
+
 #: src/views/Edit/Wizard/Sources/AVFoundation.js:70
 #: src/views/Edit/Wizard/Sources/V4L.js:99
 msgid "No input device available"
@@ -1856,10 +1962,18 @@ msgstr "Hrup"
 msgid "None"
 msgstr "Ni"
 
+#: src/views/Main/ActivityLog.js:207
+msgid "not real-time"
+msgstr ""
+
 #: src/views/Playersite.js:331
 #: src/views/Playersite.js:685
 msgid "Notes"
 msgstr "Opombe"
+
+#: src/views/Main/ActivityLog.js:542
+msgid "Nothing to show yet."
+msgstr ""
 
 #: src/views/Settings.js:2176
 #: src/views/Settings.js:2195
@@ -2127,6 +2241,11 @@ msgstr "Ključ primarnega toka"
 msgid "Probe"
 msgstr "Sonda"
 
+#: src/misc/ChannelList.js:353
+#: src/views/Main/ActivityLog.js:531
+msgid "Problems"
+msgstr ""
+
 #: src/views/Edit/index.js:560
 #: src/views/Publication/Add.js:447
 #: src/views/Publication/Edit.js:459
@@ -2138,6 +2257,7 @@ msgstr "Proces"
 msgid "Process control"
 msgstr "Nadzor procesa"
 
+#: src/views/Main/ActivityLog.js:552
 #: src/views/Main/ChannelPanel.js:419
 #: src/views/Main/ChannelPanel.js:435
 #: src/views/Publication/Edit.js:494
@@ -2145,6 +2265,8 @@ msgstr "Nadzor procesa"
 msgid "Process details"
 msgstr "Podrobnosti o postopku"
 
+#: src/views/Main/ActivityLog.js:303
+#: src/views/Main/ActivityLog.js:556
 #: src/views/Main/ChannelPanel.js:422
 #: src/views/Main/ChannelPanel.js:443
 #: src/views/Publication/Edit.js:497
@@ -2210,6 +2332,8 @@ msgstr "Storitev objave ni bila najdena"
 msgid "Publication website settings saved"
 msgstr "Shranjene nastavitve spletnega mesta objave"
 
+#: src/views/Main/ActivityLog.js:246
+#: src/views/Main/ActivityLog.js:534
 #: src/views/Main/Publication.js:163
 msgid "Publications"
 msgstr "Publikacije"
@@ -2253,6 +2377,10 @@ msgstr "Razmerje"
 msgid "rav1e Parameters"
 msgstr "rav1e Parametri"
 
+#: src/views/Main/ActivityLog.js:300
+msgid "Raw process log"
+msgstr ""
+
 #: src/views/Edit/Sources/Network.js:556
 msgid "Read input at native speed"
 msgstr "Branje vhodnih podatkov z izvirno hitrostjo"
@@ -2269,6 +2397,22 @@ msgstr ""
 msgid "Receive Mode"
 msgstr "Način sprejema"
 
+#: src/misc/ChannelList.js:352
+msgid "Receiving"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:164
+msgid "Receiving input"
+msgstr ""
+
+#: src/misc/ChannelList.js:216
+msgid "Receiving input, not published"
+msgstr ""
+
+#: src/misc/ChannelList.js:219
+msgid "Receiving input, publication failing"
+msgstr ""
+
 #: src/misc/ActionButton.js:32
 #: src/misc/ActionButton.js:53
 #: src/misc/controls/Process.js:47
@@ -2279,6 +2423,7 @@ msgstr "Ponovna povezava"
 msgid "Reconnect delay (seconds)"
 msgstr "Zakasnitev ponovne povezave (sekunde)"
 
+#: src/views/Main/ActivityLog.js:176
 #: src/views/Main/ChannelPanel.js:352
 #: src/views/Publication/Process.js:68
 #: src/views/Publication/Process.js:81
@@ -2376,6 +2521,10 @@ msgstr "Ponovni zagon"
 msgid "Restart required"
 msgstr "Potreben ponovni zagon"
 
+#: src/views/Main/ActivityLog.js:338
+msgid "Restarted"
+msgstr ""
+
 #: src/views/Password.js:155
 #: src/views/Settings.js:2234
 msgid "Restarting"
@@ -2389,6 +2538,14 @@ msgstr "Ponovni zagon jedra Restreamerja ..."
 #: src/views/Settings.js:1108
 msgid "Restarting the application failed."
 msgstr "Ponovni zagon aplikacije ni uspel."
+
+#: src/views/Main/ActivityLog.js:205
+msgid "restarts"
+msgstr ""
+
+#: src/views/Main/ActivityLog.js:288
+msgid "Restarts (1h)"
+msgstr ""
 
 #: src/views/Publication/Services/Core.js:206
 msgid "Restreamer instructions"
@@ -2688,9 +2845,21 @@ msgstr "Shranjene nastavitve. Vse spremembe se bodo uporabile po ponovnem zagonu
 msgid "Share button"
 msgstr "Gumb za deljenje"
 
+#: src/views/Main/ActivityPanel.js:141
+msgid "Show activity"
+msgstr ""
+
+#: src/misc/ChannelList.js:383
+msgid "Show all channels"
+msgstr ""
+
 #: src/views/Playersite.js:463
 msgid "Shows a reference to the project."
 msgstr "Prikaže referenco na projekt."
+
+#: src/views/Main/ActivityPanel.js:162
+msgid "Side by side"
+msgstr ""
 
 #: src/views/Login.js:332
 msgid "Sign up (free)"
@@ -2733,6 +2902,10 @@ msgstr "Časovna omejitev vtičnice (mikrosekunde)"
 msgid "Software"
 msgstr "Programska oprema"
 
+#: src/views/Main/ActivityLog.js:199
+msgid "Some issues"
+msgstr ""
+
 #: src/misc/controls/Source.js:74
 #: src/views/Edit/Sources/VirtualAudio.js:88
 #: src/views/Edit/Sources/VirtualVideo.js:112
@@ -2754,6 +2927,7 @@ msgid "Source channel"
 msgstr ""
 
 #: src/misc/Progress.js:131
+#: src/views/Main/ActivityLog.js:234
 msgid "Speed"
 msgstr "Hitrost"
 
@@ -2789,6 +2963,10 @@ msgstr "Naslov za poslušanje strežnika SRT."
 msgid "SRT token for publishing and playing. The token is the value of the streamid parameter 'token.'"
 msgstr "Žeton SRT za objavo in predvajanje. Token je vrednost parametra streamid 'token'."
 
+#: src/views/Main/ActivityLog.js:198
+msgid "Stable"
+msgstr ""
+
 #: src/misc/controls/Process.js:69
 msgid "Stale timeout (seconds)"
 msgstr "Časovna omejitev za zastaranje (sekunde)"
@@ -2797,9 +2975,18 @@ msgstr "Časovna omejitev za zastaranje (sekunde)"
 msgid "start_at_zero"
 msgstr "start_at_zero"
 
+#: src/views/Main/ActivityLog.js:337
+msgid "Started"
+msgstr ""
+
 #: src/views/Settings.js:1621
 msgid "Statistics"
 msgstr "Statistika"
+
+#: src/views/Main/ActivityLog.js:158
+#: src/views/Main/ActivityLog.js:339
+msgid "Stopped"
+msgstr ""
 
 #: src/misc/controls/HLS.js:65
 #: src/views/Settings.js:1238
@@ -3088,7 +3275,7 @@ msgstr "V nastavitvah je bilo nekaj napak. Nastavitve niso bile shranjene."
 msgid "There's no login method available."
 msgstr "Na voljo ni načina prijave."
 
-#: src/views/Pair/index.js:46
+#: src/views/Pair/index.js:47
 msgid "This channel is not configured yet."
 msgstr ""
 
@@ -3343,6 +3530,10 @@ msgstr "Neznana napaka pri nalaganju"
 msgid "Unselected"
 msgstr "Neizbrano"
 
+#: src/views/Main/ActivityLog.js:200
+msgid "Unstable"
+msgstr ""
+
 #: src/misc/Changelog.js:173
 msgid "Update details (Changelog)"
 msgstr "Podrobnosti posodobitve (Changelog)"
@@ -3382,6 +3573,7 @@ msgstr "Nalaganje plakata ni uspelo"
 
 #: src/Footer.js:165
 #: src/misc/Progress.js:53
+#: src/views/Main/ActivityLog.js:231
 #: src/views/Main/Progress.js:57
 msgid "Uptime"
 msgstr "Čas delovanja"
@@ -3518,6 +3710,11 @@ msgstr "Zvezek"
 #: src/views/Publication/Services/Livespotting.js:88
 msgid "VPU ID"
 msgstr "VPU ID"
+
+#: src/misc/ChannelList.js:225
+#: src/views/Main/ActivityLog.js:168
+msgid "Waiting for input"
+msgstr ""
 
 #: src/misc/coders/Encoders/video/h264_v4l2m2m.js:169
 msgid "We recommend OpenMAX IL for Raspberry PI (3/4) with a 32-bit operating system."
