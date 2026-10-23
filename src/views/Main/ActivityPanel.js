@@ -15,7 +15,6 @@ import Typography from '@mui/material/Typography';
 import * as Storage from '../../utils/storage';
 import ActivityLog from './ActivityLog';
 
-const HEADER_HEIGHT = 132;
 const FOOTER_HEIGHT = 60;
 const COLUMN_WIDTH = 340;
 const PADDING = 16;
@@ -23,8 +22,8 @@ const PADDING = 16;
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		boxSizing: 'border-box',
-		top: `${HEADER_HEIGHT}px!important`,
-		height: `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)!important`,
+		top: '0!important',
+		height: `calc(100vh - ${FOOTER_HEIGHT}px)!important`,
 		padding: `0 ${PADDING}px ${PADDING}px ${PADDING}px`,
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: '12px 0px 14px -10px rgb(0 0 0 / 35%)',

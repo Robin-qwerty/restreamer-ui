@@ -24,7 +24,8 @@ import { ORDER, sortChannels } from '../utils/channelStatus';
 import useInterval from '../hooks/useInterval';
 import Dialog from './modals/Dialog';
 
-const HEADER_HEIGHT = 132;
+// the buttons in the top right corner (Header.js)
+const HEADER_HEIGHT = 72;
 const FOOTER_HEIGHT = 60;
 const PANEL_WIDTH = 320;
 const PANEL_PADDING = 16;

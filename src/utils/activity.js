@@ -129,7 +129,11 @@ const explain = (message) => {
 };
 
 // Harmless messages that would only clutter the log
-const ignored = [/failed to update header with correct (duration|filesize)/i];
+const ignored = [
+	/failed to update header with correct (duration|filesize)/i,
+	// the HLS muxer writes over HTTP to Restreamer's memory filesystem, where temp files can't be renamed
+	/cannot use rename on non file protocol/i,
+];
 
 // Group repeated messages, e.g. "Connection refused" every 15 seconds
 const normalize = (message) => message.replace(/0x[0-9a-fA-F]+/g, '#').replace(/\d+(\.\d+)?/g, '#');

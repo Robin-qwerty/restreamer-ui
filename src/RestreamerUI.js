@@ -26,7 +26,8 @@ import SemverValid from 'semver/functions/valid';
 
 const useStyles = makeStyles((theme) => ({
 	MainHeader: {
-		height: '132px',
+		// room for the buttons in the top right corner (see Header.js)
+		height: '72px',
 	},
 	// todo: one layer
 	MainContent: {

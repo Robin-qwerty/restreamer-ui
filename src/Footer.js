@@ -16,7 +16,7 @@ import WarningIcon from '@mui/icons-material/Warning';
 
 import useInterval from './hooks/useInterval';
 import Duration from './misc/Duration';
-import Logo from './misc/Logo';
+import Logo from './misc/Logo/rsLogo';
 import Number from './misc/Number';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +37,13 @@ const useStyles = makeStyles((theme) => ({
 		'& .footerRight': {
 			marginLeft: 20,
 			marginRight: 40,
+		},
+		'& .footerTitle': {
+			fontFamily: '"Dosis", "Roboto", "Helvetica", "Arial", sans-serif',
+			fontSize: '1.6rem',
+			fontWeight: 300,
+			marginLeft: 8,
+			marginRight: 16,
 		},
 		'& .footerVersion': {
 			textOverflow: 'ellipsis',
@@ -377,7 +384,8 @@ export default function Footer(props) {
 				<Grid item xs={12}>
 					<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={0}>
 						<Stack className="footerLeft" direction="row" alignItems="center" spacing={0}>
-							<Logo className={classes.logo} />
+							<Logo size={40} />
+							<Typography className="footerTitle">Restreamer</Typography>
 							<Typography className="footerVersion">
 								{props.app} v{version.number} ({version.arch}) {props.name ? '- ' + props.name : ''}
 							</Typography>
@@ -393,7 +401,8 @@ export default function Footer(props) {
 				<Grid item xs={12}>
 					<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={0}>
 						<Stack className="footerLeft" direction="row" alignItems="center" spacing={0}>
-							<Logo className={classes.logo} />
+							<Logo size={40} />
+							<Typography className="footerTitle">Restreamer</Typography>
 						</Stack>
 					</Stack>
 				</Grid>

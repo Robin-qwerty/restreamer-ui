@@ -28,78 +28,40 @@ import * as Storage from './utils/storage';
 import * as Version from './version';
 import welcomeImage from './assets/images/welcome.png';
 import LanguageSelect from './misc/LanguageSelect';
-import Logo from './misc/Logo/rsLogo';
 import ModalContent from './misc/ModalContent';
 import PaperThumb from './misc/PaperThumb';
 
 const useStyles = makeStyles((theme) => ({
 	header: {
-		width: '100%',
-		height: 132,
-		lineHeight: '132px',
-		backgroundColor: 'transparent',
+		// no bar: only the buttons, fixed in the top right corner (the logo is in the footer)
+		position: 'fixed',
+		top: 12,
+		right: 24,
+		zIndex: theme.zIndex.drawer + 1,
 		color: theme.palette.text.secondary,
-		'& .headerRight': {
-			float: 'right',
-			marginRight: 42,
-		},
 		'& .headerFab': {
-			height: 60,
-			width: 60,
-			marginLeft: '1em',
+			height: 48,
+			width: 48,
+			marginLeft: '.6em',
 			boxShadow: 'unset',
 			'& .fabIcon': {
-				fontSize: 30,
+				fontSize: 26,
 			},
 			'&:hover': {
 				backgroundColor: theme.palette.background.box_default,
 			},
 		},
 		'& .headerFabHighlight': {
-			height: 60,
-			width: 60,
-			marginLeft: '1em',
+			height: 48,
+			width: 48,
+			marginLeft: '.6em',
 			boxShadow: 'unset',
 			border: `3px solid ${theme.palette.secondary.main}`,
 			'& .fabIcon': {
-				fontSize: 30,
+				fontSize: 26,
 			},
 			'&:hover': {
 				backgroundColor: theme.palette.background.box_default,
-			},
-		},
-		'& .headerLeft': {
-			fontSize: '3.5rem',
-			fontWeight: 300,
-			marginLeft: 40,
-		},
-		'& .headerTitle': {
-			fontFamily: '"Dosis", "Roboto", "Helvetica", "Arial", sans-serif',
-			fontSize: '3rem',
-			fontWeight: 300,
-			marginLeft: 10,
-			marginBottom: '0.2em',
-		},
-		'@media (max-width: 599px)': {
-			'& .headerRight': {
-				marginRight: 20,
-			},
-			'& .headerLeft': {
-				marginLeft: 20,
-			},
-			'& .headerTitle': {
-				fontSize: '2.4rem',
-			},
-		},
-		'@media (max-width: 415px)': {
-			'& .headerRight': {
-				marginRight: 20,
-			},
-			'& .headerLeft': {
-				marginLeft: 20,
-			},
-			'& .headerTitle': {
-				display: 'none',
 			},
 		},
 	},
@@ -364,19 +326,9 @@ export default function Header(props) {
 	const classes = useStyles();
 
 	return (
-		<Grid container className={classes.header} spacing={0} direction="row" alignItems="center">
-			<Grid item xs={12}>
-				<Stack direction="row" justifyContent="space-between" alignItems="center" spacing={0}>
-					<Stack direction="row" alignItems="center" spacing={0} className="headerLeft">
-						<Logo className="fabIcon" />
-						<Typography className="headerTitle">Restreamer</Typography>
-					</Stack>
-					<Stack className="headerRight" direction="row" alignItems="center" spacing={0}>
-						<HeaderMenu {...props}></HeaderMenu>
-					</Stack>
-				</Stack>
-			</Grid>
-		</Grid>
+		<Stack className={classes.header} direction="row" alignItems="center" spacing={0}>
+			<HeaderMenu {...props}></HeaderMenu>
+		</Stack>
 	);
 }
 

@@ -17,8 +17,12 @@ export default function Logo(props) {
 
 	// eslint-disable-next-line no-useless-escape
 	return (
-		<a href={link} className={classes.Logo} target="_blank" rel="noopener noreferrer">
-			<img src={company_logo} alt="datarhei logo" />
+		<a href={link} className={classes.Logo} style={{ height: props.size }} target="_blank" rel="noopener noreferrer">
+			<img src={company_logo} alt="Restreamer logo" style={{ height: props.size }} />
 		</a>
 	);
 }
+
+Logo.defaultProps = {
+	size: 95,
+};

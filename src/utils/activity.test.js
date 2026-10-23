@@ -79,6 +79,7 @@ test('activity: events from runs', () => {
 			['1700000001', '[tcp @ 0x1] [error] Connection to tcp://a failed: Connection refused'],
 			['1700000002', '[error] Error opening output files: Connection refused'],
 			['1700000003', '[flv @ 0x2] [warning] Failed to update header with correct duration.'],
+			['1700000004', '[hls @ 0x3] [error] Cannot use rename on non file protocol, this may lead to races and temporary partial files'],
 		],
 	};
 	const similarEvents = buildEvents(similar, 'x');
